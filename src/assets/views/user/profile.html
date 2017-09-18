@@ -10,54 +10,95 @@
 </head>
 <body>
 
-<div class="container-fluid">
-  <h1>Profile</h1>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <p class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>
+          Profile
+        </b>
+      </a>
+    </p>
 
-  <label class="form-control-label" for="username">
-    Username
-  </label>
-  <input name="username"
-         id="username"
-         type="text"
-         placeholder="password"
-         class="form-control"/>
+    <p class="navbar-text pull-right">
+      <a href="profile.html" class="navbar-link">
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </p>
+  </div>
+</nav>
 
-  <label class="form-control-label" for="email">
-    Email
-  </label>
-  <input name="email"
-         id="email"
-         type="email"
-         placeholder="email"
-         class="form-control"/>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="username">
+        Username
+      </label>
+      <input name="username"
+             id="username"
+             type="text"
+             placeholder="password"
+             class="form-control"/>
+    </div>
+  </form>
 
-  <label class="form-control-label" for="First Name">
-    First Name
-  </label>
-  <input name="First Name"
-         id="First Name"
-         type="text"
-         placeholder="First Name"
-         class="form-control"/>
+  <form>
+    <div class="form-group">
+      <label class="form-group form-block" for="email">
+        Email
+      </label>
+      <input name="email"
+             id="email"
+             type="email"
+             placeholder="email"
+             class="form-control"/>
+    </div>
+  </form>
 
-  <label class="form-control-label" for="Last Name">
-    Last Name
-  </label>
-  <input name="Last Name"
-         id="Last Name"
-         type="text"
-         placeholder="Last Name"
-         class="form-control"/>
+  <form>
+    <div class="form-group">
+      <label class="form-control-label" for="First Name">
+        First Name
+      </label>
+      <input name="First Name"
+             id="First Name"
+             type="text"
+             placeholder="First Name"
+             class="form-control"/>
+    </div>
+  </form>
 
-  <a class="btn btn-dark btn-block" role="button" aria-pressed="true" href="profile.html">
-    OK
-  </a>
-  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" href="login.html">
-    Logout
-  </a>
-  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="views/website/website-list.html">
+  <form>
+    <div class="form-group">
+      <label class="form-control-label" for="Last Name">
+        Last Name
+      </label>
+      <input name="Last Name"
+             id="Last Name"
+             type="text"
+             placeholder="Last Name"
+             class="form-control"/>
+    </div>
+  </form>
+
+  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" href="../../views/website/website-list.html">
     Websites
   </a>
+  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="login.html">
+    Logout
+  </a>
+
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a href="profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+
 </body>
 </html>
