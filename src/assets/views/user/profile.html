@@ -1,10 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+  <title>Profile</title>
+  <link rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 
+<div class="container-fluid">
+  <h1>Profile</h1>
+
+  <label class="form-control-label" for="username">
+    Username
+  </label>
+  <input name="username"
+         id="username"
+         type="text"
+         placeholder="password"
+         class="form-control"/>
+
+  <label class="form-control-label" for="email">
+    Email
+  </label>
+  <input name="email"
+         id="email"
+         type="email"
+         placeholder="email"
+         class="form-control"/>
+
+  <label class="form-control-label" for="First Name">
+    First Name
+  </label>
+  <input name="First Name"
+         id="First Name"
+         type="text"
+         placeholder="First Name"
+         class="form-control"/>
+
+  <label class="form-control-label" for="Last Name">
+    Last Name
+  </label>
+  <input name="Last Name"
+         id="Last Name"
+         type="text"
+         placeholder="Last Name"
+         class="form-control"/>
+
+  <a class="btn btn-dark btn-block" role="button" aria-pressed="true" href="profile.html">
+    OK
+  </a>
+  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" href="login.html">
+    Logout
+  </a>
+  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="views/website/website-list.html">
+    Websites
+  </a>
+</div>
 </body>
 </html>

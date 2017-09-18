@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, user-scalable=no">
+  <title>Register</title>
+  <link rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../css/style.css"/>
+  <script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<div class="container-fluid">
+  <h1>Register</h1>
+
+  <input name="username"
+         id="username"
+         type="text"
+         placeholder="username"
+         class="form-control"/>
+
+  <input name="password"
+         id="password"
+         type="password"
+         placeholder="password"
+         class="form-control"/>
+
+  <input name="verify password"
+         id="verify password"
+         type="password"
+         placeholder="verify password"
+         class="form-control">
+
+  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" href="profile.html">
+    Register
+  </a>
+
+  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="login.html">
+    Cancel
+  </a>
+</div>
 
 </body>
 </html>
