@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1, user-scalable=no">
@@ -9,24 +9,91 @@
   <script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<nav class="navbar navbar-default_blue navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-text pull-left">
+      <a href="../../views/user/profile.html" class="navbar-link">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+    </div>
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>
+          Websites
+        </b>
+      </a>
+    </div>
+    <p class="navbar-text pull-right">
+      <a class="navbar-link" href="website-new.html">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+
 <div class="container-fluid">
-  <h1>Websites</h1>
-  <ul><a href="addressbook.html">
-    Address Book App
-  </a>
-  </ul>
-  <ul><a href="blogger.html">
-    Blogger
-  </a>
-  </ul>
-  <ul><a href="bloggingapp.html">
-    Blogging App
-  </a>
-  </ul>
-  <ul><a href="scripttestingapp.html">
-    Script Testing App
-  </a>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          Address Book App
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" href="website-edit.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          Blogger
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" href="website-edit.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          Blogging App
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" href="website-edit.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          Script Testing App
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" href="website-edit.html">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
   </ul>
 </div>
+
+<nav class="navbar navbar-default_blue navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <a href="../../views/user/profile.html">
+        <span class="glyphicon glyphicon-user"></span>
+      </a>
+    </p>
+  </div>
+</nav>
+
 </body>
 </html>
