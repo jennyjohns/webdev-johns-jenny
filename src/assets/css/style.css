@@ -1,6 +1,9 @@
 input {
   margin-bottom: 5px;
 }
+a:hover {
+  text-decoration: none;
+}
 
 .navbar-default_blue {
   background-color: #2365a9;
@@ -21,7 +24,7 @@ input {
   color: black;
 }
 
-body {
+body .jj-body {
   padding-top: 70px;
 }
 .jj-widget .jj-toolbar {
