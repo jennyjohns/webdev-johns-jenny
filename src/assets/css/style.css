@@ -36,3 +36,7 @@ body {
 .jj-widget .jj-content {
   width:100%;
 }
+
+.jj-widget-chooser-padding {
+  padding-left: 0px;
+}
