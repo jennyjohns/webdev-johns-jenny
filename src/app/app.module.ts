@@ -20,6 +20,9 @@ import { PageListComponent } from './components/page/page-list/page-list.compone
 import { WidgetHeaderComponent } from './components/widget/widget-header/widget-header.component';
 import { WidgetImageComponent } from './components/widget/widget-image/widget-image.component';
 import { WidgetYoutubeComponent } from './components/widget/widget-youtube/widget-youtube.component';
+import { WidgetChooserComponent } from './components/widget/widget-chooser/widget-chooser.component';
+import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
+import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 
 @NgModule({
   // Declare components here
@@ -38,7 +41,10 @@ import { WidgetYoutubeComponent } from './components/widget/widget-youtube/widge
     PageListComponent,
     WidgetHeaderComponent,
     WidgetImageComponent,
-    WidgetYoutubeComponent
+    WidgetYoutubeComponent,
+    WidgetChooserComponent,
+    WidgetEditComponent,
+    WidgetListComponent
   ],
   imports: [
     BrowserModule,
