@@ -7,12 +7,11 @@ rel="stylesheet" href="../../css/style.css"
 src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
 
 
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a href="../website/website-list.html" class="navbar-link">
+        <a [routerLink]="['/website-list]" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -24,14 +23,14 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
         </a>
       </div>
       <p class="navbar-brand pull-right">
-        <a class="navbar-link" href="page-new.html">
+        <a class="navbar-link" [routerLink]="['/page-new]">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </p>
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a href="page-list.html" class="navbar-link">
+        <a [routerLink]="['/page-list]" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -44,7 +43,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       </div>
 
       <p class="navbar-brand pull-right">
-        <a href="page-list.html" class="navbar-link">
+        <a [routerLink]="['/page-list]" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -60,12 +59,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../widget/widget-list.html">
+                <a [routerLink]="['/../widget/widget-list.html]">
                   Blog Post
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="page-edit.html">
+                <a class="pull-right" [routerLink]="['/page-edit.html]">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -74,12 +73,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../widget/widget-list.html">
+                <a [routerLink]="['/../widget/widget-list.html]">
                   Blogs
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="page-edit.html">
+                <a class="pull-right" [routerLink]="['/page-edit.html]">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -88,12 +87,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../widget/widget-list.html">
+                <a [routerLink]="['/../widget/widget-list.html]">
                   Home
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="page-edit.html">
+                <a class="pull-right" [routerLink]="['/page-edit.html]">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -102,12 +101,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../widget/widget-list.html">
+                <a [routerLink]="['/../widget/widget-list.html]">
                   About
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="page-edit.html">
+                <a class="pull-right" [routerLink]="['/page-edit.html]">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -116,12 +115,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../widget/widget-list.html">
+                <a [routerLink]="['/../widget/widget-list.html]">
                   Contact Us
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="page-edit.html">
+                <a class="pull-right" [routerLink]="['/page-edit.html]">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -157,7 +156,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
             class="form-control"/>
         </div>
       </form>
-      <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="page-list.html">
+      <a class="btn btn-danger btn-block" role="button" aria-pressed="true" [routerLink]="['/page-list.html]">
         Delete
       </a>
     </div>
@@ -165,7 +164,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     <nav class="navbar navbar-default navbar-fixed-bottom">
       <div class="container-fluid">
         <p class="navbar-brand pull-right">
-          <a href="../../views/user/profile.html">
+          <a [routerLink]="['/../../views/user/profile.html]">
             <span class="glyphicon glyphicon-user"></span>
           </a>
         </p>
