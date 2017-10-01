@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 
 charset="UTF-8"
 name="viewport" content="initial-scale=1, user-scalable=no"
@@ -24,7 +25,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a href="widget-chooser.html" class="navbar-link">
+        <a href="widget-list.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -80,29 +81,57 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
             Text
           </label>
           <input
+            type="text"
             placeholder="Animals"
             name="Text"
             id="Text"
-            class="form-control"
-            type="text"
-            value="Animals"/>
+            class="form-control"/>
         </div>
       </form>
       <form>
         <div class="form-group">
-          <label for="Size">
-            Size
+          <label for="URL">
+            URL
           </label>
           <input
-            placeholder="Animals"
-            name="Size"
-            id="Size"
+            type="url"
+            placeholder="URL"
+            name="URL"
+            id="URL"
             class="form-control"
-            type="number"
-            value="3"/>
+            value="http://lorempixel.com/400/200/animals"/>
         </div>
       </form>
-      <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="widget-list.html">
+      <form>
+        <div class="form-group">
+          <label for="Width">
+            Width
+          </label>
+          <input
+            name="Width"
+            id="Width"
+            class="form-control"
+            type="text"
+            value="100%"/>
+        </div>
+      </form>
+      <form>
+        <div class="form-group">
+          <label for="Upload">
+            Upload
+          </label>
+          <input
+            type="file"
+            placeholder="Upload"
+            name="Upload"
+            id="Upload"
+            class="form-control"/>
+        </div>
+      </form>
+      <a class="btn btn-block btn-primary" role="button" aria-pressed="true" href="widget-image.html">
+        Upload Image
+      </a>
+      <a class="btn btn-danger btn-block" role="button" href="widget-list.html" aria-pressed="true">
         Delete
       </a>
     </div>
@@ -116,4 +145,5 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       </a>
     </p>
   </div>
+</nav>
 
