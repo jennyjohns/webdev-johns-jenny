@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 
 
-charset="UTF-8"
-name="viewport" content="initial-scale=1, user-scalable=no"
-Login
-rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"
-rel="stylesheet" href="../../css/style.css"/>
-src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
+<!--charset="UTF-8"-->
+<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
+<!--Login-->
+<!--rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
+<!--rel="stylesheet" href="../../css/style.css"/>-->
+<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
 
 <div class="container-fluid">
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+
   <h1>Login</h1>
-  <input name="username"
-         id="username"
-         type="text"
-         placeholder="username"
-         class="form-control"/>
+  <form (ngSubmit)="login()" #f="ngForm">
+    <input name="username"
+           id="username"
+           type="text"
+           placeholder="username"
+           class="form-control"
+           ngModel
+           required
+           #username="ngModel"/>
+    <span class="help-block" *ngIf="!username.valid && username.touched">
+      Please enter username!
+    </span>
 
-  <input name="password"
-         id="password"
-         type="password"
-         placeholder="password"
-         class="form-control"/>
+    <input name="password"
+           id="password"
+           type="password"
+           placeholder="password"
+           class="form-control"
+           ngModel
+           required
+           #password="ngModel"/>
+    <span class="help-block" *ngIf="!password.valid && password.touched">
+      Please enter password!
+    </span>
 
-
-  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" href="profile.html">
-    Login
-  </a>
-  <a class="btn btn-success btn-block" role="button" aria-pressed="true" href="register.html">
-    Register
-  </a>
-  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="../../index.html">
-    Cancel
-  </a>
+    <button class="btn btn-primary btn-block"
+            type="submit"
+            [disabled]="!f.valid">Login</button>
+    <a class="btn btn-success btn-block" role="button" aria-pressed="true" href="register.html">
+      Register
+    </a>
+    <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="../../index.html">
+      Cancel
+    </a>
+  </form>
 </div>

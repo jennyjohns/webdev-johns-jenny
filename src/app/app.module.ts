@@ -23,6 +23,10 @@ import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-y
 import { WidgetChooserComponent } from './components/widget/widget-chooser/widget-chooser.component';
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
+import { UserService } from './services/user.service.client';
+import { WebsiteService } from './services/website.service.client';
+import { PageService } from './services/page.service.client';
+import { WidgetService } from './services/widget.service.client';
 
 @NgModule({
   // Declare components here
@@ -44,7 +48,7 @@ import { WidgetListComponent } from './components/widget/widget-list/widget-list
     WidgetYoutubeComponent,
     WidgetChooserComponent,
     WidgetEditComponent,
-    WidgetListComponent
+    WidgetListComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,7 @@ import { WidgetListComponent } from './components/widget/widget-list/widget-list
     Routing
   ],
   // Client Side services here
-  providers: [ TestService],
+  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
