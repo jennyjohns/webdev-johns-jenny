@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../services/user.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+ // @ViewChild('f') profileForm: NgForm;
   userId: string;
   user = {};
   username: string;
@@ -16,14 +18,14 @@ export class ProfileComponent implements OnInit {
   lastName: string;
   email: string;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.userId = params['userId'];
+          this.userId = params['uid'];
         }
       );
     this.user = this.userService.findUserById(this.userId);
@@ -33,7 +35,13 @@ export class ProfileComponent implements OnInit {
     this.lastName = this.user['lastName'];
     this.email = this.user['email'];
   }
-  buttonClicked(event: any) {
-    console.log(event);
+  // profile() {
+  //   this.username = this.profileForm.value.username;
+  //   this.email = this.profileForm.value.email;
+  //   this.firstName = this.profileForm.value.firstName;
+  //   this.lastName = this.profileForm.value.lastName;
+  // }
+  websites() {
+    this.router.navigate(['user/', this.userId, 'website']);
   }
 }

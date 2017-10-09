@@ -35,11 +35,11 @@
       <div class="row">
         <div class="col-xs-9">
           <a [routerLink]="['/user/:uid/website/:wid/page']">
-            Address Book App
+            Facebook
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
+          <a (click)="editWebsite()" class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -49,11 +49,11 @@
       <div class="row">
         <div class="col-xs-9">
           <a [routerLink]="['/user/:uid/website/:wid/page']">
-            Blogger
+            Tweeter
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
+          <a (click)="editWebsite()" class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -63,11 +63,39 @@
       <div class="row">
         <div class="col-xs-9">
           <a [routerLink]="['/user/:uid/website/:wid/page']">
-            Blogging App
+            Gizmodo
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
+          <a (click)="editWebsite()" class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+    <div class="row">
+      <div class="col-xs-9">
+        <a [routerLink]="['/user/:uid/website/:wid/page']">
+          Go
+        </a>
+      </div>
+      <div class="col-xs-3">
+        <a (click)="editWebsite()" class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
+          <span class="glyphicon glyphicon-cog"></span>
+        </a>
+      </div>
+    </div>
+  </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          <a [routerLink]="['/user/:uid/website/:wid/page']">
+            Tic Tac Toe
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a (click)="editWebsite()" class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -77,11 +105,25 @@
       <div class="row">
         <div class="col-xs-9">
           <a [routerLink]="['/user/:uid/website/:wid/page']">
-            Script Testing App
+            Checkers
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
+          <a (click)="editWebsite()" class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          <a [routerLink]="['/user/:uid/website/:wid/page']">
+            Chess
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a (click)="editWebsite()" class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -93,7 +135,7 @@
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a [routerLink]="['/user/:uid']">
+      <a (click)="goToProfile()" [routerLink]="['/user/:uid']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

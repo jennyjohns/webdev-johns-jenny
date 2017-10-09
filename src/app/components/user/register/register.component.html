@@ -8,29 +8,55 @@
 <!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
 
 <div class="container-fluid">
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+
   <h1>Register</h1>
+  <form (ngSubmit)="register()" #f="ngForm">
+    <input name="username"
+           id="username"
+           type="text"
+           placeholder="username"
+           class="form-control"
+           ngModel
+           required
+           #username="ngModel"/>
+    <span class="help-block" *ngIf="!username.valid && username.touched">
+      Please enter username!
+    </span>
+    <input name="password"
+           id="password"
+           type="password"
+           placeholder="password"
+           class="form-control"
+           ngModel
+           required
+           #password="ngModel"/>
+    <span class="help-block" *ngIf="!password.valid && password.touched">
+      Please enter password!
+    </span>
+    <input name="verify password"
+           id="verify_password"
+           type="password"
+           placeholder="verify password"
+           class="form-control"
+           ngModel
+           required
+           #verify_password="ngModel">
+    <span class="help-block" *ngIf="!verify_password.valid && verify_password.touched">
+      Please enter password!
+    </span>
+    <span class="help-block" *ngIf="verify_password.value != password.value">
+      Passwords do not match!
+    </span>
 
-  <input name="username"
-         id="username"
-         type="text"
-         placeholder="username"
-         class="form-control"/>
-
-  <input name="password"
-         id="password"
-         type="password"
-         placeholder="password"
-         class="form-control"/>
-
-  <input name="verify password"
-         id="verify password"
-         type="password"
-         placeholder="verify password"
-         class="form-control">
-
+  </form>
   <button (click)="buttonClicked($event)"
           class="btn btn-primary btn-block"
           aria-pressed="true"
+          [disabled]="!f.valid"
           [routerLink]="['/register']">
     Register
   </button>

@@ -118,7 +118,7 @@
     </div>
 
     <div class="col-sm-9">
-      <form>
+      <form (ngSubmit)="newWebsite()" #f="ngForm">
         <div class="form-group">
           <label for="Name">
             Name
@@ -127,21 +127,30 @@
                  id="Name"
                  type="text"
                  placeholder="Name"
-                 class="form-control"/>
+                 class="form-control"
+                 required
+                 ngModel
+                 #Name="ngModel"/>
+          <span class="help-block" *ngIf="Name.touched">
+              Please enter a website name!
+          </span>
+          <label for="Description">
+            Description
+          </label>
+          <textarea
+            placeholder="Description"
+            rows="5"
+            name="Description"
+            id="Description"
+            class="form-control"
+            required
+            ngModel
+            #Description="ngModel"></textarea>
+          <span class="help-block" *ngIf="Description.touched">
+              Please enter a website description!
+          </span>
         </div>
-
       </form>
-      <div class="form-group">
-        <label for="Description">
-          Description
-        </label>
-        <textarea
-          placeholder="Description"
-          rows="5"
-          name="Description"
-          id="Description"
-          class="form-control"></textarea>
-      </div>
     </div>
   </div>
 </div>

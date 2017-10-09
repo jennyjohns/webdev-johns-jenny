@@ -132,8 +132,7 @@
 
     </div>
     <div class="col-sm-9">
-
-      <form>
+      <form (ngSubmit)="newPage()" #f="ngForm">
         <div class="form-group">
           <label for="Name">
             Name
@@ -142,11 +141,13 @@
                  id="Name"
                  type="text"
                  placeholder="Page Name"
-                 class="form-control"/>
-        </div>
-      </form>
-      <form>
-        <div class="form-group">
+                 class="form-control"
+                 required
+                 ngModel
+                 #Name="ngModel"/>
+          <span class="help-block" *ngIf="Name.touched">
+              Please enter a page name!
+          </span>
           <label for="Title">
             Title
           </label>
@@ -154,7 +155,13 @@
             placeholder="Title"
             name="Title"
             id="Title"
-            class="form-control"/>
+            class="form-control"
+            required
+            ngModel
+            #Title="ngModel"/>
+          <span class="help-block" *ngIf="Title.touched">
+              Please enter a page title!
+          </span>
         </div>
       </form>
     </div>
