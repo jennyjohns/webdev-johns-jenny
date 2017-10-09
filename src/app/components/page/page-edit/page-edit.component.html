@@ -137,7 +137,8 @@
           <label for="Name">
             Name
           </label>
-          <input name="Name"
+          <input [(ngModel)]="name"
+                 name="Name"
                  id="Name"
                  type="text"
                  placeholder="Blog Post"
@@ -149,14 +150,15 @@
           <label for="Title">
             Title
           </label>
-          <input
-            placeholder="Page Title"
-            name="Title"
-            id="Title"
-            class="form-control"/>
+          <input [(ngModel)]="name"
+                 placeholder="Page Title"
+                 name="Title"
+                 id="Title"
+                 class="form-control"/>
         </div>
       </form>
-      <a class="btn btn-danger btn-block" role="button" aria-pressed="true" [routerLink]="['/user/:uid/website/:wid/page']">
+      <a class="btn btn-danger btn-block" role="button" aria-pressed="true"
+         [routerLink]="['/user/:uid/website/:wid/page']">
         Delete
       </a>
     </div>

@@ -42,7 +42,9 @@
 
     <button class="btn btn-primary btn-block"
             type="submit"
-            [disabled]="!f.valid">Login</button>
+            [disabled]="!f.valid"
+            [routerLink]="['/user/:uid']">Login
+    </button>
     <a class="btn btn-success btn-block" role="button" aria-pressed="true" [routerLink]="['/register']">
       Register
     </a>
