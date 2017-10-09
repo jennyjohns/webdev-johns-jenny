@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 
-charset="UTF-8"
-name="viewport" content="initial-scale=1, user-scalable=no"
-Widget Edit
-rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"
-rel="stylesheet" href="../../css/style.css"
-src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
+<!--charset="UTF-8"-->
+<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
+<!--Widget Edit-->
+<!--rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
+<!--rel="stylesheet" href="../../css/style.css"-->
+<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a href="widget-list.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -25,7 +25,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a href="widget-list.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -38,7 +38,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       </div>
 
       <p class="navbar-brand pull-right">
-        <a href="widget-list.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -49,16 +49,16 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
   <div class="row">
     <div class="col-sm-3 hidden-xs">
       <nav class="jj-widget-chooser-padding">
-        <ul><a href="../../views/widget/widget-heading.html"> Header </a></ul>
-        <ul><a href="../../views/widget/widget-chooser.html"> Label </a></ul>
-        <ul><a href="../../views/widget/widget-chooser.html"> HTML </a></ul>
-        <ul><a href="../../views/widget/widget-chooser.html"> Text Input </a></ul>
-        <ul><a href="../../views/widget/widget-chooser.html"> Link </a></ul>
-        <ul><a href="../../views/widget/widget-chooser.html"> Button </a></ul>
-        <ul><a href="../../views/widget/widget-image.html"> Image </a></ul>
-        <ul><a href="../../views/widget/widget-youtube.html"> YouTube </a></ul>
-        <ul><a href="../../views/widget/widget-chooser.html"> Data Table </a></ul>
-        <ul><a href="../../views/widget/widget-chooser.html"> Repeater </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> Header </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Label </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> HTML </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Text Input </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Link </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Button </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> Image </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> YouTube </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Data Table </a></ul>
+        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Repeater </a></ul>
 
       </nav>
     </div>
@@ -128,10 +128,16 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
             class="form-control"/>
         </div>
       </form>
-      <a class="btn btn-block btn-primary" role="button" aria-pressed="true" href="widget-image.html">
+      <a class="btn btn-block btn-primary"
+         role="button"
+         aria-pressed="true"
+         [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
         Upload Image
       </a>
-      <a class="btn btn-danger btn-block" role="button" href="widget-list.html" aria-pressed="true">
+      <a class="btn btn-danger btn-block"
+         role="button"
+         [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']"
+         aria-pressed="true">
         Delete
       </a>
     </div>
@@ -140,7 +146,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="../../views/user/profile.html">
+      <a [routerLink]="['/user/:uid']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

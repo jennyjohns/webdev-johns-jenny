@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-charset="UTF-8"
-name="viewport" content="initial-scale=1, user-scalable=no"
-Profile
-rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"
-rel="stylesheet" href="../../css/style.css"
-src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
+<!--charset="UTF-8"-->
+<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
+<!--Profile-->
+<!--rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
+<!--rel="stylesheet" href="../../css/style.css"-->
+<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
 
 <nav class="navbar navbar-default_blue navbar-fixed-top">
   <div class="container-fluid">
@@ -18,7 +18,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     </p>
 
     <p class="navbar-text pull-right">
-      <a href="profile.html" class="navbar-link">
+      <a [routerLink]="['/user/:uid']" class="navbar-link">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </p>
@@ -32,7 +32,8 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       <label for="username">
         Username
       </label>
-      <input name="username"
+      <input [(ngModel)]="username"
+             name="username"
              id="username"
              type="text"
              placeholder="Username"
@@ -45,7 +46,8 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       <label for="email">
         Email
       </label>
-      <input name="email"
+      <input [(ngModel)]="email"
+             name="email"
              id="email"
              type="email"
              placeholder="Email"
@@ -58,7 +60,8 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       <label for="First Name">
         First Name
       </label>
-      <input name="First Name"
+      <input [(ngModel)]="firstName"
+             name="First Name"
              id="First Name"
              type="text"
              placeholder="First Name"
@@ -71,7 +74,8 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       <label for="Last Name">
         Last Name
       </label>
-      <input name="Last Name"
+      <input [(ngModel)]="lastName"
+             name="Last Name"
              id="Last Name"
              type="text"
              placeholder="Last Name"
@@ -79,10 +83,10 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     </div>
   </form>
 
-  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" href="../../views/website/website-list.html">
+  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" [routerLink]="['/user/:uid/website']">
     Websites
   </a>
-  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="login.html">
+  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" [routerLink]="['/login, , default']">
     Logout
   </a>
 
@@ -91,7 +95,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a href="profile.html">
+      <a [routerLink]="['/user/:uid']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

@@ -12,7 +12,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a href="../../views/user/profile.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid']" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -24,14 +24,14 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
         </a>
       </div>
       <p class="navbar-brand pull-right">
-        <a class="navbar-link" href="website-new.html">
+        <a class="navbar-link" [routerLink]="['/user/:uid/website/new']">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </p>
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a href="website-list.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
           <span class="glyphicon glyphicon-remove"></span>
         </a>
       </div>
@@ -44,7 +44,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       </div>
 
       <p class="navbar-brand pull-right">
-        <a href="website-list.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -60,12 +60,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../page/page-list.html">
+                <a [routerLink]="['/user/:uid/website/:wid/page']">
                   Address Book App
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="website-edit.html">
+                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -74,12 +74,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../page/page-list.html">
+                <a [routerLink]="['/user/:uid/website/:wid/page']">
                   Blogger
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="website-edit.html">
+                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -88,12 +88,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../page/page-list.html">
+                <a [routerLink]="['/user/:uid/website/:wid/page']">
                   Blogging App
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="website-edit.html">
+                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -102,12 +102,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../page/page-list.html">
+                <a [routerLink]="['/user/:uid/website/:wid/page']">
                   Script Testing App
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="website-edit.html">
+                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -149,7 +149,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/user/:uid']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

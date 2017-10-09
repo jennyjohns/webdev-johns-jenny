@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-charset="UTF-8">
-name="viewport" content="initial-scale=1, user-scalable=no"
-Register
-rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"
-rel="stylesheet" href="../../css/style.css"
-src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
+<!--charset="UTF-8">-->
+<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
+<!--Register-->
+<!--rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
+<!--rel="stylesheet" href="../../css/style.css"-->
+<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
 
 <div class="container-fluid">
   <h1>Register</h1>
@@ -28,11 +28,11 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
          placeholder="verify password"
          class="form-control">
 
-  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" href="profile.html">
+  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" [routerLink]="['/register']">
     Register
   </a>
 
-  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="login.html">
+  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" [routerLink]="['/login, , default']">
     Cancel
   </a>
 </div>

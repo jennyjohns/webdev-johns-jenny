@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 
-charset="UTF-8"
-name="viewport" content="initial-scale=1, user-scalable=no"
-Edit Website
-rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"
-rel="stylesheet" href="../../css/style.css"
-src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
+<!--charset="UTF-8"-->
+<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
+<!--Edit Website-->
+<!--rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
+<!--rel="stylesheet" href="../../css/style.css"-->
+<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
 
 <nav class="navbar navbar-default_blue navbar-fixed-top">
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a href="../website/website-list.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -23,14 +23,14 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
         </a>
       </div>
       <p class="navbar-brand pull-right">
-        <a class="navbar-link" href="website-new.html">
+        <a class="navbar-link" [routerLink]="['/user/:uid/website/new']">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </p>
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a href="website-list.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -43,7 +43,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       </div>
 
       <p class="navbar-brand pull-right">
-        <a href="website-list.html" class="navbar-link">
+        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -59,12 +59,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../page/page-list.html">
+                <a [routerLink]="['/user/:uid/website/:wid/page']">
                   Address Book App
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="website-edit.html">
+                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -73,12 +73,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../page/page-list.html">
+                <a [routerLink]="['/user/:uid/website/:wid/page']">
                   Blogger
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="website-edit.html">
+                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -87,12 +87,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../page/page-list.html">
+                <a [routerLink]="['/user/:uid/website/:wid/page']">
                   Blogging App
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="website-edit.html">
+                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -101,12 +101,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <li class="list-group-item">
             <div class="row">
               <div class="col-xs-9">
-                <a href="../page/page-list.html">
+                <a [routerLink]="['/user/:uid/website/:wid/page']">
                   Script Testing App
                 </a>
               </div>
               <div class="col-xs-3">
-                <a class="pull-right" href="website-edit.html">
+                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
                   <span class="glyphicon glyphicon-cog"></span>
                 </a>
               </div>
@@ -122,7 +122,8 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           <label for="Name">
             Website Name
           </label>
-          <input name="Name"
+          <input [(ngModel)]="name"
+                 name="Name"
                  id="Name"
                  type="text"
                  placeholder="Website Name"
@@ -135,21 +136,15 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
           Website Description
         </label>
         <textarea
+          [(ngModel)]="description"
           placeholder="Description"
           rows="5"
           name="Description"
           id="Description"
-          class="form-control">"Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum."</textarea>
+          class="form-control"></textarea>
       </div>
 
-      <a class="btn btn-danger btn-block" role="button" aria-pressed="true" href="website-list.html">
+      <a class="btn btn-danger btn-block" role="button" aria-pressed="true" [routerLink]="['/user/:uid/website']">
         Delete
       </a>
     </div>
@@ -159,7 +154,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a href="../user/profile.html">
+      <a [routerLink]="['/user/:uid']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

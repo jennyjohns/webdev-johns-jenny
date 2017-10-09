@@ -8,8 +8,8 @@ import {NgForm} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('f') loginForm: NgForm;
-  username: String;
-  password: String;
+  username: string;
+  password: string;
   errorFlag: boolean;
   errorMsg = 'Invalid username or password!';
 

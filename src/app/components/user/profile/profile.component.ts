@@ -8,9 +8,13 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userId: String;
+  userId: string;
   user = {};
-  username: String;
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  email: string;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
   }
@@ -22,8 +26,12 @@ export class ProfileComponent implements OnInit {
           this.userId = params['userId'];
         }
       );
-   // this.user = this.userService.findUserById(this.userId);
+    this.user = this.userService.findUserById(this.userId);
     this.username = this.user['username'];
+    this.firstName = this.user['firstName'];
+    this.password = this.user['password'];
+    this.lastName = this.user['lastName'];
+    this.email = this.user['email'];
   }
 
 }

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 
 
-charset="UTF-8"
-name="viewport" content="initial-scale=1, user-scalable=no"
-Pages
-rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"
-rel="stylesheet" href="../../css/style.css"/>
-src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
+<!--charset="UTF-8"-->
+<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
+<!--Pages-->
+<!--rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
+<!--rel="stylesheet" href="../../css/style.css"/>-->
+<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-brand pull-left">
-      <a href="../../views/website/website-list.html" class="navbar-link">
+      <a [routerLink]="['/user/:uid/website']" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </div>
@@ -24,7 +24,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
       </a>
     </div>
     <p class="navbar-brand pull-right">
-      <a class="navbar-link" href="page-new.html">
+      <a class="navbar-link" [routerLink]="['/user/:uid/website/:wid/page/new']">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </p>
@@ -36,12 +36,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9">
-          <a href="../widget/widget-list.html">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
             Blog Post
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -50,12 +50,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9">
-          <a href="../widget/widget-list.html">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
             Blogs
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -64,12 +64,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9">
-          <a href="../widget/widget-list.html">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
             Home
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -78,12 +78,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9">
-          <a href="../widget/widget-list.html">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
             About
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -92,12 +92,12 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
     <li class="list-group-item">
       <div class="row">
         <div class="col-xs-9">
-          <a href="../widget/widget-list.html">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
             Contact Us
           </a>
         </div>
         <div class="col-xs-3">
-          <a class="pull-right" href="page-edit.html">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
             <span class="glyphicon glyphicon-cog"></span>
           </a>
         </div>
@@ -109,7 +109,7 @@ src="../../vendors/bootstrap/dist/js/bootstrap.min.js"
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a href="../../views/user/profile.html">
+      <a [routerLink]="['/user/:uid']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
