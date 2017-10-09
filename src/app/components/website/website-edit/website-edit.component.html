@@ -186,7 +186,7 @@
           class="form-control"></textarea>
       </div>
 
-      <button (click)="buttonClicked($event)"
+      <button (click)="deleted()"
               class="btn btn-danger btn-block"
               aria-pressed="true"
               [routerLink]="['/user/:uid/website']">
@@ -199,7 +199,7 @@
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a [routerLink]="['/user/:uid']">
+      <a (click)="goToProfile()" [routerLink]="['/user/:uid']">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

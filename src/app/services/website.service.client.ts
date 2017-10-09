@@ -39,14 +39,18 @@ export class WebsiteService {
 
   findWebsitesByUser(developerId: string) {
     for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x].developerId === developerId) {  return this.websites[x]; }
+      if (this.websites[x].developerId === developerId) {  return this.websites; }
     }
   }
 
   findWebsiteById(websiteId: string) {
+    const web = [{}];
     for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x]._id === websiteId) { return this.websites[x]; }
+      if (this.websites[x]._id === websiteId) {
+        web.push(this.websites[x]);
+      }
     }
+    return web;
   }
   updateWebsite(websiteId: string, website: any) {
     for (let x = 0; x < this.websites.length; x++) {

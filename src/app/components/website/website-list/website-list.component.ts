@@ -20,6 +20,7 @@ export class WebsiteListComponent implements OnInit {
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
+
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
@@ -32,7 +33,7 @@ export class WebsiteListComponent implements OnInit {
     this.name = this.website['name'];
     this.developerId = this.userId;
     this.description = this.website['description'];
-    // this.websites = this._websiteService.findWebsitesByUser(this.userId);
+    this.websites = this._websiteService.findWebsitesByUser(this.userId);
   }
 
   editWebsite() {

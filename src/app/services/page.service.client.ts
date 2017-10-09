@@ -33,9 +33,13 @@ export class PageService {
   }
 
   findPageByWebsiteId(websiteId: string) {
+    const pgs = [];
     for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x].websiteId === websiteId) {  return this.pages[x]; }
+      if (this.pages[x].websiteId === websiteId) {
+        pgs.push(this.pages[x]);
+      }
     }
+    return pgs;
   }
 
   findPageById(pageId: string) {
