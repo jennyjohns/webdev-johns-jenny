@@ -28,5 +28,7 @@ export class WebsiteEditComponent implements OnInit {
     this.developer = this.website['developerId'];
     this.description = this.website['description'];
   }
-
+  buttonClicked(event: any) {
+    console.log(event);
+  }
 }

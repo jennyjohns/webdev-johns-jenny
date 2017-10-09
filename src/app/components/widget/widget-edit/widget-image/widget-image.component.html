@@ -134,12 +134,12 @@
          [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
         Upload Image
       </a>
-      <a class="btn btn-danger btn-block"
-         role="button"
-         [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']"
-         aria-pressed="true">
+      <button (click)="buttonClicked($event)"
+              class="btn btn-danger btn-block"
+              [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']"
+              aria-pressed="true">
         Delete
-      </a>
+      </button>
     </div>
   </div>
 </div>

@@ -40,13 +40,18 @@
       Please enter password!
     </span>
 
-    <button class="btn btn-primary btn-block"
+    <button (click)="buttonClicked($event)"
+            class="btn btn-primary btn-block"
             type="submit"
             [disabled]="!f.valid"
-            [routerLink]="['/user/:uid']">Login
+            [routerLink]="['/user/:uid']">
+      Login
     </button>
-    <a class="btn btn-success btn-block" role="button" aria-pressed="true" [routerLink]="['/register']">
+    <button (click)="buttonClicked($event)"
+            class="btn btn-success btn-block"
+            aria-pressed="true"
+            [routerLink]="['/register']">
       Register
-    </a>
+    </button>
   </form>
 </div>

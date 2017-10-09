@@ -27,5 +27,7 @@ export class PageEditComponent implements OnInit {
     this.websiteId = this.page['websiteId'];
     this.description = this.page['description'];
   }
-
+  buttonClicked(event: any) {
+    console.log(event);
+  }
 }

@@ -144,9 +144,12 @@
           class="form-control"></textarea>
       </div>
 
-      <a class="btn btn-danger btn-block" role="button" aria-pressed="true" [routerLink]="['/user/:uid/website']">
+      <button (click)="buttonClicked($event)"
+              class="btn btn-danger btn-block"
+              aria-pressed="true"
+              [routerLink]="['/user/:uid/website']">
         Delete
-      </a>
+      </button>
     </div>
   </div>
 </div>

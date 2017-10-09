@@ -28,12 +28,18 @@
          placeholder="verify password"
          class="form-control">
 
-  <a class="btn btn-primary btn-block" role="button" aria-pressed="true" [routerLink]="['/register']">
+  <button (click)="buttonClicked($event)"
+          class="btn btn-primary btn-block"
+          aria-pressed="true"
+          [routerLink]="['/register']">
     Register
-  </a>
+  </button>
 
-  <a class="btn btn-danger btn-block" role="button" aria-pressed="true" [routerLink]="['/login']">
+  <button (click)="buttonClicked($event)"
+          class="btn btn-danger btn-block"
+          aria-pressed="true"
+          [routerLink]="['/login']">
     Cancel
-  </a>
+  </button>
 </div>
 

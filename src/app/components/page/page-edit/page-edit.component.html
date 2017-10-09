@@ -157,10 +157,12 @@
                  class="form-control"/>
         </div>
       </form>
-      <a class="btn btn-danger btn-block" role="button" aria-pressed="true"
+      <button (click)="buttonClicked($event)"
+              class="btn btn-danger btn-block"
+              aria-pressed="true"
          [routerLink]="['/user/:uid/website/:wid/page']">
         Delete
-      </a>
+      </button>
     </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom">

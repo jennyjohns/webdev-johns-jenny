@@ -112,12 +112,12 @@
             type="number"/>
         </div>
       </form>
-      <a class="btn btn-danger btn-block"
-         role="button"
-         aria-pressed="true"
-         [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
+      <button (click)="buttonClicked($event)"
+              class="btn btn-danger btn-block"
+              aria-pressed="true"
+              [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
         Delete
-      </a>
+      </button>
     </div>
   </div>
 </div>

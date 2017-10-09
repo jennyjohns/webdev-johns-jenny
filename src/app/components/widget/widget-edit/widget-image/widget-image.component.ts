@@ -11,5 +11,7 @@ export class WidgetImageComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  buttonClicked(event: any) {
+    console.log(event);
+  }
 }

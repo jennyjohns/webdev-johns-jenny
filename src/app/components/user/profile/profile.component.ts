@@ -33,5 +33,7 @@ export class ProfileComponent implements OnInit {
     this.lastName = this.user['lastName'];
     this.email = this.user['email'];
   }
-
+  buttonClicked(event: any) {
+    console.log(event);
+  }
 }
