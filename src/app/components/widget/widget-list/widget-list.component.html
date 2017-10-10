@@ -3,7 +3,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-brand pull-left">
-      <a [routerLink]="['/user/:uid/website/:wid/page']" class="navbar-link">
+      <a (click)="goToPages()" class="navbar-link">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </a>
     </div>
@@ -15,7 +15,7 @@
       </a>
     </div>
     <p class="navbar-text pull-right">
-      <a class="navbar-link" [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']">
+      <a class="navbar-link" (click)="newWidget()">
         <span class="glyphicon glyphicon-plus"></span>
       </a>
     </p>
@@ -23,36 +23,46 @@
 </nav>
 
 <div class="container-fluid jj-body">
-  <!--<div *ngFor="let widget of widgets">-->
-    <!--<li class="list-group-item">-->
-      <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">-->
-        <!--{{widget.widgetType}}-->
-      <!--</a>-->
-      <!--<a  class="pull-right" [routerLink]="['/user', website.developerId, 'website', website._id]">-->
-        <!--<span class="glyphicon glyphicon-cog"></span>-->
-      <!--</a>-->
-    <!--</li>-->
-  <!--</div>-->
+
   <div *ngFor="let widget of widgets">
     <div class="jj-widget">
       <div class="jj-toolbar">
-        <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
+        <a (click)="editWidget(widget._id)">
           <span class="glyphicon glyphicon-cog"></span>
         </a>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </div>
+      <div [ngSwitch]="widget.type">
+
+        <div *ngSwitchCase="'Header'">
+          <h1>{{widget.text}}</h1>
+        </div>
+
+        <div *ngSwitchCase="'YouTube'">
+          <iframe class="jj-content"
+                  height=400px
+                  src="{{widget.url}}"
+                  frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div *ngSwitchCase="'Image'">
+          <img class="jj-content" src="{{widget.url}}"/>
+        </div>
+        <div *ngSwitchCase="'HTML'">
+          <a>{{widget.text}}</a>
+        </div>
 
       </div>
-      <h1> {{widget.widgetType}}</h1>
     </div>
   </div>
 
-  </div>
+</div>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user/:uid']">
+      <a (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
