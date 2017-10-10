@@ -30,11 +30,12 @@ export class WebsiteEditComponent implements OnInit {
     this.description = this.website['description'];
     this.websites = this.websiteService.findWebsitesByUser(this.developerId);
   }
-  editWebsite() {
-    const website = this.websiteService.findWebsitesByUser(this.websiteId);
-    if (website != null) {
-      this.router.navigate(['user/', this.developerId, 'website', this.websiteId]);
-    }
+  editWebsite(webId) {
+      this.router.navigate(['user/', this.developerId, 'website', webId]);
+      this.website = this.websiteService.findWebsiteById(webId);
+      this.name = this.website['name'];
+      this.description = this.website['description'];
+
   }
   goToProfile() {
     this.router.navigate(['user/', this.developerId]);

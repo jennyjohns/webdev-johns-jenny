@@ -15,6 +15,7 @@ import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.c
 // Import all other components here
 
 const APP_ROUTES: Routes = [
+  {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'user/:uid', component: ProfileComponent},

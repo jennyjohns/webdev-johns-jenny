@@ -63,7 +63,7 @@
                   </a>
                 </div>
                 <div class="col-xs-3">
-                  <a class="pull-right" [routerLink]="['/user', website.developerId, 'website', website._id]">
+                  <a (click)="editWebsite(website._id)" class="pull-right">
                     <span class="glyphicon glyphicon-cog"></span>
                   </a>
                 </div>
