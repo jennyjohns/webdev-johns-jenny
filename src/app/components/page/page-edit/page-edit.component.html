@@ -144,8 +144,6 @@
                  placeholder="Blog Post"
                  class="form-control"/>
         </div>
-      </form>
-      <form>
         <div class="form-group">
           <label for="Title">
             Title
@@ -160,7 +158,7 @@
       <button (click)="buttonClicked($event)"
               class="btn btn-danger btn-block"
               aria-pressed="true"
-         [routerLink]="['/user/:uid/website/:wid/page']">
+              [routerLink]="['/user/:uid/website/:wid/page']">
         Delete
       </button>
     </div>

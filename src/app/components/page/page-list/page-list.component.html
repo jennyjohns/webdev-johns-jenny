@@ -32,98 +32,98 @@
 </nav>
 
 <div class="container-fluid jj-body">
-  <div *ngFor="let page of pages">
-    <ul class="list-group">
-      <li class="list-group-item">
-        <div class="row">
-          <div class="col-xs-9">
-            <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
-              {{page.name}}
-            </a>
-          </div>
-          <div class="col-xs-3">
-            <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
-              <span class="glyphicon glyphicon-cog"></span>
-            </a>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
-  <!--<ul class="list-group">-->
-    <!--<li class="list-group-item">-->
-      <!--<div class="row">-->
-        <!--<div class="col-xs-9">-->
-          <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">-->
-            <!--Blog Post-->
-          <!--</a>-->
+  <!--<div *ngFor="let page of pages">-->
+    <!--<ul class="list-group">-->
+      <!--<li class="list-group-item">-->
+        <!--<div class="row">-->
+          <!--<div class="col-xs-9">-->
+            <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">-->
+              <!--{{page.name}}-->
+            <!--</a>-->
+          <!--</div>-->
+          <!--<div class="col-xs-3">-->
+            <!--<a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">-->
+              <!--<span class="glyphicon glyphicon-cog"></span>-->
+            <!--</a>-->
+          <!--</div>-->
         <!--</div>-->
-        <!--<div class="col-xs-3">-->
-          <!--<a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">-->
-            <!--<span class="glyphicon glyphicon-cog"></span>-->
-          <!--</a>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-      <!--<div class="row">-->
-        <!--<div class="col-xs-9">-->
-          <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">-->
-            <!--Blogs-->
-          <!--</a>-->
-        <!--</div>-->
-        <!--<div class="col-xs-3">-->
-          <!--<a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">-->
-            <!--<span class="glyphicon glyphicon-cog"></span>-->
-          <!--</a>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-      <!--<div class="row">-->
-        <!--<div class="col-xs-9">-->
-          <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">-->
-            <!--Home-->
-          <!--</a>-->
-        <!--</div>-->
-        <!--<div class="col-xs-3">-->
-          <!--<a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">-->
-            <!--<span class="glyphicon glyphicon-cog"></span>-->
-          <!--</a>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-      <!--<div class="row">-->
-        <!--<div class="col-xs-9">-->
-          <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">-->
-            <!--About-->
-          <!--</a>-->
-        <!--</div>-->
-        <!--<div class="col-xs-3">-->
-          <!--<a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">-->
-            <!--<span class="glyphicon glyphicon-cog"></span>-->
-          <!--</a>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-      <!--<div class="row">-->
-        <!--<div class="col-xs-9">-->
-          <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">-->
-            <!--Contact Us-->
-          <!--</a>-->
-        <!--</div>-->
-        <!--<div class="col-xs-3">-->
-          <!--<a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">-->
-            <!--<span class="glyphicon glyphicon-cog"></span>-->
-          <!--</a>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</li>-->
-  <!--</ul>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
 <!--</div>-->
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
+            Blog Post
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
+            Blogs
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
+            Home
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
+            About
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-9">
+          <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
+            Contact Us
+          </a>
+        </div>
+        <div class="col-xs-3">
+          <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">

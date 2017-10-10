@@ -12,7 +12,7 @@ export class WidgetListComponent implements OnInit {
   widgetType: string;
   pageId: string;
   size: number;
-  widgets = [{}];
+//  widgets = [{}];
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class WidgetListComponent implements OnInit {
           this.pageId = params['pid'];
         }
       );
-    this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+//    this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
   }
 
 }

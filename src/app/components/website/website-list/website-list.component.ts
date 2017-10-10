@@ -15,7 +15,7 @@ export class WebsiteListComponent implements OnInit {
   name: string;
   developerId: string;
   description: string;
-  websites = [{}];
+//  websites = [{}];
 
   constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -33,7 +33,7 @@ export class WebsiteListComponent implements OnInit {
     this.name = this.website['name'];
     this.developerId = this.userId;
     this.description = this.website['description'];
-    this.websites = this._websiteService.findWebsitesByUser(this.userId);
+//    this.websites = this._websiteService.findWebsitesByUser(this.userId);
   }
 
   editWebsite() {

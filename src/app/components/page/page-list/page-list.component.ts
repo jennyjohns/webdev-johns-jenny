@@ -12,7 +12,7 @@ export class PageListComponent implements OnInit {
   name: string;
   websiteId: string;
   description: string;
-  pages = [{}];
+//  pages = [{}];
   constructor(private pageService: PageService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class PageListComponent implements OnInit {
           this.websiteId = params['wid'];
         }
       );
-    this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
+//    this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
   }
 
 }
