@@ -12,7 +12,7 @@
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a [routerLink]="['/user/:uid']" class="navbar-link">
+        <a (click)="goToProfile()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -24,14 +24,14 @@
         </a>
       </div>
       <p class="navbar-brand pull-right">
-        <a class="navbar-link" [routerLink]="['/user/:uid/website/new']">
+        <a class="navbar-link" (click)="goToNewWebsite()">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </p>
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
+        <a (click)="cancel()" class="navbar-link">
           <span class="glyphicon glyphicon-remove"></span>
         </a>
       </div>
@@ -44,7 +44,7 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
+        <a (click)="cancel()" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -55,68 +55,23 @@
 <div class="container-fluid jj-body">
   <div class="row">
     <div class="col-sm-3 hidden-xs">
-      <div class="container-fluid">
-        <ul class="list-group">
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page']">
-                  Address Book App
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
+      <div *ngFor="let website of websites">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-xs-9">
+              <a [routerLink]="['/user/:uid/website/:wid/page']">
+                {{website.name}}
+              </a>
             </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page']">
-                  Blogger
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
+            <div class="col-xs-3">
+              <a (click)="editWebsite(website._id)" class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>
+              </a>
             </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page']">
-                  Blogging App
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page']">
-                  Script Testing App
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </li>
       </div>
     </div>
-
     <div class="col-sm-9">
       <form (ngSubmit)="newWebsite()" #f="ngForm">
         <div class="form-group">
@@ -158,7 +113,7 @@
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a [routerLink]="['/user/:uid']">
+      <a (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

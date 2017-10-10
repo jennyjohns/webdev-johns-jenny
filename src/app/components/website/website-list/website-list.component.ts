@@ -26,7 +26,9 @@ export class WebsiteListComponent implements OnInit {
     this.websites = this._websiteService.findWebsitesByUser(this.userId);
   }
 
-
+  newWebsite() {
+    this.router.navigate(['user/', this.userId, 'website', 'new']);
+  }
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
   }

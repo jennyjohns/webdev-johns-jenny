@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 
-<!--charset="UTF-8"-->
-<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
-<!--Profile-->
-<!--rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
-<!--rel="stylesheet" href="../../css/style.css"-->
-<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
-
 <nav class="navbar navbar-default_blue navbar-fixed-top">
   <div class="container-fluid">
     <p class="navbar-header pull-left">
@@ -18,7 +11,7 @@
     </p>
 
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user/:uid']" class="navbar-link">
+      <a (click)="goToProfile()" class="navbar-link">
         <span class="glyphicon glyphicon-ok"></span>
       </a>
     </p>
@@ -90,7 +83,7 @@
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user/:uid']">
+      <a (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
