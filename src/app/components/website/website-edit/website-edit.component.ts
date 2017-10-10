@@ -13,6 +13,7 @@ export class WebsiteEditComponent implements OnInit {
   name: string;
   developerId: string;
   description: string;
+  websites = [];
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
@@ -27,6 +28,7 @@ export class WebsiteEditComponent implements OnInit {
     this.name = this.website['name'];
     this.developerId = this.website['developerId'];
     this.description = this.website['description'];
+    this.websites = this.websiteService.findWebsitesByUser(this.developerId);
   }
   editWebsite() {
     const website = this.websiteService.findWebsitesByUser(this.websiteId);

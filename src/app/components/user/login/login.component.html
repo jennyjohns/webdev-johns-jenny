@@ -43,8 +43,7 @@
     <button (click)="login()"
             class="btn btn-primary btn-block"
             type="submit"
-            [disabled]="!f.valid"
-            [routerLink]="['/user/:uid']">
+            [disabled]="!f.valid">
       Login
     </button>
     <button (click)="buttonClicked($event)"

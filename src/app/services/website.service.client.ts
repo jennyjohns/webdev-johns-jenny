@@ -38,7 +38,7 @@ export class WebsiteService {
   }
 
   findWebsitesByUser(developerId: string) {
-    const web = [{}];
+    const web = [];
     for (let x = 0; x < this.websites.length; x++) {
       if (this.websites[x].developerId === developerId) {
         web.push(this.websites[x]);

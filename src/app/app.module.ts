@@ -16,16 +16,16 @@ import { WebsiteListComponent } from './components/website/website-list/website-
 import { PageNewComponent } from './components/page/page-new/page-new.component';
 import { PageEditComponent } from './components/page/page-edit/page-edit.component';
 import { PageListComponent } from './components/page/page-list/page-list.component';
-import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
-import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
-import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
+// import { WidgetHeaderComponent } from './components/widget/widget-edit/widget-header/widget-header.component';
+// import { WidgetImageComponent } from './components/widget/widget-edit/widget-image/widget-image.component';
+// import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 import { WidgetChooserComponent } from './components/widget/widget-chooser/widget-chooser.component';
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
 import { UserService } from './services/user.service.client';
 import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
-import { WidgetService } from './services/widget.service.client';
+// import { WidgetService } from './services/widget.service.client';
 import {Routing} from './app.routing';
 
 @NgModule({
@@ -43,9 +43,9 @@ import {Routing} from './app.routing';
     PageNewComponent,
     PageEditComponent,
     PageListComponent,
-    WidgetHeaderComponent,
-    WidgetImageComponent,
-    WidgetYoutubeComponent,
+    // WidgetHeaderComponent,
+    // WidgetImageComponent,
+    // WidgetYoutubeComponent,
     WidgetChooserComponent,
     WidgetEditComponent,
     WidgetListComponent,
@@ -57,7 +57,7 @@ import {Routing} from './app.routing';
     Routing
   ],
   // Client Side services here
-  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService],
+  providers: [ TestService, UserService, WebsiteService, PageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

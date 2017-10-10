@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-page-edit',
@@ -13,7 +13,7 @@ export class PageEditComponent implements OnInit {
   name: string;
   websiteId: string;
   description: string;
-  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute) { }
+  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -30,4 +30,7 @@ export class PageEditComponent implements OnInit {
   buttonClicked(event: any) {
     console.log(event);
   }
+  // goToProfile() {
+  //   this.router.navigate(['user/', this.developerId]);
+  // }
 }
