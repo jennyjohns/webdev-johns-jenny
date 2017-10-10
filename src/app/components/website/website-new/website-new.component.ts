@@ -38,7 +38,9 @@ export class WebsiteNewComponent implements OnInit {
     this.website = {_id: Math.random(), name: this.name, developerId: this.userId, description: this.description};
     this.websiteService.createWebsite(this.userId, this.website);
   }
-
+  commit() {
+    this.websites.push(this.website);
+  }
   editWebsite(webId) {
     this.router.navigate(['user/', this.developerId, 'website', webId]);
   }

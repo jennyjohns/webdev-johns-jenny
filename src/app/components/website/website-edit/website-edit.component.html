@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
+        <a (click)="goToProfile()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -16,14 +16,14 @@
         </a>
       </div>
       <p class="navbar-brand pull-right">
-        <a class="navbar-link" [routerLink]="['/user/:uid/website/new']">
+        <a class="navbar-link" (click)="newWebsite()">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </p>
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
+        <a (click)="deleted()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -36,7 +36,7 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
+        <a (click)="deleted()" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -96,8 +96,7 @@
 
       <button (click)="deleted()"
               class="btn btn-danger btn-block"
-              aria-pressed="true"
-              [routerLink]="['/user/:uid/website']">
+              aria-pressed="true">
         Delete
       </button>
     </div>
@@ -107,7 +106,7 @@
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a (click)="goToProfile()" [routerLink]="['/user/:uid']">
+      <a (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>

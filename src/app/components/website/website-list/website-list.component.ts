@@ -32,4 +32,9 @@ export class WebsiteListComponent implements OnInit {
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
   }
+
+  goToPages(webId) {
+    console.log(webId);
+    this.router.navigate(['user/', this.userId, 'website', webId, 'page']);
+  }
 }

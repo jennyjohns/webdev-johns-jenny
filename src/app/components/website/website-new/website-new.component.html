@@ -44,7 +44,7 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <a (click)="cancel()" class="navbar-link">
+        <a (click)="commit()" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -86,7 +86,7 @@
                  required
                  ngModel
                  #Name="ngModel"/>
-          <span class="help-block" *ngIf="Name.touched">
+          <span class="help-block" *ngIf="Name.touched && !Name.valid">
               Please enter a website name!
           </span>
           <label for="Description">
@@ -101,7 +101,7 @@
             required
             ngModel
             #Description="ngModel"></textarea>
-          <span class="help-block" *ngIf="Description.touched">
+          <span class="help-block" *ngIf="Description.touched && !Description.valid">
               Please enter a website description!
           </span>
         </div>
