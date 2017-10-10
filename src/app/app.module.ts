@@ -25,7 +25,7 @@ import { WidgetListComponent } from './components/widget/widget-list/widget-list
 import { UserService } from './services/user.service.client';
 import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
-// import { WidgetService } from './services/widget.service.client';
+import { WidgetService } from './services/widget.service.client';
 import {Routing} from './app.routing';
 
 @NgModule({
@@ -57,7 +57,7 @@ import {Routing} from './app.routing';
     Routing
   ],
   // Client Side services here
-  providers: [ TestService, UserService, WebsiteService, PageService],
+  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

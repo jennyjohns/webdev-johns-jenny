@@ -31,9 +31,6 @@ export class PageEditComponent implements OnInit {
     this.description = this.page['description'];
     this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
   }
-  buttonClicked(event: any) {
-    console.log(event);
-  }
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
   }
@@ -50,6 +47,7 @@ export class PageEditComponent implements OnInit {
   newPage() {
     this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', 'new']);
   }
+
   goToWebsites() {
     this.router.navigate(['user/', this.userId, 'website']);
   }

@@ -36,7 +36,7 @@
       <li class="list-group-item">
         <div class="row">
           <div class="col-xs-9">
-            <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
+            <a (click)="goToWidgets(page._id)">
               {{page.name}}
             </a>
           </div>

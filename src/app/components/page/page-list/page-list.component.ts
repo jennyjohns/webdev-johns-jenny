@@ -45,4 +45,7 @@ export class PageListComponent implements OnInit {
     this.router.navigate(['user/', this.userId, 'website']);
   }
 
+  goToWidgets(pgId) {
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId, 'widget']);
+  }
 }

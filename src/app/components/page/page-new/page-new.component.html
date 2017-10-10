@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 
-
-<!--charset="UTF-8"-->
-<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
-<!--New Page-->
-<!--rel="stylesheet" href="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
-<!--rel="stylesheet" href="../../css/style.css"-->
-<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a [routerLink]="['/user/:uid/website']" class="navbar-link">
+        <a (click)="goToWebsites()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -24,14 +16,14 @@
         </a>
       </div>
       <p class="navbar-brand pull-right">
-        <a class="navbar-link" [routerLink]="['/user/:uid/website/:wid/page/new']">
+        <a class="navbar-link" (click)="newPage()">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </p>
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a [routerLink]="['/user/:uid/website/:wid/page']" class="navbar-link">
+        <a (click)="goToPages()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -44,7 +36,7 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <a [routerLink]="['/user/:uid/website/:wid/page']" class="navbar-link">
+        <a (click)="goToPages()" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -55,84 +47,27 @@
 <div class="container-fluid jj-body">
   <div class="row">
     <div class="col-sm-3 hidden-xs">
-      <div class="container-fluid">
-        <ul class="list-group">
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
-                  Blog Post
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
+      <div *ngFor="let page of pages">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-xs-9">
+              <a [routerLink]="['user/:uid/website/:wid/page/:pid/widget']">
+                {{page.name}}
+              </a>
             </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
-                  Blogs
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
+            <div class="col-xs-3">
+              <a class="pull-right" (click)="editPage(page._id)">
+                <span class="glyphicon glyphicon-cog"></span>
+              </a>
             </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
-                  Home
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
-                  About
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-xs-9">
-                <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
-                  Contact Us
-                </a>
-              </div>
-              <div class="col-xs-3">
-                <a class="pull-right" [routerLink]="['/user/:uid/website/:wid/page/:pid']">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </div>
-            </div>
-          </li>
-        </ul>
+          </div>
+        </li>
       </div>
+
 
     </div>
     <div class="col-sm-9">
-      <form (ngSubmit)="newPage()" #f="ngForm">
+      <form (ngSubmit)="commit()" #f="ngForm">
         <div class="form-group">
           <label for="Name">
             Name
@@ -145,7 +80,7 @@
                  required
                  ngModel
                  #Name="ngModel"/>
-          <span class="help-block" *ngIf="Name.touched">
+          <span class="help-block" *ngIf="Name.touched && !Name.valid">
               Please enter a page name!
           </span>
           <label for="Title">
@@ -159,7 +94,7 @@
             required
             ngModel
             #Title="ngModel"/>
-          <span class="help-block" *ngIf="Title.touched">
+          <span class="help-block" *ngIf="Title.touched && !Title.valid">
               Please enter a page title!
           </span>
         </div>
@@ -170,7 +105,7 @@
     <nav class="navbar navbar-default navbar-fixed-bottom">
       <div class="container-fluid">
         <p class="navbar-brand pull-right">
-          <a [routerLink]="['/user/:uid']">
+          <a (click)="goToProfile()">
             <span class="glyphicon glyphicon-user"></span>
           </a>
         </p>
