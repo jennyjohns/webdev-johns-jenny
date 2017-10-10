@@ -30,65 +30,77 @@
 </nav>
 
 <div class="container-fluid jj-body">
-  <div class="jj-widget">
-    <div class="jj-toolbar">
-      <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
+  <div *ngFor="let widget of widgets">
+    <div class="jj-widget">
+      <div class="jj-toolbar">
+        <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
+          <span class="glyphicon glyphicon-cog"></span>
+        </a>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
 
+      </div>
+      <h1> {{widget._id}}</h1>
     </div>
-    <h1> GIZMODO</h1>
   </div>
-  <div class="jj-widget">
-    <div class="jj-toolbar">
-      <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
+  <!--<div class="jj-widget">-->
+    <!--<div class="jj-toolbar">-->
+      <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--</a>-->
+      <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
 
-    </div>
-    <h2> Animals </h2>
-  </div>
-  <div class="jj-widget">
-    <div class="jj-toolbar">
-      <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    <!--</div>-->
+    <!--<h1> GIZMODO</h1>-->
+  <!--</div>-->
+  <!--<div class="jj-widget">-->
+    <!--<div class="jj-toolbar">-->
+      <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--</a>-->
+      <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
 
-    </div>
-    <img class="jj-content" src="http://lorempixel.com/400/200/animals/"/>
-  </div>
-  <div class="jj-widget">
-    <div class="jj-toolbar">
-      <span class="glyphicon glyphicon-cog"></span>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </div>
-    <p>Recently, my colleagues at Deadspin posted
-      <a
-        href="http://theconcourse.deadspin.com/planets-ranked-1818586375#_ga=2.194350445.1182632845.1506081534-1520736541.1475842057"
-        target="_blank"
-        rel="noopener">a ranking
-      </a>
-      of the planets. But it was mostly incorrect. After extensively researching and writing about our solar
-      neighborhood, I feel
-      I’m fairly qualified to take a stab at ranking these bad boys once and for all. </p>
-  </div>
-  <div class="jj-widget">
-    <div class="jj-toolbar">
-      <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
-        <span class="glyphicon glyphicon-cog"></span>
-      </a>
-      <span class="glyphicon glyphicon-menu-hamburger"></span>
+    <!--</div>-->
+    <!--<h2> Animals </h2>-->
+  <!--</div>-->
+  <!--<div class="jj-widget">-->
+    <!--<div class="jj-toolbar">-->
+      <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--</a>-->
+      <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
 
-    </div>
-    <iframe class="jj-content"
-            height=400px
-            src="https://www.youtube.com/embed/QXFaEAHpOdo?rel=0"
-            frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
+    <!--</div>-->
+    <!--<img class="jj-content" src="http://lorempixel.com/400/200/animals/"/>-->
+  <!--</div>-->
+  <!--<div class="jj-widget">-->
+    <!--<div class="jj-toolbar">-->
+      <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
+    <!--</div>-->
+    <!--<p>Recently, my colleagues at Deadspin posted-->
+      <!--<a-->
+        <!--href="http://theconcourse.deadspin.com/planets-ranked-1818586375#_ga=2.194350445.1182632845.1506081534-1520736541.1475842057"-->
+        <!--target="_blank"-->
+        <!--rel="noopener">a ranking-->
+      <!--</a>-->
+      <!--of the planets. But it was mostly incorrect. After extensively researching and writing about our solar-->
+      <!--neighborhood, I feel-->
+      <!--I’m fairly qualified to take a stab at ranking these bad boys once and for all. </p>-->
+  <!--</div>-->
+  <!--<div class="jj-widget">-->
+    <!--<div class="jj-toolbar">-->
+      <!--<a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">-->
+        <!--<span class="glyphicon glyphicon-cog"></span>-->
+      <!--</a>-->
+      <!--<span class="glyphicon glyphicon-menu-hamburger"></span>-->
+
+    <!--</div>-->
+    <!--<iframe class="jj-content"-->
+            <!--height=400px-->
+            <!--src="https://www.youtube.com/embed/QXFaEAHpOdo?rel=0"-->
+            <!--frameborder="0" allowfullscreen></iframe>-->
+  <!--</div>-->
+<!--</div>-->
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
