@@ -29,7 +29,7 @@ export class WidgetListComponent implements OnInit {
         }
       );
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
-    this.widget = this.widgetService.cleanURL();
+    this.widgets = this.widgetService.cleanURL();
   }
   goToProfile() {
     this.router.navigate(['user/', this.userId]);

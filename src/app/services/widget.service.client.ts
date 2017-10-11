@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Response } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
 import 'rxjs/Rx';
-import { environment } from '../../environments/environment';
-import { Router } from '@angular/router';
+import {environment} from '../../environments/environment';
+import {Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
 
 // injecting service into module
@@ -10,26 +10,31 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 export class WidgetService {
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer) {
+  }
 
   widgets = [
-    { _id: '123', widgetType: 'HEADING', pageId: '321', size: 2, text: 'GIZMODO'},
-    { _id: '234', widgetType: 'HEADING', pageId: '321', size: 4, text: 'Lorem ipsum'},
-    { _id: '345', widgetType: 'IMAGE', pageId: '321', width: '100%',
-      url: 'http://lorempixel.com/400/200/'},
-    { _id: '456', widgetType: 'HTML', pageId: '321', text: '<p>Lorem ipsum</p>'},
-    { _id: '567', widgetType: 'HEADING', pageId: '321', size: 4, text: 'Lorem ipsum'},
-    { _id: '678', widgetType: 'YOUTUBE', pageId: '321', width: '100%',
-      url: 'https://www.youtube.com/embed/AM2Ivdi9c4E' },
-    { _id: '789', widgetType: 'HTML', pageId: '321', text: '<p>Lorem ipsum</p>'}
+    {_id: '123', widgetType: 'HEADING', pageId: '321', size: 2, text: 'GIZMODO'},
+    {_id: '234', widgetType: 'HEADING', pageId: '321', size: 4, text: 'Lorem ipsum'},
+    {
+      _id: '345', widgetType: 'IMAGE', pageId: '321', width: '100%',
+      url: 'http://lorempixel.com/1200/600/'
+    },
+    {_id: '456', widgetType: 'HTML', pageId: '321', text: '<p>Lorem ipsum</p>'},
+    {_id: '567', widgetType: 'HEADING', pageId: '321', size: 4, text: 'Lorem ipsum'},
+    {
+      _id: '678', widgetType: 'YOUTUBE', pageId: '321', width: '100%',
+      url: 'https://youtu.be/AM2Ivdi9c4E'
+    },
+    {_id: '789', widgetType: 'HTML', pageId: '321', text: '<p>Lorem ipsum</p>'}
   ];
 
   api = {
-    'createWidget'   : this.createWidget,
-    'findWidgetByPageId' : this.findWidgetsByPageId,
-    'findWidgetById' : this.findWidgetById,
-    'updateWidget' : this.updateWidget,
-    'deleteWidget' : this.deleteWidget
+    'createWidget': this.createWidget,
+    'findWidgetByPageId': this.findWidgetsByPageId,
+    'findWidgetById': this.findWidgetById,
+    'updateWidget': this.updateWidget,
+    'deleteWidget': this.deleteWidget
   };
 
   createWidget(pageId: string, widget: any) {
@@ -51,7 +56,9 @@ export class WidgetService {
 
   findWidgetById(widgetId: string) {
     for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x]._id === widgetId) { return this.widgets[x]; }
+      if (this.widgets[x]._id === widgetId) {
+        return this.widgets[x];
+      }
     }
   }
 
@@ -62,6 +69,7 @@ export class WidgetService {
       }
     }
   }
+
   deleteWidget(widgetId: string) {
     for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x]._id === widgetId) {
@@ -72,13 +80,20 @@ export class WidgetService {
 
   cleanURL() {
     const wdgts = [];
+    let youtubeURL = 'https://www.youtube.com/embed/';
     for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x].widgetType === 'YOUTUBE') {
-        this.widgets[x]['url'] = this.sanitizer.bypassSecurityTrustResourceUrl(this.widgets[x]['url']);
-        wdgts.push(this.widgets[x]);
+        const end = this.widgets[x]['url'].toString().split('/');
+        if (end.length !== -1) {
+          youtubeURL += end[end.length - 1];
+          this.widgets[x]['url'] = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeURL);
+          wdgts.push(this.widgets[x]);
+        }
       } else {
         wdgts.push(this.widgets[x]);
       }
     }
+    return wdgts;
   }
+
 }

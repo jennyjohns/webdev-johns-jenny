@@ -15,6 +15,7 @@ export class WidgetChooserComponent implements OnInit {
   webId: string;
   size: number;
   widgets = [];
+
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
@@ -28,6 +29,23 @@ export class WidgetChooserComponent implements OnInit {
         }
       );
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+  }
+
+  editWidget(wgid) {
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
+  }
+
+  goToProfile() {
+    this.router.navigate(['user/', this.userId]);
+  }
+
+  goToWidgets() {
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+  }
+
+  chooseWidget() {
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', 'new']);
+
   }
 
 }

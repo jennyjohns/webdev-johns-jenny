@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 
-<!--charset="UTF-8"-->
-<!--name="viewport" content="initial-scale=1, user-scalable=no"-->
-<!--Widget Edit-->
-<!--rel="stylesheet" [routerLink]="../../vendors/bootstrap/dist/css/bootstrap.min.css"-->
-<!--rel="stylesheet" [routerLink]="../../css/style.css"-->
-<!--src="../../vendors/bootstrap/dist/js/bootstrap.min.js"-->
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']" class="navbar-link">
+        <a (click)="goToWidgets()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -25,7 +18,7 @@
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']" class="navbar-link">
+        <a (click)="chooseWidget()" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>
@@ -38,7 +31,7 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']" class="navbar-link">
+        <a (click)="goToWidgets()" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -112,10 +105,9 @@
             type="number"/>
         </div>
       </form>
-      <button (click)="buttonClicked($event)"
+      <button (click)="goToWidgets()"
               class="btn btn-danger btn-block"
-              aria-pressed="true"
-              [routerLink]="['/user/:uid/website/:wid/page/:pid/widget']">
+              aria-pressed="true">
         Delete
       </button>
     </div>
@@ -124,7 +116,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a [routerLink]="['/user/:uid']">
+      <a (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
       </a>
     </p>
