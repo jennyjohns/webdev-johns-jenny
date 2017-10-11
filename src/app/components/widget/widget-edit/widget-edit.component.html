@@ -1,8 +1,7 @@
-<div *ngFor="let widget of widgets">
   <div [ngSwitch]="widget.widgetType">
 
-    <div *ngSwitchCase="'HEADER'">
-      <app-widget-header></app-widget-header>
+    <div *ngSwitchCase="'HEADING'">
+      <app-w-header></app-w-header>
     </div>
 
     <div *ngSwitchCase="'IMAGE'">
@@ -14,4 +13,4 @@
     </div>
 
   </div>
-</div>
+

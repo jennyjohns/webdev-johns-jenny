@@ -3,13 +3,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
 
 @Component({
-  selector: 'app-widget-header',
+  selector: 'app-w-header',
   templateUrl: './widget-header.component.html',
   styleUrls: ['./widget-header.component.css']
 })
 export class WidgetHeaderComponent implements OnInit {
   wgid: string;
-  widget: any;
+  widget = {};
   userId: string;
   webId: string;
   pageId: string;

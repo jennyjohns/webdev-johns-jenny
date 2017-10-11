@@ -9,15 +9,19 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class WidgetEditComponent implements OnInit {
   widgets = [];
+  widget = {};
+  wgid: string;
   pageId: string;
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
           this.pageId = params['pid'];
+          this.wgid = params['wgid'];
         }
       );
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+    this.widget = this.widgetService.findWidgetById(this.wgid);
   }
 
   ngOnInit() {
