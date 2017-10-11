@@ -25,7 +25,6 @@
 <div class="container-fluid jj-body">
 
   <div *ngFor="let widget of widgets">
-    {{widget.widgetType}}
     <div class="jj-widget">
       <div class="jj-toolbar">
         <a (click)="editWidget(widget._id)">
@@ -50,7 +49,7 @@
           <img class="jj-content" src="{{widget.url}}"/>
         </ng-container>
         <div *ngSwitchCase="'HTML'">
-          <a href="{{widget.text}}"></a>
+          <a>{{widget.text}}</a>
         </div>
 
       </div>
