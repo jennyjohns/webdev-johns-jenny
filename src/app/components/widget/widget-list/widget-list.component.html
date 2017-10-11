@@ -32,24 +32,24 @@
         </a>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </div>
-      <div [ngSwitch]="widget.type">
+      {{widget.widgetType}}
+      <div [ngSwitch]="widgetType">
 
-        <div *ngSwitchCase="'Header'">
+        <div *ngSwitchCase="'HEADING'">
           <h1>{{widget.text}}</h1>
         </div>
 
-        <div *ngSwitchCase="'YouTube'">
-          <iframe class="jj-content"
-                  height=400px
+        <ng-container *ngSwitchCase="'YOUTUBE'">
+          <iframe width="560" height="315"
                   src="{{widget.url}}"
                   frameborder="0" allowfullscreen></iframe>
-        </div>
+        </ng-container>
 
-        <div *ngSwitchCase="'Image'">
+        <ng-container *ngSwitchCase="'IMAGE'">
           <img class="jj-content" src="{{widget.url}}"/>
-        </div>
+        </ng-container>
         <div *ngSwitchCase="'HTML'">
-          <a>{{widget.text}}</a>
+          <a href="{{widget.text}}"></a>
         </div>
 
       </div>
