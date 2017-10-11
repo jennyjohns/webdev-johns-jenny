@@ -3,13 +3,14 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import {DomSanitizer} from '@angular/platform-browser';
 
 // injecting service into module
 @Injectable()
 
 export class WidgetService {
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   widgets = [
     { _id: '123', widgetType: 'HEADING', pageId: '321', size: 2, text: 'GIZMODO'},
@@ -19,7 +20,7 @@ export class WidgetService {
     { _id: '456', widgetType: 'HTML', pageId: '321', text: '<p>Lorem ipsum</p>'},
     { _id: '567', widgetType: 'HEADING', pageId: '321', size: 4, text: 'Lorem ipsum'},
     { _id: '678', widgetType: 'YOUTUBE', pageId: '321', width: '100%',
-      url: 'https://youtu.be/AM2Ivdi9c4E' },
+      url: 'https://www.youtube.com/embed/AM2Ivdi9c4' },
     { _id: '789', widgetType: 'HTML', pageId: '321', text: '<p>Lorem ipsum</p>'}
   ];
 
@@ -65,6 +66,18 @@ export class WidgetService {
     for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x]._id === widgetId) {
         this.widgets.splice(x);
+      }
+    }
+  }
+
+  cleanURL() {
+    const wdgts = [];
+    for (let x = 0; x < this.widgets.length; x++) {
+      if (this.widgets[x].widgetType === 'YOUTUBE') {
+        this.widgets[x]['url'] = this.sanitizer.bypassSecurityTrustResourceUrl(this.widgets[x]['url']);
+        wdgts.push(this.widgets[x]);
+      } else {
+        wdgts.push(this.widgets[x]);
       }
     }
   }

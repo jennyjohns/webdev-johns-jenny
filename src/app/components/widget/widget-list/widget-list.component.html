@@ -25,6 +25,7 @@
 <div class="container-fluid jj-body">
 
   <div *ngFor="let widget of widgets">
+    {{widget.widgetType}}
     <div class="jj-widget">
       <div class="jj-toolbar">
         <a (click)="editWidget(widget._id)">
@@ -32,18 +33,18 @@
         </a>
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </div>
-      {{widget.widgetType}}
-      <div [ngSwitch]="widgetType">
+      <div [ngSwitch]="widget.widgetType">
 
         <div *ngSwitchCase="'HEADING'">
           <h1>{{widget.text}}</h1>
         </div>
 
-        <ng-container *ngSwitchCase="'YOUTUBE'">
-          <iframe width="560" height="315"
-                  src="{{widget.url}}"
-                  frameborder="0" allowfullscreen></iframe>
-        </ng-container>
+        <div *ngSwitchCase="'YOUTUBE'">
+          <iframe [src]="widget.url"
+                  width="560" height="315"
+                  frameborder="0"
+                  allowfullscreen></iframe>
+        </div>
 
         <ng-container *ngSwitchCase="'IMAGE'">
           <img class="jj-content" src="{{widget.url}}"/>

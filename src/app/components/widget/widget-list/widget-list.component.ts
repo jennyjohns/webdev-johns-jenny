@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-widget-list',
@@ -8,14 +9,15 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./widget-list.component.css']
 })
 export class WidgetListComponent implements OnInit {
-  widgetId: string;
+  widget: any;
   widgetType: string;
   pageId: string;
   userId: string;
   webId: string;
   size: number;
   widgets = [];
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router,
+              private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -27,6 +29,7 @@ export class WidgetListComponent implements OnInit {
         }
       );
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+    this.widget = this.widgetService.cleanURL();
   }
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
