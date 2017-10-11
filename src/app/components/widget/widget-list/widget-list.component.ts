@@ -29,7 +29,6 @@ export class WidgetListComponent implements OnInit {
         }
       );
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
-    this.widgets = this.widgetService.cleanURL();
   }
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
@@ -42,5 +41,11 @@ export class WidgetListComponent implements OnInit {
   }
   editWidget(wgid) {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
+  }
+  cleanURL(url: string) {
+    let youTubeURL = 'https://www.youtube.com/embed/';
+    const end = url.split('/');
+    youTubeURL += end[end.length - 1];
+    return this.sanitizer.bypassSecurityTrustResourceUrl(youTubeURL);
   }
 }

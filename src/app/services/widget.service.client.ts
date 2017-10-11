@@ -77,23 +77,4 @@ export class WidgetService {
       }
     }
   }
-
-  cleanURL() {
-    const wdgts = [];
-    let youtubeURL = 'https://www.youtube.com/embed/';
-    for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x].widgetType === 'YOUTUBE') {
-        const end = this.widgets[x]['url'].toString().split('/');
-        if (end.length !== -1) {
-          youtubeURL += end[end.length - 1];
-          this.widgets[x]['url'] = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeURL);
-          wdgts.push(this.widgets[x]);
-        }
-      } else {
-        wdgts.push(this.widgets[x]);
-      }
-    }
-    return wdgts;
-  }
-
 }
