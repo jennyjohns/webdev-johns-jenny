@@ -19,10 +19,19 @@
     </div>
   </nav>
   <nav class="jj-widget-chooser-padding">
-    <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> Header </a></ul>
-    <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> Image </a></ul>
-    <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> YouTube </a></ul>
-
+    <div *ngFor="let widget of widgets">
+      <div [ngSwitch]="widget.widgetType">
+        <div *ngSwitchCase="'HEADING'">
+          <ul><a (click)="editWidget(widget._id)"> Header</a></ul>
+        </div>
+        <div *ngSwitchCase="'IMAGE'">
+          <ul><a (click)="editWidget(widget._id)"> Image </a></ul>
+        </div>
+        <div *ngSwitchCase="'YOUTUBE'">
+          <ul><a (click)="editWidget(widget._id)"> YouTube </a></ul>
+        </div>
+      </div>
+    </div>
     <ul><a (click)="chooseWidget()"> Label </a></ul>
     <ul><a (click)="chooseWidget()"> HTML </a></ul>
     <ul><a (click)="chooseWidget()"> Text Input </a></ul>

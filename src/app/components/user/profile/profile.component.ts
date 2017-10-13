@@ -35,12 +35,7 @@ export class ProfileComponent implements OnInit {
     this.lastName = this.user['lastName'];
     this.email = this.user['email'];
   }
-  // profile() {
-  //   this.username = this.profileForm.value.username;
-  //   this.email = this.profileForm.value.email;
-  //   this.firstName = this.profileForm.value.firstName;
-  //   this.lastName = this.profileForm.value.lastName;
-  // }
+
   websites() {
     this.router.navigate(['user/', this.userId, 'website']);
   }

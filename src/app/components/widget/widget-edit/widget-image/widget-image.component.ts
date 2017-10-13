@@ -13,6 +13,10 @@ export class WidgetImageComponent implements OnInit {
   userId: string;
   webId: string;
   pageId: string;
+  widgets = [];
+  url: string;
+  width: string;
+  widgetType: string;
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
               private router: Router) { }
 
@@ -26,9 +30,12 @@ export class WidgetImageComponent implements OnInit {
           this.pageId = params['pid'];
         }
       );
-  }
-  buttonClicked(event: any) {
-    console.log(event);
+    this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+    this.widget = this.widgetService.findWidgetById(this.wgid);
+    this.url  = this.widget['url'];
+    this.width = this.widget['width'];
+    this.widgetType = this.widget['widgetType'];
+
   }
   goToWidgets() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
@@ -38,5 +45,8 @@ export class WidgetImageComponent implements OnInit {
   }
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
+  }
+  editWidget(wgid) {
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
   }
 }

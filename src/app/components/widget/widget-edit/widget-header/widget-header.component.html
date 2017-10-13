@@ -42,28 +42,40 @@
   <div class="row">
     <div class="col-sm-3 hidden-xs">
       <nav class="jj-widget-chooser-padding">
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> Header </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Label </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> HTML </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Text Input </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Link </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Button </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> Image </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']"> YouTube </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Data Table </a></ul>
-        <ul><a [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/new']"> Repeater </a></ul>
+        <div *ngFor="let widget of widgets">
+          <!--<app-widget-edit></app-widget-edit>-->
 
+          <div [ngSwitch]="widget.widgetType">
+            <div *ngSwitchCase="'HEADING'">
+              <ul><a (click)="editWidget(widget._id)"> Header</a></ul>
+            </div>
+            <div *ngSwitchCase="'IMAGE'">
+              <ul><a (click)="editWidget(widget._id)"> Image </a></ul>
+            </div>
+            <div *ngSwitchCase="'YOUTUBE'">
+              <ul><a (click)="editWidget(widget._id)"> YouTube </a></ul>
+            </div>
+          </div>
+        </div>
+        <ul><a (click)="chooseWidget()"> Label </a></ul>
+        <ul><a (click)="chooseWidget()"> HTML </a></ul>
+        <ul><a (click)="chooseWidget()"> Text Input </a></ul>
+        <ul><a (click)="chooseWidget()"> Link </a></ul>
+        <ul><a (click)="chooseWidget()"> Button </a></ul>
+        <ul><a (click)="chooseWidget()"> Data Table </a></ul>
+        <ul><a (click)="chooseWidget()"> Repeater </a></ul>
       </nav>
     </div>
     <div class="col-sm-9">
 
       <form>
         <div class="form-group">
-          <label for="Name">
+          <label for="widgetType">
             Name
           </label>
-          <input name="Name"
-                 id="Name"
+          <input [(ngModel)]="widgetType"
+                 name="widgetType"
+                 id="widgetType"
                  type="text"
                  class="form-control"/>
         </div>
@@ -73,13 +85,12 @@
           <label for="Text">
             Text
           </label>
-          <input
-            placeholder="Animals"
-            name="Text"
-            id="Text"
-            class="form-control"
-            type="text"
-            value="Animals"/>
+          <input [(ngModel)]="text"
+                 placeholder="Animals"
+                 name="Text"
+                 id="text"
+                 class="form-control"
+                 type="text"/>
         </div>
       </form>
       <form>
@@ -87,13 +98,12 @@
           <label for="Size">
             Size
           </label>
-          <input
-            placeholder="Animals"
-            name="Size"
-            id="Size"
-            class="form-control"
-            type="number"
-            value="3"/>
+          <input [(ngModel)]="size"
+                 name="Size"
+                 id="Size"
+                 class="form-control"
+                 type="number"
+                 value="3"/>
         </div>
       </form>
       <button (click)="goToWidgets()"

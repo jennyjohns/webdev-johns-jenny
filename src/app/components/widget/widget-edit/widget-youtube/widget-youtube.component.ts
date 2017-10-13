@@ -14,6 +14,9 @@ export class WidgetYoutubeComponent implements OnInit {
   userId: string;
   webId: string;
   pageId: string;
+  widgets = [];
+  widgetType: string;
+  width: string;
 
   constructor(private sanitizer: DomSanitizer, private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
               private router: Router) { }
@@ -29,10 +32,10 @@ export class WidgetYoutubeComponent implements OnInit {
         }
       );
     this.widget = this.widgetService.findWidgetById(this.wgid);
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.widget['url']);
-  }
-  buttonClicked(event: any) {
-    console.log(event);
+    this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+    this.url = this.widget['url'];
+    this.widgetType = this.widget['widgetType'];
+    this.width = this.widget['width'];
   }
   goToWidgets() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
@@ -42,5 +45,8 @@ export class WidgetYoutubeComponent implements OnInit {
   }
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
+  }
+  editWidget(wgid) {
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
   }
 }

@@ -15,6 +15,7 @@ export class WidgetChooserComponent implements OnInit {
   webId: string;
   size: number;
   widgets = [];
+  widget = {};
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -33,6 +34,8 @@ export class WidgetChooserComponent implements OnInit {
 
   editWidget(wgid) {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
+    this.widget = this.widgetService.findWidgetById(wgid);
+    this.widgetType = this.widget['widgetType'];
   }
 
   goToProfile() {
