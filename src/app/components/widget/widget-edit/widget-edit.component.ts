@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute} from '@angular/router';
 
@@ -8,10 +8,11 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./widget-edit.component.css']
 })
 export class WidgetEditComponent implements OnInit {
-  widgets = [];
   widget = {};
+  widgets = [];
   wgid: string;
   pageId: string;
+
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params
       .subscribe(

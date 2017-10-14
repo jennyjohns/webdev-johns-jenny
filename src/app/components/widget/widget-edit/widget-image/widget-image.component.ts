@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {WidgetService} from "../../../../services/widget.service.client";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -8,8 +8,8 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./widget-image.component.css']
 })
 export class WidgetImageComponent implements OnInit {
+  widget = {};
   wgid: string;
-  widget: any;
   userId: string;
   webId: string;
   pageId: string;
@@ -17,8 +17,10 @@ export class WidgetImageComponent implements OnInit {
   url: string;
   width: string;
   widgetType: string;
+
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -32,21 +34,29 @@ export class WidgetImageComponent implements OnInit {
       );
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
     this.widget = this.widgetService.findWidgetById(this.wgid);
-    this.url  = this.widget['url'];
+    this.url = this.widget['url'];
     this.width = this.widget['width'];
     this.widgetType = this.widget['widgetType'];
 
   }
+
   goToWidgets() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
   }
+
   chooseWidget() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', 'new']);
   }
+
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
   }
+
   editWidget(wgid) {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
+    this.widget = this.widgetService.findWidgetById(wgid);
+    this.widgetType = this.widget['widgetType'];
+    this.url = this.widget['url'];
+    this.width = this.widget['width'];
   }
 }

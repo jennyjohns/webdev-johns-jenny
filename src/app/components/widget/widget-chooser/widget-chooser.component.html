@@ -23,15 +23,15 @@
       <div [ngSwitch]="widget.widgetType">
         <div *ngSwitchCase="'HEADING'">
           <ul><a (click)="editWidget(widget._id)"> Header</a></ul>
-          <app-widget-header></app-widget-header>
+          <!--<app-widget-header></app-widget-header>-->
         </div>
         <div *ngSwitchCase="'IMAGE'">
           <ul><a (click)="editWidget(widget._id)"> Image </a></ul>
-          <app-widget-image></app-widget-image>
+          <!--<app-widget-image></app-widget-image>-->
         </div>
         <div *ngSwitchCase="'YOUTUBE'">
           <ul><a (click)="editWidget(widget._id)"> YouTube </a></ul>
-          <app-widget-youtube></app-widget-youtube>
+          <!--<app-widget-youtube></app-widget-youtube>-->
         </div>
       </div>
     </div>

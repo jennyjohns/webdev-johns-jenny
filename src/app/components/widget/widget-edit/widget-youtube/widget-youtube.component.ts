@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+
 @Component({
   selector: 'app-widget-youtube',
   templateUrl: './widget-youtube.component.html',
   styleUrls: ['./widget-youtube.component.css']
 })
 export class WidgetYoutubeComponent implements OnInit {
+  widget = {};
   wgid: string;
   url: SafeResourceUrl;
-  widget: any;
   userId: string;
   webId: string;
   pageId: string;
@@ -19,7 +20,8 @@ export class WidgetYoutubeComponent implements OnInit {
   width: string;
 
   constructor(private sanitizer: DomSanitizer, private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -37,16 +39,24 @@ export class WidgetYoutubeComponent implements OnInit {
     this.widgetType = this.widget['widgetType'];
     this.width = this.widget['width'];
   }
+
   goToWidgets() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
   }
+
   chooseWidget() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', 'new']);
   }
+
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
   }
+
   editWidget(wgid) {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
+    this.widget = this.widgetService.findWidgetById(wgid);
+    this.widgetType = this.widget['widgetType'];
+    this.url = this.widget['url'];
+    this.width = this.widget['width'];
   }
 }
