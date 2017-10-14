@@ -16,7 +16,7 @@
         </a>
       </div>
       <p class="navbar-brand pull-right">
-        <a class="navbar-link" (click)="newPage()">
+        <a class="navbar-link">
           <span class="glyphicon glyphicon-plus"></span>
         </a>
       </p>
@@ -36,7 +36,7 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <a (click)="goToPages()" class="navbar-link">
+        <a (click)="commit(Name.value, Description.value)" class="navbar-link">
           <span class="glyphicon glyphicon-ok"></span>
         </a>
       </p>
@@ -67,7 +67,7 @@
 
     </div>
     <div class="col-sm-9">
-      <form (ngSubmit)="commit()" #f="ngForm">
+      <form (ngSubmit)="newPage()" #f="ngForm">
         <div class="form-group">
           <label for="Name">
             Name
@@ -83,19 +83,19 @@
           <span class="help-block" *ngIf="Name.touched && !Name.valid">
               Please enter a page name!
           </span>
-          <label for="Title">
-            Title
+          <label for="Description">
+            Description
           </label>
           <input
-            placeholder="Title"
-            name="Title"
-            id="Title"
+            placeholder="Description"
+            name="Description"
+            id="Description"
             class="form-control"
             required
             ngModel
-            #Title="ngModel"/>
-          <span class="help-block" *ngIf="Title.touched && !Title.valid">
-              Please enter a page title!
+            #Description="ngModel"/>
+          <span class="help-block" *ngIf="Description.touched && !Description.valid">
+              Please enter a page description!
           </span>
         </div>
       </form>

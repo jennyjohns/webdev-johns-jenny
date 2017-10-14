@@ -51,9 +51,42 @@
     <span class="help-block" *ngIf="verify_password.value != password.value">
       Passwords do not match!
     </span>
+    <input name="email"
+           id="email"
+           type="text"
+           placeholder="email"
+           class="form-control"
+           ngModel
+           required
+           #email="ngModel"/>
+    <span class="help-block" *ngIf="!email.valid && email.touched">
+      Please enter email!
+    </span>
+    <input name="firstName"
+           id="firstName"
+           type="text"
+           placeholder="first name"
+           class="form-control"
+           ngModel
+           required
+           #firstName="ngModel"/>
+    <span class="help-block" *ngIf="!firstName.valid && firstName.touched">
+      Please enter first name!
+    </span>
+    <input name="lastName"
+           id="lastName"
+           type="text"
+           placeholder="last name"
+           class="form-control"
+           ngModel
+           required
+           #lastName="ngModel"/>
+    <span class="help-block" *ngIf="!lastName.valid && lastName.touched">
+      Please enter last name!
+    </span>
 
   </form>
-  <button (click)="buttonClicked($event)"
+  <button (click)="registered(username.value, password.value, firstName.value, lastName.value, email.value)"
           class="btn btn-primary btn-block"
           aria-pressed="true"
           [disabled]="!f.valid"

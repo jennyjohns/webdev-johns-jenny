@@ -17,6 +17,7 @@ export class WebsiteNewComponent implements OnInit {
   website: any;
   developerId: string;
   websites = [];
+
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private websiteService: WebsiteService,
               private router: Router) {
   }
@@ -35,12 +36,14 @@ export class WebsiteNewComponent implements OnInit {
   newWebsite() {
     this.name = this.websiteForm.value.name;
     this.description = this.websiteForm.value.description;
-    this.website = {_id: Math.random(), name: this.name, developerId: this.userId, description: this.description};
-    this.websiteService.createWebsite(this.userId, this.website);
   }
-  commit() {
-    this.websites.push(this.website);
+
+  commit(name, description) {
+    this.website = {name, description};
+    this.websiteService.createWebsite(this.developerId, this.website);
+    this.router.navigate(['user/', this.developerId, 'website']);
   }
+
   editWebsite(webId) {
     this.router.navigate(['user/', this.developerId, 'website', webId]);
   }
@@ -48,9 +51,11 @@ export class WebsiteNewComponent implements OnInit {
   goToProfile() {
     this.router.navigate(['user/', this.developerId]);
   }
+
   goToNewWebsite() {
     this.router.navigate(['user/', this.userId, 'website', 'new']);
   }
+
   cancel() {
     this.router.navigate(['user/', this.developerId, 'website']);
   }

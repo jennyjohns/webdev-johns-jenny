@@ -34,7 +34,7 @@ export class PageNewComponent implements OnInit {
     this.pages = this.pageService.findPageByWebsiteId(this.webId);
   }
 
-  commit() {
+  newPage() {
     this.name = this.newPageForm.value.name;
     this.title = this.newPageForm.value.title;
   }
@@ -54,8 +54,10 @@ export class PageNewComponent implements OnInit {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page']);
   }
 
-  newPage() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', 'new']);
+  commit(name, description) {
+    this.page = {name, description};
+    this.pageService.createPage(this.webId, this.page);
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page']);
   }
 
   goToWebsites() {
