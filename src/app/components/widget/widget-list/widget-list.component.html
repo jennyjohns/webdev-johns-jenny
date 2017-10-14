@@ -3,9 +3,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-brand pull-left">
-      <a (click)="goToPages()" class="navbar-link">
+      <button (click)="goToPages()" class="navbar-link jj-button">
         <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
+      </button>
     </div>
     <div class="navbar-header pull-left">
       <a class="navbar-brand thick">
@@ -15,9 +15,9 @@
       </a>
     </div>
     <p class="navbar-text pull-right">
-      <a class="navbar-link" (click)="newWidget()">
+      <button class="navbar-link jj-button" (click)="newWidget()">
         <span class="glyphicon glyphicon-plus"></span>
-      </a>
+      </button>
     </p>
   </div>
 </nav>
@@ -30,9 +30,9 @@
       <div *ngSwitchCase="'HEADING'">
         <div class="jj-widget">
           <div class="jj-toolbar">
-            <a (click)="editWidget(widget._id)">
+            <button class="jj-button-cog" (click)="editWidget(widget._id)">
               <span class="glyphicon glyphicon-cog"></span>
-            </a>
+            </button>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
           <div [ngSwitch]="widget.size">
@@ -49,9 +49,9 @@
       <div *ngSwitchCase="'YOUTUBE'">
         <div class="jj-widget">
           <div class="jj-toolbar">
-            <a (click)="editWidget(widget._id)">
+            <button class="jj-button-cog" (click)="editWidget(widget._id)">
               <span class="glyphicon glyphicon-cog"></span>
-            </a>
+            </button>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
           <iframe class="jj-content"
@@ -66,9 +66,9 @@
       <ng-container *ngSwitchCase="'IMAGE'">
         <div class="jj-widget">
           <div class="jj-toolbar">
-            <a (click)="editWidget(widget._id)">
+            <button class="jj-button-cog" (click)="editWidget(widget._id)">
               <span class="glyphicon glyphicon-cog"></span>
-            </a>
+            </button>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
           <img class="jj-content" src="{{widget.url}}"/>
@@ -77,9 +77,9 @@
       <div *ngSwitchCase="'HTML'">
         <div class="jj-widget">
           <div class="jj-toolbar">
-            <a (click)="editWidget(widget._id)">
+            <button class="jj-button-cog" (click)="editWidget(widget._id)">
               <span class="glyphicon glyphicon-cog"></span>
-            </a>
+            </button>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
           <a>{{widget.text}}</a>
@@ -96,16 +96,16 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a (click)="goToProfile()">
+      <button class="jj-button-cog" (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
-      </a>
+      </button>
     </p>
     <p class="navbar-text pull-left">
-      <a [routerLink]="">
+      <button class="jj-button-cog" [routerLink]="">
         <span class="glyphicon glyphicon-play"></span>
-      </a>
-      <a [routerLink]="">
+      </button>
+      <button class="jj-button-cog" [routerLink]="">
         <span class="glyphicon glyphicon-eye-open"></span>
-      </a>
+      </button>
   </div>
 </nav>

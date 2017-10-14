@@ -5,9 +5,9 @@
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-brand pull-left">
-        <a (click)="goToWidgets()" class="navbar-link">
+        <button (click)="goToWidgets()" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
+        </button>
       </div>
       <div class="navbar-header pull-left">
         <a class="navbar-brand thick">
@@ -23,6 +23,7 @@
       <div [ngSwitch]="widget.widgetType">
         <div *ngSwitchCase="'HEADING'">
           <ul><a (click)="editWidget(widget._id)"> Header</a></ul>
+          <app-widget-header></app-widget-header>
         </div>
         <div *ngSwitchCase="'IMAGE'">
           <ul><a (click)="editWidget(widget._id)"> Image </a></ul>
@@ -43,9 +44,9 @@
   <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
       <p class="navbar-brand pull-right">
-        <a (click)="goToProfile()">
+        <button class="jj-button-cog" (click)="goToProfile()">
           <span class="glyphicon glyphicon-user"></span>
-        </a>
+        </button>
       </p>
     </div>
   </nav>

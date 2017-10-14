@@ -3,9 +3,9 @@
 <nav class="navbar navbar-default_blue navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-brand pull-left">
-      <a (click)="goToProfile()" class="navbar-link">
+      <button (click)="goToProfile()" class="navbar-link jj-button">
         <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
+      </button>
     </div>
     <div class="navbar-header pull-left">
       <a class="navbar-brand">
@@ -15,9 +15,9 @@
       </a>
     </div>
     <p class="navbar-brand pull-right">
-      <a class="navbar-link" (click)="newWebsite()">
+      <button class="navbar-link jj-button" (click)="newWebsite()">
         <span class="glyphicon glyphicon-plus"></span>
-      </a>
+      </button>
     </p>
   </div>
 </nav>
@@ -28,9 +28,9 @@
       <a (click)="goToPages(website._id)">
         {{website.name}}
       </a>
-      <a  class="pull-right" [routerLink]="['/user', website.developerId, 'website', website._id]">
+      <button class="pull-right jj-button-cog" [routerLink]="['/user', website.developerId, 'website', website._id]">
         <span class="glyphicon glyphicon-cog"></span>
-      </a>
+      </button>
     </li>
   </div>
 </div>
@@ -38,9 +38,9 @@
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a (click)="goToProfile()">
+      <button class="jj-button" (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
-      </a>
+      </button>
     </p>
   </div>
 </nav>

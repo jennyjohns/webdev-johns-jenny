@@ -4,9 +4,9 @@
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a (click)="goToWebsites()" class="navbar-link">
+        <button (click)="goToWebsites()" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
+        </button>
       </div>
       <div class="navbar-header pull-left">
         <a class="navbar-brand">
@@ -16,16 +16,16 @@
         </a>
       </div>
       <p class="navbar-brand pull-right">
-        <a class="navbar-link" (click)="newPage()">
+        <button class="navbar-link jj-button" (click)="newPage()">
           <span class="glyphicon glyphicon-plus"></span>
-        </a>
+        </button>
       </p>
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a (click)="goToPages()" class="navbar-link">
+        <button (click)="goToPages()" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
+        </button>
       </div>
       <div class="navbar-header pull-left">
         <a class="navbar-brand thick">
@@ -36,9 +36,9 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <a (click)="goToPages()" class="navbar-link">
+        <button (click)="goToPages()" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-ok"></span>
-        </a>
+        </button>
       </p>
     </div>
   </div>
@@ -56,9 +56,9 @@
               </a>
             </div>
             <div class="col-xs-3">
-              <a class="pull-right" (click)="editPage(page._id)">
+              <button class="pull-right jj-button-cog" (click)="editPage(page._id)">
                 <span class="glyphicon glyphicon-cog"></span>
-              </a>
+              </button>
             </div>
           </div>
         </li>
@@ -79,13 +79,13 @@
                  class="form-control"/>
         </div>
         <div class="form-group">
-          <label for="Title">
-            Title
+          <label for="description">
+            Description
           </label>
-          <input [(ngModel)]="name"
-                 placeholder="Page Title"
-                 name="Title"
-                 id="Title"
+          <input [(ngModel)]="description"
+                 placeholder="description"
+                 name="description"
+                 id="description"
                  class="form-control"/>
         </div>
       </form>
@@ -99,9 +99,9 @@
     <nav class="navbar navbar-default navbar-fixed-bottom">
       <div class="container-fluid">
         <p class="navbar-brand pull-right">
-          <a (click)="goToProfile()">
+          <button class="jj-button-cog" (click)="goToProfile()">
             <span class="glyphicon glyphicon-user"></span>
-          </a>
+          </button>
         </p>
       </div>
     </nav>

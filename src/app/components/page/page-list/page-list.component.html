@@ -3,9 +3,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-brand pull-left">
-      <a (click)="goToWebsites()" class="navbar-link">
+      <button (click)="goToWebsites()" class="navbar-link jj-button">
         <span class="glyphicon glyphicon-chevron-left"></span>
-      </a>
+      </button>
     </div>
     <div class="navbar-header pull-left">
       <a class="navbar-brand">
@@ -15,9 +15,9 @@
       </a>
     </div>
     <p class="navbar-brand pull-right">
-      <a class="navbar-link" (click)="newPage()">
+      <button class="navbar-link jj-button" (click)="newPage()">
         <span class="glyphicon glyphicon-plus"></span>
-      </a>
+      </button>
     </p>
   </div>
 </nav>
@@ -32,9 +32,9 @@
             </a>
           </div>
           <div class="col-xs-3">
-            <a class="pull-right" (click)="editPage(page._id)">
+            <button class="pull-right jj-button-cog" (click)="editPage(page._id)">
               <span class="glyphicon glyphicon-cog"></span>
-            </a>
+            </button>
           </div>
         </div>
       </li>
@@ -45,9 +45,9 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-brand pull-right">
-      <a (click)="goToProfile()">
+      <button class="jj-button-cog" (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
-      </a>
+      </button>
     </p>
   </div>
 </nav>

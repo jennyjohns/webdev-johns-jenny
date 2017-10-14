@@ -4,9 +4,9 @@
   <div class="container-fluid">
     <div class="col-sm-3 hidden-xs">
       <div class="navbar-brand pull-left">
-        <a (click)="goToWidgets()" class="navbar-link">
+        <button (click)="goToWidgets()" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
+        </button>
       </div>
       <div class="navbar-header pull-left">
         <a class="navbar-brand">
@@ -18,9 +18,9 @@
     </div>
     <div class="col-sm-9">
       <div class="navbar-brand pull-left">
-        <a (click)="chooseWidget()" class="navbar-link">
+        <button (click)="chooseWidget()" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
+        </button>
       </div>
       <div class="navbar-header pull-left">
         <a class="navbar-brand thick">
@@ -31,9 +31,9 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <a (click)="goToWidgets()" class="navbar-link">
+        <button (click)="goToWidgets()" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-ok"></span>
-        </a>
+        </button>
       </p>
     </div>
   </div>
@@ -136,9 +136,9 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <a (click)="goToProfile()">
+      <button class="jj-button-cog" (click)="goToProfile()">
         <span class="glyphicon glyphicon-user"></span>
-      </a>
+      </button>
     </p>
   </div>
 </nav>

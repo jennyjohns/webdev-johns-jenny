@@ -45,3 +45,14 @@ body .jj-body {
 .jj-widget-chooser-padding {
   padding-left: 0px;
 }
+
+.jj-button {
+  border: transparent;
+  background-color: transparent;
+  color: white;
+}
+.jj-button-cog {
+  border: transparent;
+  background-color: transparent;
+  color: steelblue;
+}
