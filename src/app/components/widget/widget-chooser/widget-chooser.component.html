@@ -19,29 +19,16 @@
     </div>
   </nav>
   <nav class="jj-widget-chooser-padding">
-    <div *ngFor="let widget of widgets">
-      <div [ngSwitch]="widget.widgetType">
-        <div *ngSwitchCase="'HEADING'">
-          <ul><a (click)="editWidget(widget._id)"> Header</a></ul>
-          <!--<app-widget-header></app-widget-header>-->
-        </div>
-        <div *ngSwitchCase="'IMAGE'">
-          <ul><a (click)="editWidget(widget._id)"> Image </a></ul>
-          <!--<app-widget-image></app-widget-image>-->
-        </div>
-        <div *ngSwitchCase="'YOUTUBE'">
-          <ul><a (click)="editWidget(widget._id)"> YouTube </a></ul>
-          <!--<app-widget-youtube></app-widget-youtube>-->
-        </div>
-      </div>
-    </div>
-    <ul><a (click)="chooseWidget()"> Label </a></ul>
-    <ul><a (click)="chooseWidget()"> HTML </a></ul>
-    <ul><a (click)="chooseWidget()"> Text Input </a></ul>
-    <ul><a (click)="chooseWidget()"> Link </a></ul>
-    <ul><a (click)="chooseWidget()"> Button </a></ul>
-    <ul><a (click)="chooseWidget()"> Data Table </a></ul>
-    <ul><a (click)="chooseWidget()"> Repeater </a></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> Header</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> Image</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> YouTube</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> Label</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> HTML</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> Text Input</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> Link</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> Button</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> Data Table</button></ul>
+    <ul><button class="jj-button-cog" (click)="chooseWidget()"> Repeater</button></ul>
   </nav>
   <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

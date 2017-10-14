@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <div class="navbar-brand pull-left">
+    <div class="navbar-brand pull-left ">
       <button (click)="goToPages()" class="navbar-link jj-button">
         <span class="glyphicon glyphicon-chevron-left"></span>
       </button>
@@ -25,69 +25,69 @@
 <div class="container-fluid jj-body">
 
   <div *ngFor="let widget of widgets">
-    <div [ngSwitch]="widget.widgetType">
+  <div [ngSwitch]="widget.widgetType">
 
-      <div *ngSwitchCase="'HEADING'">
-        <div class="jj-widget">
-          <div class="jj-toolbar">
-            <button class="jj-button-cog" (click)="editWidget(widget._id)">
-              <span class="glyphicon glyphicon-cog"></span>
-            </button>
-            <span class="glyphicon glyphicon-menu-hamburger"></span>
-          </div>
-          <div [ngSwitch]="widget.size">
-            <div *ngSwitchCase="1"><h1>{{widget.text}}</h1></div>
-            <div *ngSwitchCase="2"><h2>{{widget.text}}</h2></div>
-            <div *ngSwitchCase="3"><h3>{{widget.text}}</h3></div>
-            <div *ngSwitchCase="4"><h4>{{widget.text}}</h4></div>
-            <div *ngSwitchCase="5"><h5>{{widget.text}}</h5></div>
-            <div *ngSwitchCase="6"><h6>{{widget.text}}</h6></div>
-          </div>
+    <div *ngSwitchCase="'HEADING'">
+      <div class="jj-widget">
+        <div class="jj-toolbar">
+          <button class="jj-button-cog" (click)="editWidget(widget._id)">
+            <span class="glyphicon glyphicon-cog"></span>
+          </button>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <div [ngSwitch]="widget.size">
+          <div *ngSwitchCase="1"><h1>{{widget.text}}</h1></div>
+          <div *ngSwitchCase="2"><h2>{{widget.text}}</h2></div>
+          <div *ngSwitchCase="3"><h3>{{widget.text}}</h3></div>
+          <div *ngSwitchCase="4"><h4>{{widget.text}}</h4></div>
+          <div *ngSwitchCase="5"><h5>{{widget.text}}</h5></div>
+          <div *ngSwitchCase="6"><h6>{{widget.text}}</h6></div>
         </div>
       </div>
-
-      <div *ngSwitchCase="'YOUTUBE'">
-        <div class="jj-widget">
-          <div class="jj-toolbar">
-            <button class="jj-button-cog" (click)="editWidget(widget._id)">
-              <span class="glyphicon glyphicon-cog"></span>
-            </button>
-            <span class="glyphicon glyphicon-menu-hamburger"></span>
-          </div>
-          <iframe class="jj-content"
-                  [src]="cleanURL(widget.url)"
-                  width="{{widget.width}}"
-                  height="315"
-                  frameborder="0"
-                  allowfullscreen></iframe>
-        </div>
-      </div>
-
-      <ng-container *ngSwitchCase="'IMAGE'">
-        <div class="jj-widget">
-          <div class="jj-toolbar">
-            <button class="jj-button-cog" (click)="editWidget(widget._id)">
-              <span class="glyphicon glyphicon-cog"></span>
-            </button>
-            <span class="glyphicon glyphicon-menu-hamburger"></span>
-          </div>
-          <img class="jj-content" src="{{widget.url}}"/>
-        </div>
-      </ng-container>
-      <div *ngSwitchCase="'HTML'">
-        <div class="jj-widget">
-          <div class="jj-toolbar">
-            <button class="jj-button-cog" (click)="editWidget(widget._id)">
-              <span class="glyphicon glyphicon-cog"></span>
-            </button>
-            <span class="glyphicon glyphicon-menu-hamburger"></span>
-          </div>
-          <a>{{widget.text}}</a>
-        </div>
-      </div>
-
     </div>
+
+    <div *ngSwitchCase="'YOUTUBE'">
+      <div class="jj-widget">
+        <div class="jj-toolbar">
+          <button class="jj-button-cog" (click)="editWidget(widget._id)">
+            <span class="glyphicon glyphicon-cog"></span>
+          </button>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <iframe class="jj-content"
+                [src]="cleanURL(widget.url)"
+                width="{{widget.width}}"
+                height="315"
+                frameborder="0"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <ng-container *ngSwitchCase="'IMAGE'">
+      <div class="jj-widget">
+        <div class="jj-toolbar">
+          <button class="jj-button-cog" (click)="editWidget(widget._id)">
+            <span class="glyphicon glyphicon-cog"></span>
+          </button>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <img class="jj-content" src="{{widget.url}}"/>
+      </div>
+    </ng-container>
+    <div *ngSwitchCase="'HTML'">
+      <div class="jj-widget">
+        <div class="jj-toolbar">
+          <button class="jj-button-cog" (click)="editWidget(widget._id)">
+            <span class="glyphicon glyphicon-cog"></span>
+          </button>
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+        <a>{{widget.text}}</a>
+      </div>
+    </div>
+
   </div>
+</div>
 </div>
 
 

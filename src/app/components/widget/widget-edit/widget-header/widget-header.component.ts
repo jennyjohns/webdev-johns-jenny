@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-widget-header',
@@ -19,7 +20,7 @@ export class WidgetHeaderComponent implements OnInit {
   size: number;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
@@ -44,7 +45,7 @@ export class WidgetHeaderComponent implements OnInit {
   }
 
   chooseWidget() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', 'new']);
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
   }
 
   goToProfile() {
@@ -57,5 +58,11 @@ export class WidgetHeaderComponent implements OnInit {
     this.widgetType = this.widget['widgetType'];
     this.text = this.widget['text'];
     this.size = this.widget['size'];
+  }
+  cleanURL(url: string) {
+    let youTubeURL = 'https://www.youtube.com/embed/';
+    const end = url.split('/');
+    youTubeURL += end[end.length - 1];
+    return this.sanitizer.bypassSecurityTrustResourceUrl(youTubeURL);
   }
 }

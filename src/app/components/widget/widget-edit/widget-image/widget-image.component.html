@@ -2,21 +2,6 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <div class="col-sm-3 hidden-xs">
-      <div class="navbar-brand pull-left">
-        <button (click)="goToWidgets()" class="navbar-link jj-button">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </button>
-      </div>
-      <div class="navbar-header pull-left">
-        <a class="navbar-brand">
-          <b>
-            Choose Widget
-          </b>
-        </a>
-      </div>
-    </div>
-    <div class="col-sm-9">
       <div class="navbar-brand pull-left">
         <button (click)="chooseWidget()" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-chevron-left"></span>
@@ -36,102 +21,71 @@
         </button>
       </p>
     </div>
-  </div>
 </nav>
 <div class="container-fluid jj-body">
   <div class="row">
-    <div class="col-sm-3 hidden-xs">
-      <nav class="jj-widget-chooser-padding">
-        <div *ngFor="let widget of widgets">
-          <div [ngSwitch]="widget.widgetType">
-            <div *ngSwitchCase="'HEADING'">
-              <ul><a (click)="editWidget(widget._id)"> Header</a></ul>
-              <!--<app-widget-header></app-widget-header>-->
-            </div>
-            <div *ngSwitchCase="'IMAGE'">
-              <ul><a (click)="editWidget(widget._id)"> Image </a></ul>
-            </div>
-            <div *ngSwitchCase="'YOUTUBE'">
-              <ul><a (click)="editWidget(widget._id)"> YouTube </a></ul>
-              <!--<app-widget-youtube></app-widget-youtube>-->
-            </div>
-            <!--<app-widget-edit [widget]="widget"></app-widget-edit>-->
-          </div>
-        </div>
-        <ul><a (click)="chooseWidget()"> Label </a></ul>
-        <ul><a (click)="chooseWidget()"> HTML </a></ul>
-        <ul><a (click)="chooseWidget()"> Text Input </a></ul>
-        <ul><a (click)="chooseWidget()"> Link </a></ul>
-        <ul><a (click)="chooseWidget()"> Button </a></ul>
-        <ul><a (click)="chooseWidget()"> Data Table </a></ul>
-        <ul><a (click)="chooseWidget()"> Repeater </a></ul>
-      </nav>
-    </div>
-    <div class="col-sm-9">
-
-      <form>
-        <div class="form-group">
-          <label for="widgetType">
-            Name
-          </label>
-          <input [(ngModel)]="widgetType"
-            name="widgetType"
-                 id="widgetType"
-                 type="text"
-                 class="form-control"/>
-        </div>
-      </form>
-      <form>
-        <div class="form-group">
-          <label for="URL">
-            URL
-          </label>
-          <input [(ngModel)]="url"
-            type="url"
-            placeholder="URL"
-            name="URL"
-            id="URL"
-            class="form-control"/>
-        </div>
-      </form>
-      <form>
-        <div class="form-group">
-          <label for="Width">
-            Width
-          </label>
-          <input [(ngModel)]="width"
-            name="Width"
-            id="Width"
-            class="form-control"
-            type="text"
-            value="100%"/>
-        </div>
-      </form>
-      <form>
-        <div class="form-group">
-          <label for="Upload">
-            Upload
-          </label>
-          <input
-            type="file"
-            placeholder="Upload"
-            name="Upload"
-            id="Upload"
-            class="form-control"/>
-        </div>
-      </form>
-      <a class="btn btn-block btn-primary"
-         role="button"
-         aria-pressed="true"
-         [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
-        Upload Image
-      </a>
-      <button (click)="goToWidgets()"
-              class="btn btn-danger btn-block"
-              aria-pressed="true">
-        Delete
-      </button>
-    </div>
+    <form class="jj-form">
+      <div class="form-group">
+        <label for="widgetType">
+          Name
+        </label>
+        <input [(ngModel)]="widgetType"
+               name="widgetType"
+               id="widgetType"
+               type="text"
+               class="form-control"/>
+      </div>
+    </form>
+    <form class="jj-form">
+      <div class="form-group">
+        <label for="URL">
+          URL
+        </label>
+        <input [(ngModel)]="url"
+               type="url"
+               placeholder="URL"
+               name="URL"
+               id="URL"
+               class="form-control"/>
+      </div>
+    </form>
+    <form class="jj-form">
+      <div class="form-group">
+        <label for="Width">
+          Width
+        </label>
+        <input [(ngModel)]="width"
+               name="Width"
+               id="Width"
+               class="form-control"
+               type="text"
+               value="100%"/>
+      </div>
+    </form>
+    <form class="jj-form">
+      <div class="form-group">
+        <label for="Upload">
+          Upload
+        </label>
+        <input
+          type="file"
+          placeholder="Upload"
+          name="Upload"
+          id="Upload"
+          class="form-control"/>
+      </div>
+    </form>
+    <a class="btn btn-block btn-primary jj-button-hover jj-center"
+       role="button"
+       aria-pressed="true"
+       [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
+      Upload Image
+    </a>
+    <button (click)="goToWidgets()"
+            class="btn btn-danger btn-block jj-button-hover jj-center"
+            aria-pressed="true">
+      Delete
+    </button>
   </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

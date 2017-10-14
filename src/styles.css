@@ -56,3 +56,25 @@ body .jj-body {
   background-color: transparent;
   color: steelblue;
 }
+
+.jj-form {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.jj-button-hover:hover {
+  background-color: white;
+  color: inherit;
+}
+.jj-btn-padding {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.jj-center {
+  margin: auto;
+  width: 99%;
+  padding-right: 10px;
+  padding-left: 10px;
+
+}

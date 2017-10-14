@@ -2,116 +2,71 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <div class="col-sm-3 hidden-xs">
-      <div class="navbar-brand pull-left">
-        <button (click)="goToWidgets()" class="navbar-link jj-button">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </button>
-      </div>
-      <div class="navbar-header pull-left">
-        <a class="navbar-brand">
-          <b>
-            Choose Widget
-          </b>
-        </a>
-      </div>
+    <div class="navbar-brand pull-left">
+      <button (click)="chooseWidget()" class="navbar-link jj-button">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </button>
     </div>
-    <div class="col-sm-9">
-      <div class="navbar-brand pull-left">
-        <button (click)="chooseWidget()" class="navbar-link jj-button">
-          <span class="glyphicon glyphicon-chevron-left"></span>
-        </button>
-      </div>
-      <div class="navbar-header pull-left">
-        <a class="navbar-brand thick">
-          <b>
-            Widget Edit
-          </b>
-        </a>
-      </div>
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>
+          Widget Edit
+        </b>
+      </a>
+    </div>
 
-      <p class="navbar-brand pull-right">
-        <button (click)="goToWidgets()" class="navbar-link jj-button">
-          <span class="glyphicon glyphicon-ok"></span>
-        </button>
-      </p>
-    </div>
+    <p class="navbar-brand pull-right">
+      <button (click)="goToWidgets()" class="navbar-link jj-button">
+        <span class="glyphicon glyphicon-ok"></span>
+      </button>
+    </p>
   </div>
 </nav>
 <div class="container-fluid jj-body">
   <div class="row">
-    <div class="col-sm-3 hidden-xs">
-      <nav class="jj-widget-chooser-padding">
-        <div *ngFor="let widget of widgets">
-          <div [ngSwitch]="widget.widgetType">
-            <div *ngSwitchCase="'HEADING'">
-              <ul><a (click)="editWidget(widget._id)"> Header</a></ul>
-            </div>
-            <div *ngSwitchCase="'IMAGE'">
-              <ul><a (click)="editWidget(widget._id)"> Image </a></ul>
-              <!--<app-widget-image></app-widget-image>-->
-            </div>
-            <div *ngSwitchCase="'YOUTUBE'">
-              <ul><a (click)="editWidget(widget._id)"> YouTube </a></ul>
-              <!--<app-widget-youtube></app-widget-youtube>-->
-            </div>
-          </div>
-        </div>
-        <ul><a (click)="chooseWidget()"> Label </a></ul>
-        <ul><a (click)="chooseWidget()"> HTML </a></ul>
-        <ul><a (click)="chooseWidget()"> Text Input </a></ul>
-        <ul><a (click)="chooseWidget()"> Link </a></ul>
-        <ul><a (click)="chooseWidget()"> Button </a></ul>
-        <ul><a (click)="chooseWidget()"> Data Table </a></ul>
-        <ul><a (click)="chooseWidget()"> Repeater </a></ul>
-      </nav>
-    </div>
-    <div class="col-sm-9">
-
-      <form>
-        <div class="form-group">
-          <label for="widgetType">
-            Name
-          </label>
-          <input [(ngModel)]="widgetType"
-                 name="widgetType"
-                 id="widgetType"
-                 type="text"
-                 class="form-control"/>
-        </div>
-      </form>
-      <form>
-        <div class="form-group">
-          <label for="Text">
-            Text
-          </label>
-          <input [(ngModel)]="text"
-                 placeholder="Animals"
-                 name="Text"
-                 id="text"
-                 class="form-control"
-                 type="text"/>
-        </div>
-      </form>
-      <form>
-        <div class="form-group">
-          <label for="Size">
-            Size
-          </label>
-          <input [(ngModel)]="size"
-                 name="Size"
-                 id="Size"
-                 class="form-control"
-                 type="number"
-                 value="3"/>
-        </div>
-      </form>
-      <button (click)="goToWidgets()"
-              class="btn btn-danger btn-block"
-              aria-pressed="true">
-        Delete
-      </button>
-    </div>
+    <form class="jj-form">
+      <div class="form-group">
+        <label for="widgetType">
+          Name
+        </label>
+        <input [(ngModel)]="widgetType"
+               name="widgetType"
+               id="widgetType"
+               type="text"
+               class="form-control"/>
+      </div>
+    </form>
+    <form class="jj-form">
+      <div class="form-group">
+        <label for="Text">
+          Text
+        </label>
+        <input [(ngModel)]="text"
+               placeholder="Animals"
+               name="Text"
+               id="text"
+               class="form-control"
+               type="text"/>
+      </div>
+    </form>
+    <form class="jj-form">
+      <div class="form-group">
+        <label for="Size">
+          Size
+        </label>
+        <input [(ngModel)]="size"
+               name="Size"
+               id="Size"
+               class="form-control"
+               type="number"
+               value="3"/>
+      </div>
+    </form>
+    <button (click)="goToWidgets()"
+            class="btn btn-danger btn-block jj-button-hover jj-center"
+            aria-pressed="true">
+      Delete
+    </button>
   </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

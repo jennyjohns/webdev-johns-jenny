@@ -8,7 +8,9 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./widget-edit.component.css']
 })
 export class WidgetEditComponent implements OnInit {
-  widget = {};
+  @Input()
+    widget: any;
+  // widget = {};
   widgets = [];
   wgid: string;
   pageId: string;
