@@ -72,4 +72,5 @@ export class WidgetHeaderComponent implements OnInit {
     this.widgetService.deleteWidget(wgid);
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
   }
+
 }
