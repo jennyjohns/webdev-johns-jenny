@@ -1,0 +1,45 @@
+input {
+  margin-bottom: 5px;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.navbar-default_blue {
+  background-color: #2365a9;
+  border-color: #2365a9;
+}
+.navbar-default_blue .navbar-text a {
+  color: white;
+}
+.navbar-default_blue .navbar-brand a {
+  color: white;
+}
+
+.navbar-default_blue .navbar-header a {
+  color: white;
+}
+
+.navbar-default .navbar-text_black a {
+  color: black;
+}
+
+body .jj-body {
+  padding-top: 70px;
+}
+.jj-widget .jj-toolbar {
+  position: absolute;
+  right: 0px;
+  background-color: grey;
+  padding:7px;
+  border-bottom-left-radius: 10px;
+  opacity: 0.5;
+}
+
+.jj-widget .jj-content {
+  width:100%;
+}
+
+.jj-widget-chooser-padding {
+  padding-left: 0px;
+}
