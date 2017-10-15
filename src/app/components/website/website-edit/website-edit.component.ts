@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class WebsiteEditComponent implements OnInit {
   websiteId: string;
-  website = {};
+  website: any;
   name: string;
   developerId: string;
   description: string;
