@@ -27,10 +27,6 @@ import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
 import {Routing} from './app.routing';
-import { WidgetNewComponent } from './components/widget/widget-new/widget-new.component';
-import { WidgetNewHeaderComponent } from './components/widget/widget-new/widget-new-header/widget-new-header.component';
-import { WidgetNewImageComponent } from './components/widget/widget-new/widget-new-image/widget-new-image.component';
-import { WidgetNewYoutubeComponent } from './components/widget/widget-new/widget-new-youtube/widget-new-youtube.component';
 
 @NgModule({
   // Declare components here
@@ -53,10 +49,6 @@ import { WidgetNewYoutubeComponent } from './components/widget/widget-new/widget
     WidgetChooserComponent,
     WidgetEditComponent,
     WidgetListComponent,
-    WidgetNewComponent,
-    WidgetNewHeaderComponent,
-    WidgetNewImageComponent,
-    WidgetNewYoutubeComponent,
   ],
   imports: [
     BrowserModule,
