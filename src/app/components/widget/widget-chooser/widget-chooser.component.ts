@@ -32,10 +32,13 @@ export class WidgetChooserComponent implements OnInit {
     this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
   }
 
-  editWidget(wgid) {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
-    this.widget = this.widgetService.findWidgetById(wgid);
-    this.widgetType = this.widget['widgetType'];
+  makeWidget(type: string) {
+    this.widgetType = type;
+    this.widget = { widgetType: type};
+    this.widget = this.widgetService.createWidget(this.pageId, this.widget);
+    this.widgetId = this.widget['_id'];
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', this.widgetId]);
+
   }
 
   goToProfile() {
