@@ -44,4 +44,7 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(uid, this.user)
     this.router.navigate(['user/', this.userId]);
   }
+  cancelChanges() {
+    this.ngOnInit();
+  }
 }

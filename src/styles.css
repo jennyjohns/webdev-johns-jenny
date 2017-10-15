@@ -29,6 +29,9 @@ body .jj-body {
   padding-top: 70px;
   padding-bottom: 150px;
 }
+.jj-widget {
+  padding-bottom: 15px;
+}
 .jj-widget .jj-toolbar {
   position: absolute;
   right: 0px;
