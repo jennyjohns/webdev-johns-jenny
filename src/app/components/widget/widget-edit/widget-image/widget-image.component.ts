@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {WidgetService} from "../../../../services/widget.service.client";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
+import {NgModel} from "@angular/forms";
 
 @Component({
   selector: 'app-widget-image',
@@ -9,6 +10,7 @@ import {DomSanitizer} from "@angular/platform-browser";
   styleUrls: ['./widget-image.component.css']
 })
 export class WidgetImageComponent implements OnInit {
+  @ViewChild('f') newWidgetForm: NgModel;
   widget = {};
   wgid: string;
   userId: string;
@@ -40,7 +42,18 @@ export class WidgetImageComponent implements OnInit {
     this.widgetType = this.widget['widgetType'];
 
   }
+  commit(width, url) {
+    this.widget = {
+      _id: this.widget['_id'],
+      widgetType: 'IMAGE',
+      pageId: this.widget['pageId'],
+      width: width,
+      url: url
+    };
+    this.widgetService.updateWidget(this.widget['_id'], this.widget);
 
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+  }
   goToWidgets() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
   }

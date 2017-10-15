@@ -16,7 +16,7 @@
     </div>
 
     <p class="navbar-brand pull-right">
-      <button (click)="goToWidgets()" class="navbar-link jj-button">
+      <button (click)="commit(width.valueOf(), url.valueOf())" class="navbar-link jj-button">
         <span class="glyphicon glyphicon-ok"></span>
       </button>
     </p>
@@ -38,16 +38,16 @@
     </form>
     <form class="jj-form">
       <div class="form-group">
-        <label for="URL">
+        <label for="url">
           URL
         </label>
         <input [(ngModel)]="url"
                type="url"
-               placeholder="URL"
-               name="URL"
-               id="URL"
+               placeholder="url"
+               name="url"
+               id="url"
                class="form-control"
-               value="https://youtu.be/QXFaEAHpOdo"/>
+               />
       </div>
     </form>
     <form class="jj-form">

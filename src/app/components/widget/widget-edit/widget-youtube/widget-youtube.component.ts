@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {NgModel} from "@angular/forms";
 
 @Component({
   selector: 'app-widget-youtube',
@@ -9,9 +10,10 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./widget-youtube.component.css']
 })
 export class WidgetYoutubeComponent implements OnInit {
+  @ViewChild('f') newWidgetForm: NgModel;
   widget = {};
   wgid: string;
-  url: SafeResourceUrl;
+  url: string;
   userId: string;
   webId: string;
   pageId: string;
@@ -51,7 +53,18 @@ export class WidgetYoutubeComponent implements OnInit {
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
   }
+  commit(width, url) {
+    this.widget = {
+      _id: this.widget['_id'],
+      widgetType: 'YOUTUBE',
+      pageId: this.widget['pageId'],
+      width: width,
+      url: url
+    };
+    this.widgetService.updateWidget(this.widget['_id'], this.widget);
 
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+  }
   editWidget(wgid) {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
     this.widget = this.widgetService.findWidgetById(wgid);
