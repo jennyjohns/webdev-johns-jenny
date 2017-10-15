@@ -11,7 +11,7 @@
     </p>
 
     <p class="navbar-text pull-right">
-      <button (click)="goToProfile()"  class="navbar-link jj-button">
+      <button (click)="goToProfile(userId, username.valueOf(), email.valueOf(), firstName.valueOf(), lastName.valueOf())"  class="navbar-link jj-button">
         <span class="jj-button-text glyphicon glyphicon-ok"></span>
       </button>
     </p>
@@ -81,7 +81,7 @@
 <nav class="navbar navbar-default_blue navbar-fixed-bottom">
   <div class="container-fluid">
     <p class="navbar-text pull-right">
-      <button class="jj-button" (click)="goToProfile()">
+      <button class="jj-button" (click)="goToProfile(userId, username.valueOf(), email.valueOf(), firstName.valueOf(), lastName.valueOf())">
         <span class="glyphicon glyphicon-user"></span>
       </button>
     </p>

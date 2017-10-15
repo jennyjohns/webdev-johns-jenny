@@ -22,6 +22,7 @@ export class WebsiteEditComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.websiteId = params['wid'];
+          this.developerId = params['uid'];
         }
       );
     this.website = this.websiteService.findWebsiteById(this.websiteId);
@@ -36,6 +37,11 @@ export class WebsiteEditComponent implements OnInit {
       this.name = this.website['name'];
       this.description = this.website['description'];
 
+  }
+  commit(wid, name, description) {
+    this.website = {_id: wid, name: name, developerId: this.developerId, description: description};
+    this.websiteService.updateWebsite(wid, this.website);
+    this.router.navigate(['user/', this.developerId, 'website']);
   }
   goToProfile() {
     this.router.navigate(['user/', this.developerId]);

@@ -9,7 +9,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
- // @ViewChild('f') profileForm: NgForm;
+ @ViewChild('f') profileForm: NgForm;
   userId: string;
   user = {};
   username: string;
@@ -39,7 +39,9 @@ export class ProfileComponent implements OnInit {
   websites() {
     this.router.navigate(['user/', this.userId, 'website']);
   }
-  goToProfile() {
+  goToProfile(uid, uname, email, fname, lname) {
+    this.user = {_id: uid, username: uname, email: email, firstName: fname, lastName: lname};
+    this.userService.updateUser(uid, this.user)
     this.router.navigate(['user/', this.userId]);
   }
 }

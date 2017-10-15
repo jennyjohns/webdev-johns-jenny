@@ -36,7 +36,7 @@
       </div>
 
       <p class="navbar-brand pull-right">
-        <button (click)="goToPages()" class="navbar-link jj-button">
+        <button (click)="commit(pageId.valueOf(), name.valueOf(), description.valueOf())" class="navbar-link jj-button">
           <span class="glyphicon glyphicon-ok"></span>
         </button>
       </p>
@@ -68,25 +68,24 @@
 
       <form>
         <div class="form-group">
-          <label for="Name">
+          <label for="name">
             Name
           </label>
           <input [(ngModel)]="name"
-                 name="Name"
-                 id="Name"
+                 name="name"
+                 id="name"
                  type="text"
-                 placeholder="Blog Post"
                  class="form-control"/>
         </div>
         <div class="form-group">
           <label for="description">
             Description
           </label>
-          <input [(ngModel)]="description"
-                 placeholder="description"
-                 name="description"
-                 id="description"
-                 class="form-control"/>
+          <textarea [(ngModel)]="description"
+                    placeholder="description"
+                    name="description"
+                    id="description"
+                    class="form-control"></textarea>
         </div>
       </form>
       <button (click)="goToPages()"
