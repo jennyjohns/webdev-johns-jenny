@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {WidgetService} from "../../../../services/widget.service.client";
-import {ActivatedRoute, Router} from "@angular/router";
-import {DomSanitizer} from "@angular/platform-browser";
-import {NgModel} from "@angular/forms";
+import {WidgetService} from '../../../../services/widget.service.client';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DomSanitizer} from '@angular/platform-browser';
+import {NgModel} from '@angular/forms';
 
 @Component({
   selector: 'app-widget-image',
@@ -66,19 +66,6 @@ export class WidgetImageComponent implements OnInit {
     this.router.navigate(['user/', this.userId]);
   }
 
-  editWidget(wgid) {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
-    this.widget = this.widgetService.findWidgetById(wgid);
-    this.widgetType = this.widget['widgetType'];
-    this.url = this.widget['url'];
-    this.width = this.widget['width'];
-  }
-  cleanURL(url: string) {
-    let youTubeURL = 'https://www.youtube.com/embed/';
-    const end = url.split('/');
-    youTubeURL += end[end.length - 1];
-    return this.sanitizer.bypassSecurityTrustResourceUrl(youTubeURL);
-  }
   deleted(wgid) {
     this.widgetService.deleteWidget(wgid);
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);

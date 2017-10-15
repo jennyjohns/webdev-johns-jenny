@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgModel} from '@angular/forms';
-import {PageService} from "../../../services/page.service.client";
-import {ActivatedRoute, Router} from "@angular/router";
+import {PageService} from '../../../services/page.service.client';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-page-new',

@@ -68,20 +68,6 @@ export class WidgetHeaderComponent implements OnInit {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
   }
 
-  editWidget(wgid) {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
-    this.widget = this.widgetService.findWidgetById(wgid);
-    this.widgetType = this.widget['widgetType'];
-    this.text = this.widget['text'];
-    this.size = this.widget['size'];
-  }
-
-  cleanURL(url: string) {
-    let youTubeURL = 'https://www.youtube.com/embed/';
-    const end = url.split('/');
-    youTubeURL += end[end.length - 1];
-    return this.sanitizer.bypassSecurityTrustResourceUrl(youTubeURL);
-  }
   deleted(wgid) {
     this.widgetService.deleteWidget(wgid);
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
