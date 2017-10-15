@@ -66,4 +66,7 @@ export class PageEditComponent implements OnInit {
   goToWebsites() {
     this.router.navigate(['user/', this.userId, 'website']);
   }
+  goToWidgets(pgId) {
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId, 'widget']);
+  }
 }

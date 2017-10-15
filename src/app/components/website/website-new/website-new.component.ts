@@ -59,4 +59,7 @@ export class WebsiteNewComponent implements OnInit {
   cancel() {
     this.router.navigate(['user/', this.developerId, 'website']);
   }
+  goToPages(webId) {
+    this.router.navigate(['user/', this.userId, 'website', webId, 'page']);
+  }
 }

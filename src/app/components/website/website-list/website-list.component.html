@@ -25,9 +25,9 @@
 <div class="container-fluid jj-body">
   <div *ngFor="let website of websites">
     <li class="list-group-item">
-      <a (click)="goToPages(website._id)">
+      <button class="jj-button-cog" (click)="goToPages(website._id)">
         {{website.name}}
-      </a>
+      </button>
       <button class="pull-right jj-button-cog" [routerLink]="['/user', website.developerId, 'website', website._id]">
         <span class="glyphicon glyphicon-cog"></span>
       </button>

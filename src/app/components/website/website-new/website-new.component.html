@@ -51,9 +51,9 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-xs-9">
-              <a [routerLink]="['/user/:uid/website/:wid/page']">
+              <button class="jj-button-cog" (click)="goToPages(website._id)">
                 {{website.name}}
-              </a>
+              </button>
             </div>
             <div class="col-xs-3">
               <button (click)="editWebsite(website._id)" class="pull-right jj-button-cog">

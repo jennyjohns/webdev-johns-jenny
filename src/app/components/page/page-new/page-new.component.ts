@@ -63,4 +63,7 @@ export class PageNewComponent implements OnInit {
   goToWebsites() {
     this.router.navigate(['user/', this.userId, 'website']);
   }
+  goToWidgets(pgId) {
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', pgId, 'widget']);
+  }
 }
