@@ -73,7 +73,7 @@ export class WidgetService {
   deleteWidget(widgetId: string) {
     for (let x = 0; x < this.widgets.length; x++) {
       if (this.widgets[x]._id === widgetId) {
-        this.widgets.splice(x);
+        this.widgets.splice(x, 1);
       }
     }
   }

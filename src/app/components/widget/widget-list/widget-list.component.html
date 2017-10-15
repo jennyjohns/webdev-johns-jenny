@@ -71,7 +71,7 @@
           </button>
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </div>
-        <img class="jj-content" src="{{widget.url}}"/>
+        <img class="jj-content" [style.width]="widget.width" src="{{widget.url}}"/>
       </div>
     </ng-container>
     <div *ngSwitchCase="'HTML'">
@@ -82,10 +82,9 @@
           </button>
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </div>
-        <a>{{widget.text}}</a>
+        <button class="jj-button-cog">{{widget.text}}</button>
       </div>
     </div>
-
   </div>
 </div>
 </div>

@@ -82,4 +82,8 @@ export class WidgetHeaderComponent implements OnInit {
     youTubeURL += end[end.length - 1];
     return this.sanitizer.bypassSecurityTrustResourceUrl(youTubeURL);
   }
+  deleted(wgid) {
+    this.widgetService.deleteWidget(wgid);
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+  }
 }

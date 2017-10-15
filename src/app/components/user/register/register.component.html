@@ -87,7 +87,7 @@
 
   </form>
   <button (click)="registered(username.value, password.value, firstName.value, lastName.value, email.value)"
-          class="btn btn-primary btn-block"
+          class="btn btn-primary btn-block jj-button-hover"
           aria-pressed="true"
           [disabled]="!f.valid"
           [routerLink]="['/register']">
@@ -95,7 +95,7 @@
   </button>
 
   <button (click)="buttonClicked($event)"
-          class="btn btn-danger btn-block"
+          class="btn btn-danger btn-block jj-button-hover"
           aria-pressed="true"
           [routerLink]="['/login']">
     Cancel

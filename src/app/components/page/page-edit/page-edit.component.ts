@@ -69,4 +69,8 @@ export class PageEditComponent implements OnInit {
   goToWidgets(pgId) {
     this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId, 'widget']);
   }
+  deleted(pid) {
+    this.pageService.deletePage(pid);
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+  }
 }
