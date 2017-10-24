@@ -3,6 +3,7 @@ import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import {map} from "rxjs/operator/map";
 
 @Injectable()
 
@@ -70,10 +71,7 @@ export class UserService {
   }
 
   deleteUser(userId: string) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {
-        this.users.splice(x);
-      }
-    }
+    const url = 'http://localhost:3100/api/user/' + userId;
+    return this.http.delete(url);
   }
 }

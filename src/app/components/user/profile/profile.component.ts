@@ -58,4 +58,11 @@ export class ProfileComponent implements OnInit {
   cancelChanges() {
     this.ngOnInit();
   }
+
+  deleteAccount(userId: string) {
+    this.userService.deleteUser(userId)
+      .subscribe((users) => {
+        this.router.navigate(['/login']);
+      });
+  }
 }

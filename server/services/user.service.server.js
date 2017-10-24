@@ -3,6 +3,7 @@ module.exports = function (app) {
   app.get("/api/user", findUsers);
   app.post("/api/user", createUser);
   app.put("/api/user/:uid", updateUser);
+  app.delete("/api/user/:uid", deleteUser);
 
   var users = [
     {
@@ -96,5 +97,15 @@ module.exports = function (app) {
     var i = users.indexOf(user);
     users[i] = updatedUser;
     res.json(updatedUser);
+  }
+
+  function deleteUser(req, res) {
+    var userId = req.params['uid'];
+    var user = users.find(function (user) {
+      return userId === user._id
+    });
+    var i = users.indexOf(user);
+    users.splice(i, 1);
+    res.json(users);
   }
 };
