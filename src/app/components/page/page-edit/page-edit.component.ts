@@ -32,10 +32,16 @@ export class PageEditComponent implements OnInit {
 
         }
       );
-    this.page = this.pageService.findPageById(this.pageId);
-    this.name = this.page['name'];
-    this.description = this.page['description'];
-    this.pages = this.pageService.findPageByWebsiteId(this.websiteId);
+    this.pageService.findPageById(this.pageId)
+      .subscribe((page: any) => {
+        this.page = page;
+        this.name = this.page['name'];
+        this.description = this.page['description'];
+      });
+    this.pageService.findPageByWebsiteId(this.websiteId)
+      .subscribe((pages: any) => {
+        this.pages = pages;
+      });
   }
 
   goToProfile() {
@@ -50,9 +56,12 @@ export class PageEditComponent implements OnInit {
 
   editPage(pgId) {
     this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId]);
-    this.page = this.pageService.findPageById(pgId);
-    this.name = this.page['name'];
-    this.description = this.page['description'];
+    this.pageService.findPageById(pgId)
+      .subscribe((page: any) => {
+        this.page = page;
+        this.name = this.page['name'];
+        this.description = this.page['description'];
+      });
   }
 
   goToPages() {

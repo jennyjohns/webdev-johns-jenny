@@ -31,7 +31,10 @@ export class PageNewComponent implements OnInit {
           this.webId = params['wid'];
         }
       );
-    this.pages = this.pageService.findPageByWebsiteId(this.webId);
+    this.pageService.findPageByWebsiteId(this.webId)
+      .subscribe((pages: any) => {
+        this.pages = pages;
+      });
   }
 
   newPage() {
@@ -45,24 +48,28 @@ export class PageNewComponent implements OnInit {
 
   editPage(pgId) {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', pgId]);
-    this.page = this.pageService.findPageById(pgId);
-    this.name = this.page['name'];
-    this.description = this.page['description'];
+    this.pageService.findPageById(pgId)
+      .subscribe((page: any) => {
+        this.page = page;
+        this.name = this.page['name'];
+        this.description = this.page['description'];
+      });
   }
 
   goToPages() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page']);
   }
 
-  commit(name, description) {
-    this.page = {name, description};
-    this.pageService.createPage(this.webId, this.page);
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page']);
+  commit(name: string, description: string) {
+    this.page = {_id: Math.random().toString(), name: name, websiteId: this.webId, description: description};
+    this.pageService.createPage(this.webId, this.page)
+      .subscribe((page: any) => {
+        console.log(page);
+        this.page = page;
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page']);
+      });
   }
 
-  goToWebsites() {
-    this.router.navigate(['user/', this.userId, 'website']);
-  }
   goToWidgets(pgId) {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', pgId, 'widget']);
   }

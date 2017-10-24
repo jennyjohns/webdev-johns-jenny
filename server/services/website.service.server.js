@@ -42,7 +42,6 @@ module.exports = function (app) {
 
   function createWebsite(req, res) {
     var website = req.body;
-    console.log(website);
     websites.push(website);
     res.json(website);
   }

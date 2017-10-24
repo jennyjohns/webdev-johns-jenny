@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
-import { environment } from '../../environments/environment';
-import { Router } from '@angular/router';
+
 
 // injecting service into module
 @Injectable()
 
 export class PageService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   pages = [
     { _id: '321', name: 'Post 1', websiteId: '456', description: 'Lorem' },
@@ -26,26 +25,27 @@ export class PageService {
   };
 
   createPage(websiteId: string, page: any) {
-    page._id = Math.random().toString();
-    page.websiteId = websiteId;
-    this.pages.push(page);
-    return page;
+    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    return this.http.post(url, page)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findPageByWebsiteId(websiteId: string) {
-    const pgs = [];
-    for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x].websiteId === websiteId) {
-        pgs.push(this.pages[x]);
-      }
-    }
-    return pgs;
+    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findPageById(pageId: string) {
-    for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x]._id === pageId) { return this.pages[x]; }
-    }
+    const url = 'http://localhost:3100/api/page/' + pageId;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   updatePage(pageId: string, page: any) {
