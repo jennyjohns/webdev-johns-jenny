@@ -32,12 +32,10 @@ export class ProfileComponent implements OnInit {
       .subscribe((user: any) => {
         this.user = user;
         this.username = this.user['username'];
-        console.log(this.username);
         this.firstName = this.user['firstName'];
         this.password = this.user['password'];
         this.lastName = this.user['lastName'];
         this.email = this.user['email'];
-        console.log(this.user);
       });
   }
 
@@ -45,9 +43,17 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['user/', this.userId, 'website']);
   }
   goToProfile(uid, uname, email, fname, lname) {
-    this.user = {_id: uid, username: uname, email: email, firstName: fname, lastName: lname};
-    this.userService.updateUser(uid, this.user);
-    this.router.navigate(['user/', this.userId]);
+    const user = {_id: uid, username: uname, email: email, firstName: fname, lastName: lname};
+    this.userService.updateUser(uid, user)
+      .subscribe((user1) => {
+        this.username = user1['username'];
+        this.firstName = user1['firstName'];
+        this.password = user1['password'];
+        this.lastName = user1['lastName'];
+        this.email = user1['email'];
+        this.userId = user1['_id'];
+        this.router.navigate(['user/', this.userId]);
+      });
   }
   cancelChanges() {
     this.ngOnInit();
