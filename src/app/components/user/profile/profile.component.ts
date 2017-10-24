@@ -31,12 +31,14 @@ export class ProfileComponent implements OnInit {
     this.userService.findUserById(this.userId)
       .subscribe((user: any) => {
         this.user = user;
+        this.username = this.user['username'];
+        console.log(this.username);
+        this.firstName = this.user['firstName'];
+        this.password = this.user['password'];
+        this.lastName = this.user['lastName'];
+        this.email = this.user['email'];
+        console.log(this.user);
       });
-    this.username = this.user['username'];
-    this.firstName = this.user['firstName'];
-    this.password = this.user['password'];
-    this.lastName = this.user['lastName'];
-    this.email = this.user['email'];
   }
 
   websites() {

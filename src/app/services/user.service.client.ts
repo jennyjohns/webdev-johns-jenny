@@ -30,13 +30,10 @@ export class UserService {
       .map((response: Response) => {
         return response.json();
       });
-    // user._id = Math.random().toString();
-    // this.users.push(user);
-    // return user;
   }
 
   findUserById(userId: string) {
-    const url = 'http://localhost:3100/api/user' + userId;
+    const url = 'http://localhost:3100/api/user/' + userId;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();

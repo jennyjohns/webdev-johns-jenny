@@ -44,7 +44,7 @@ module.exports = function (app) {
     });
     res.json(user);
   }
-
+  
   function findUsers(req, res) {
     var username = req.query["username"];
     var password = req.query["password"];
