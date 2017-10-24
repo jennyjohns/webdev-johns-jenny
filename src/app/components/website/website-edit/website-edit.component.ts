@@ -51,8 +51,13 @@ export class WebsiteEditComponent implements OnInit {
   }
   commit(wid, name, description) {
     this.website = {_id: wid, name: name, developerId: this.developerId, description: description};
-    this.websiteService.updateWebsite(wid, this.website);
-    this.router.navigate(['user/', this.developerId, 'website']);
+    this.websiteService.updateWebsite(wid, this.website)
+      .subscribe((website: any) => {
+        this.website = website;
+        this.name = website['name'];
+        this.description = website['description'];
+        this.router.navigate(['user/', this.developerId, 'website']);
+      });
   }
   goToProfile() {
     this.router.navigate(['user/', this.developerId]);

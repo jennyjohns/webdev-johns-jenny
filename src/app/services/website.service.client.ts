@@ -54,11 +54,11 @@ export class WebsiteService {
       });
   }
   updateWebsite(websiteId: string, website: any) {
-    for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x]._id === websiteId) {
-        this.websites[x] = website;
-      }
-    }
+    const url = 'http://localhost:3100/api/website/' + websiteId;
+    return this.http.put(url, website)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
   deleteWebsite(websiteId: string) {
     for (let x = 0; x < this.websites.length; x++) {
