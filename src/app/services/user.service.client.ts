@@ -39,7 +39,7 @@ export class UserService {
   }
 
   findUserByUsername(username: string) {
-    const url = 'http://localhost:3100/api/user' + username;
+    const url = 'http://localhost:3100/api/user?username=' + username;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();

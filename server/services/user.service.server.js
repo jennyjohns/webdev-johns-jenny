@@ -54,7 +54,7 @@ module.exports = function (app) {
       if (user) {
         res.json(user);
       } else {
-        res.json({});
+        res.json(null);
       }
       return;
     } else if (username) {
@@ -64,7 +64,7 @@ module.exports = function (app) {
       if (user) {
         res.json(user);
       } else {
-        res.json({});
+        res.json(null);
       }
       return;
     }
