@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../../services/user.service.client';
 import {Router} from '@angular/router';
-import {validate} from "codelyzer/walkerFactory/walkerFn";
 
 @Component({
   selector: 'app-register',
@@ -24,14 +23,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  register() {
-    this.username = this.registrationForm.value.username;
-    this.password = this.registrationForm.value.password;
-    this.email = this.registrationForm.value.email;
-    this.firstName = this.registrationForm.value.firstName;
-    this.lastName = this.registrationForm.value.lastName;
+  register(username: string, password: string, email: string, firstName: string, lastName: string) {
+    console.log(username, password, email, firstName, lastName);
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.errorMsg = 'Invalid username or password!';
-    this.errorFlag = true;
+    this.errorFlag = false;
   }
   registered(username, password, firstName, lastName, email) {
     this.userService.findUserByUsername(username)
@@ -41,10 +41,14 @@ export class RegisterComponent implements OnInit {
           this.errorFlag = true;
           this.errorMsg = 'Username already in use, please choose another username!';
         }else {
-          this.user = {username, password, firstName, lastName, email};
-          this.userService.createUser(this.user);
-          this.user_id = this.user['_id'];
-          this.router.navigate(['user/', this.user_id]);
+          const user1 = {_id: Math.random().toString(), username: username, password: password, firstName: firstName,
+            lastName: lastName, email: email};
+          this.userService.createUser(user1)
+            .subscribe((user2) => {
+              this.user = user2;
+              this.user_id = user2['_id'];
+              this.router.navigate(['user/', this.user_id]);
+            });
         }
       });
   }

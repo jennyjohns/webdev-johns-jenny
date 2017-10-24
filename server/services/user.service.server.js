@@ -1,6 +1,7 @@
 module.exports = function (app) {
   app.get("/api/user/:uid", findUserById);
   app.get("/api/user", findUsers);
+  app.post("/api/user", createUser);
   var users = [
     {
       _id: '123',
@@ -48,6 +49,20 @@ module.exports = function (app) {
     var username = req.query["username"];
     var password = req.query["password"];
     if (username && password) {
+      findUserByCredentials(res, username, password);
+    }
+    else if (username) {
+     findUserByUsername(res, username);
+    }
+    res.json(users);
+  }
+
+  function createUser(req, res) {
+    var user = req.body;
+    users.push(user);
+    res.json(user)
+  }
+  function findUserByCredentials (res, username, password) {
       var user = users.find(function (user) {
         return user.username === username && user.password === password;
       });
@@ -56,18 +71,16 @@ module.exports = function (app) {
       } else {
         res.json(null);
       }
-      return;
-    } else if (username) {
-      var user = users.find(function (user) {
-        return user.username === username;
-      });
-      if (user) {
-        res.json(user);
-      } else {
-        res.json(null);
-      }
-      return;
     }
-    res.json(users);
+  function findUserByUsername(res, username) {
+    var user = users.find(function (user) {
+      return user.username === username;
+    });
+    if (user) {
+      res.json(user);
+    } else {
+      res.json(null);
+    }
   }
+
 };

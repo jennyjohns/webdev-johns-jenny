@@ -7,7 +7,7 @@
   </div>
 
   <h1>Register</h1>
-  <form (ngSubmit)="register()" #f="ngForm">
+  <form (ngSubmit)="register(username.value, password.value, email.value, firstName.value, lastName.value)" #f="ngForm">
     <input name="username"
            id="username"
            type="text"
@@ -16,9 +16,11 @@
            ngModel
            required
            #username="ngModel"/>
+
     <span class="help-block" *ngIf="!username.valid && username.touched">
       Please enter username!
     </span>
+
     <input name="password"
            id="password"
            type="password"
@@ -27,6 +29,7 @@
            ngModel
            required
            #password="ngModel"/>
+
     <span class="help-block" *ngIf="!password.valid && password.touched">
       Please enter password!
     </span>
@@ -38,12 +41,14 @@
            ngModel
            required
            #verify_password="ngModel">
+
     <span class="help-block" *ngIf="!verify_password.valid && verify_password.touched">
       Please enter password!
     </span>
     <span class="help-block" *ngIf="verify_password.value != password.value">
       Passwords do not match!
     </span>
+
     <input name="email"
            id="email"
            type="text"
@@ -52,6 +57,7 @@
            ngModel
            required
            #email="ngModel"/>
+
     <span class="help-block" *ngIf="!email.valid && email.touched">
       Please enter email!
     </span>
@@ -63,6 +69,7 @@
            ngModel
            required
            #firstName="ngModel"/>
+
     <span class="help-block" *ngIf="!firstName.valid && firstName.touched">
       Please enter first name!
     </span>
@@ -74,6 +81,7 @@
            ngModel
            required
            #lastName="ngModel"/>
+
     <span class="help-block" *ngIf="!lastName.valid && lastName.touched">
       Please enter last name!
     </span>

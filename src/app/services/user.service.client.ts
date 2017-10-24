@@ -25,9 +25,14 @@ export class UserService {
   };
 
   createUser(user: any) {
-    user._id = Math.random().toString();
-    this.users.push(user);
-    return user;
+    const url = 'http://localhost:3100/api/user';
+    return this.http.post(url, user)
+      .map((response: Response) => {
+        return response.json();
+      });
+    // user._id = Math.random().toString();
+    // this.users.push(user);
+    // return user;
   }
 
   findUserById(userId: string) {
@@ -44,9 +49,6 @@ export class UserService {
       .map((response: Response) => {
         return response.json();
       });
-    // for (let x = 0; x < this.users.length; x++) {
-    //   if (this.users[x].username === username) { return this.users[x]; }
-    // }
   }
 
   findUserByCredentials(username: string, password: string) {
