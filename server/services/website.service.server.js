@@ -4,6 +4,7 @@ module.exports = function (app) {
   app.get("/api/website", findWebsites);
   app.post("/api/user/:uid/website", createWebsite);
   app.put("/api/website/:wid", updateWebsite);
+  app.delete("/api/website/:wid", deleteWebsite);
 
 
   websites = [
@@ -55,5 +56,15 @@ module.exports = function (app) {
     var i = websites.indexOf(website);
     websites[i] = updatedWebsite;
     res.json(updatedWebsite);
+  }
+
+  function deleteWebsite(req, res) {
+    var webId = req.params['wid'];
+    var website = websites.find(function (website) {
+      return website._id === webId;
+    });
+    var i = websites.indexOf(website);
+    websites.splice(i, 1);
+    res.json(websites);
   }
 };

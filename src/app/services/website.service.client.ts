@@ -61,10 +61,7 @@ export class WebsiteService {
       });
   }
   deleteWebsite(websiteId: string) {
-    for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x]._id === websiteId) {
-        this.websites.splice(x, 1);
-      }
-    }
+    const url = 'http://localhost:3100/api/website/' + websiteId;
+    return this.http.delete(url);
   }
 }
