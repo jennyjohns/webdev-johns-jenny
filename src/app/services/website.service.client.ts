@@ -31,10 +31,11 @@ export class WebsiteService {
   };
 
   createWebsite(developerId: string, website: any) {
-    website._id = Math.random().toString();
-    website.developerId = developerId;
-    this.websites.push(website);
-    return website;
+    const url = 'http://localhost:3100/api/user/' + developerId + '/website';
+    return this.http.post(url, website)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findWebsitesByUser(developerId: string) {

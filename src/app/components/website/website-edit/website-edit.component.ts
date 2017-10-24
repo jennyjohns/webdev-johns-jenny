@@ -44,7 +44,6 @@ export class WebsiteEditComponent implements OnInit {
       .subscribe((website: any) => {
         this.website = website;
         this.name = this.website['name'];
-        console.log(this.name);
         this.description = this.website['description'];
         this.router.navigate(['user/', this.developerId, 'website', webId]);
 
