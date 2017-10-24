@@ -23,13 +23,19 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  register() {
-    this.username = this.registrationForm.value.username;
+  register(username: string) {
+    this.username = username;
     this.password = this.registrationForm.value.password;
     this.email = this.registrationForm.value.email;
     this.firstName = this.registrationForm.value.firstName;
     this.lastName = this.registrationForm.value.lastName;
     this.errorFlag = true;
+    this.userService.findUserByUsername(this.username)
+      .subscribe((user: any) => {
+        if (user) {
+          this.errorFlag = false;
+        }
+      });
 
   }
   registered(username, password, firstName, lastName, email) {

@@ -31,28 +31,30 @@ export class UserService {
   }
 
   findUserById(userId: string) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x]._id === userId) {  return this.users[x]; }
-    }
+    const url = 'http://localhost:3100/api/user' + userId;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findUserByUsername(username: string) {
-    for (let x = 0; x < this.users.length; x++) {
-      if (this.users[x].username === username) { return this.users[x]; }
-    }
-  }
-
-  findUserByCredentials(username: string, password: string) {
-    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
-    this.http.get(url)
+    const url = 'http://localhost:3100/api/user' + username;
+    return this.http.get(url)
       .map((response: Response) => {
         return response.json();
       });
     // for (let x = 0; x < this.users.length; x++) {
-    //   if (this.users[x].username === username && this.users[x].password === password) {
-    //     return this.users[x];
-    //   }
+    //   if (this.users[x].username === username) { return this.users[x]; }
     // }
+  }
+
+  findUserByCredentials(username: string, password: string) {
+    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   updateUser(userId: string, user: any) {

@@ -7,7 +7,7 @@
   </div>
 
   <h1>Login</h1>
-  <form (ngSubmit)="login(username, password)" #f="ngForm">
+  <form (ngSubmit)="login(username.value, password.value)" #f="ngForm">
     <input name="username"
            id="username"
            type="text"
@@ -32,7 +32,7 @@
       Please enter password!
     </span>
 
-    <button (click)="login(username, password)"
+    <button (click)="login(username.value, password.value)"
             class="btn btn-primary btn-block jj-button-hover"
             type="submit"
             [disabled]="!f.valid">

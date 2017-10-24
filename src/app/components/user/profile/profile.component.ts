@@ -28,7 +28,10 @@ export class ProfileComponent implements OnInit {
           this.userId = params['uid'];
         }
       );
-    this.user = this.userService.findUserById(this.userId);
+    this.userService.findUserById(this.userId)
+      .subscribe((user: any) => {
+        this.user = user;
+      });
     this.username = this.user['username'];
     this.firstName = this.user['firstName'];
     this.password = this.user['password'];
@@ -41,7 +44,7 @@ export class ProfileComponent implements OnInit {
   }
   goToProfile(uid, uname, email, fname, lname) {
     this.user = {_id: uid, username: uname, email: email, firstName: fname, lastName: lname};
-    this.userService.updateUser(uid, this.user)
+    this.userService.updateUser(uid, this.user);
     this.router.navigate(['user/', this.userId]);
   }
   cancelChanges() {
