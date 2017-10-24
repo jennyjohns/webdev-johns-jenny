@@ -25,18 +25,30 @@ export class WebsiteEditComponent implements OnInit {
           this.developerId = params['uid'];
         }
       );
-    this.website = this.websiteService.findWebsiteById(this.websiteId);
-    this.name = this.website['name'];
-    this.developerId = this.website['developerId'];
-    this.description = this.website['description'];
-    this.websites = this.websiteService.findWebsitesByUser(this.developerId);
+    this.websiteService.findWebsiteById(this.websiteId)
+      .subscribe((website: any) => {
+        this.website = website;
+        console.log(this.website);
+        this.name = this.website['name'];
+        console.log(website['name']);
+        this.developerId = this.website['developerId'];
+        this.description = this.website['description'];
+      });
+    this.websiteService.findWebsitesByUser(this.developerId)
+      .subscribe((websites: any) => {
+        this.websites = websites;
+      });
   }
-  editWebsite(webId) {
-      this.router.navigate(['user/', this.developerId, 'website', webId]);
-      this.website = this.websiteService.findWebsiteById(webId);
-      this.name = this.website['name'];
-      this.description = this.website['description'];
+  editWebsite(webId: string) {
+    this.websiteService.findWebsiteById(webId)
+      .subscribe((website: any) => {
+        this.website = website;
+        this.name = this.website['name'];
+        console.log(this.name);
+        this.description = this.website['description'];
+        this.router.navigate(['user/', this.developerId, 'website', webId]);
 
+      });
   }
   commit(wid, name, description) {
     this.website = {_id: wid, name: name, developerId: this.developerId, description: description};

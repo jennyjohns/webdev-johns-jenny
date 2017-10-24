@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 export class WebsiteService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   websites = [
     { _id: '123', name: 'Facebook',    developerId: '456', description: 'Lorem' },
@@ -38,21 +38,19 @@ export class WebsiteService {
   }
 
   findWebsitesByUser(developerId: string) {
-    const web = [];
-    for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x].developerId === developerId) {
-        web.push(this.websites[x]);
-      }
-    }
-    return web;
+    const url = 'http://localhost:3100/api/user/' + developerId + '/website';
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findWebsiteById(websiteId: string) {
-    for (let x = 0; x < this.websites.length; x++) {
-      if (this.websites[x]._id === websiteId) {
-        return this.websites[x];
-      }
-    }
+    const url = 'http://localhost:3100/api/website/' + websiteId;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
   updateWebsite(websiteId: string, website: any) {
     for (let x = 0; x < this.websites.length; x++) {
