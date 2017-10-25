@@ -1,13 +1,13 @@
 module.exports = function (app) {
-  var multer = require('multer');
-  var upload = multer({dest: __dirname + '/../../public/uploads' });
-  app.post("/api/upload", upload.single('myFile'), uploadImage);
+  // var multer = require('multer');
+  // var upload = multer({dest: __dirname + '/../../public/uploads' });
+  // app.post("/api/upload", upload.single('myFile'), uploadImage);
   app.get("/api/widget", findAllWidgets);
   app.get("/api/page/:pid/widget", findAllWidgetsForPage);
   app.get("/api/widget/:wgid", findWidgetById);
   app.post("/api/page/:pid/widget", createWidget);
   app.put("/api/widget/:wgid", updateWidget);
-  app.put("/api/page/:pid/widget?initial=index1&final=index2", sortingWidgets);
+  app.put("/api/page/:pid/widget", sortingWidgets);
   app.delete("/api/widget/:wgid", deleteWidget);
   widgets = [
     {_id: '123', widgetType: 'HEADING', pageId: '321', size: 2, text: 'GIZMODO'},
@@ -88,26 +88,26 @@ module.exports = function (app) {
     res.json(widgets);
   }
 
-  function uploadImage(req, res) {
-    var widgetId = req.body._id;
-    var width = req.body.width;
-    var myFile = req.file;
-
-    var userId = req.body.userId;
-    var websiteId = req.body.websiteId;
-    var pageId = req.body.pageId;
-
-    var originalname = myFile.originalname;
-    var filename = myFile.filename;
-    var path = myFile.path;
-    var destination = myFile.destination;
-    var size = myFile.size;
-    var mimetype = myFile.mimetype;
-
-    widget = findWidgetById(widgetId);
-    widget.url = '/uploads/' + filename;
-
-    var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
-    res.redirect(callbackUrl);
-  }
+  // function uploadImage(req, res) {
+  //   var widgetId = req.body._id;
+  //   var width = req.body.width;
+  //   var myFile = req.file;
+  //
+  //   var userId = req.body.userId;
+  //   var websiteId = req.body.websiteId;
+  //   var pageId = req.body.pageId;
+  //
+  //   var originalname = myFile.originalname;
+  //   var filename = myFile.filename;
+  //   var path = myFile.path;
+  //   var destination = myFile.destination;
+  //   var size = myFile.size;
+  //   var mimetype = myFile.mimetype;
+  //
+  //   widget = findWidgetById(widgetId);
+  //   widget.url = '/uploads/' + filename;
+  //
+  //   var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
+  //   res.redirect(callbackUrl);
+  // }
 };
