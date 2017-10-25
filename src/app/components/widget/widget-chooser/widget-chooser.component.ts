@@ -29,7 +29,10 @@ export class WidgetChooserComponent implements OnInit {
           this.webId = params['wid'];
         }
       );
-    this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+    this.widgetService.findWidgetsByPageId(this.pageId)
+      .subscribe((widgets: any) => {
+        this.widgets = widgets;
+      });
   }
 
   makeWidget(type: string) {

@@ -10,7 +10,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 export class WidgetService {
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private http: Http) {
   }
 
   widgets = [
@@ -45,13 +45,11 @@ export class WidgetService {
   }
 
   findWidgetsByPageId(pageId: string) {
-    const wdgts = [];
-    for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x].pageId === pageId) {
-        wdgts.push(this.widgets[x]);
-      }
-    }
-    return wdgts;
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      } );
   }
 
   findWidgetById(widgetId: string) {

@@ -37,7 +37,10 @@ export class WidgetHeaderComponent implements OnInit {
         }
       );
     this.widget = this.widgetService.findWidgetById(this.wgid);
-    this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+    this.widgetService.findWidgetsByPageId(this.pageId)
+      .subscribe((widgets: any) => {
+        this.widgets = widgets;
+      });
     this.widgetType = this.widget['widgetType'];
     this.text = this.widget['text'];
     this.size = this.widget['size'];

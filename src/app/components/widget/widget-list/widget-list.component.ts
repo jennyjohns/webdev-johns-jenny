@@ -28,7 +28,10 @@ export class WidgetListComponent implements OnInit {
           this.webId = params['wid'];
         }
       );
-    this.widgets = this.widgetService.findWidgetsByPageId(this.pageId);
+    this.widgetService.findWidgetsByPageId(this.pageId)
+      .subscribe((widgets: any) => {
+        this.widgets = widgets;
+      });
   }
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
