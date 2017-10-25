@@ -4,6 +4,7 @@ module.exports = function (app) {
   app.get("/api/page/:pid", findPageById);
   app.post("/api/website/:wid/page", createPage);
   app.put("/api/page/:pid", updatePage);
+  app.delete("/api/page/:pid", deletePage);
   pages = [
     { _id: '321', name: 'Post 1', websiteId: '456', description: 'Lorem' },
     { _id: '432', name: 'Post 2', websiteId: '456', description: 'Lorem' },
@@ -44,5 +45,14 @@ module.exports = function (app) {
     var i = pages.indexOf(page);
     pages[i] = updatedPage;
     res.json(updatedPage);
+  }
+  function deletePage(req, res) {
+    var pageId = req.params['pid'];
+    var page = this.pages.find(function (page) {
+      return page._id === pageId;
+    })
+    var i = pages.indexOf(page);
+    pages.splice(i, 1);
+    res.json(pages);
   }
 };

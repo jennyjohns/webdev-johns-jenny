@@ -56,10 +56,7 @@ export class PageService {
       });
   }
   deletePage(pageId: string) {
-    for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x]._id === pageId) {
-        this.pages.splice(x, 1);
-      }
-    }
+    const url = 'http://localhost:3100/api/page/' + pageId;
+    return this.http.delete(url);
   }
 }
