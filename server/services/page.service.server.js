@@ -55,7 +55,7 @@ module.exports = function (app) {
     var pageId = req.params['pid'];
     var page = this.pages.find(function (page) {
       return page._id === pageId;
-    })
+    });
     var i = pages.indexOf(page);
     pages.splice(i, 1);
     res.json(pages);

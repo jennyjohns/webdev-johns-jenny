@@ -22,7 +22,7 @@ export class WidgetImageComponent implements OnInit {
   widgetType: string;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
-              private router: Router, private sanitizer: DomSanitizer) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -77,7 +77,9 @@ export class WidgetImageComponent implements OnInit {
   }
 
   deleted(wgid) {
-    this.widgetService.deleteWidget(wgid);
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.widgetService.deleteWidget(wgid)
+      .subscribe((widgets: any) => {
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+      });
   }
 }

@@ -61,9 +61,6 @@ export class WidgetHeaderComponent implements OnInit {
   }
 
   commit(text: string, size: number, type: string) {
-    console.log(text);
-    console.log(size);
-    console.log(type);
     const updatedWidget = {
       _id: this.wgid,
       widgetType: type,
@@ -71,22 +68,21 @@ export class WidgetHeaderComponent implements OnInit {
       size: size,
       text: text
     };
-    console.log(updatedWidget);
     this.widgetService.updateWidget(this.wgid, updatedWidget)
       .subscribe((widget: any) => {
         this.widget = widget;
-        console.log(widget);
         this.widgetType = widget['widgetType'];
         this.text = widget['text'];
-        console.log(this.text);
         this.size = widget['size'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
 
   deleted(wgid) {
-    this.widgetService.deleteWidget(wgid);
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.widgetService.deleteWidget(wgid)
+      .subscribe((widgets: any) => {
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+      });
   }
 
 }

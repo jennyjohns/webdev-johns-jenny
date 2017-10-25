@@ -79,7 +79,9 @@ export class WidgetYoutubeComponent implements OnInit {
       });
   }
   deleted(wgid) {
-    this.widgetService.deleteWidget(wgid);
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.widgetService.deleteWidget(wgid)
+      .subscribe((widgets: any) => {
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+      });
   }
 }

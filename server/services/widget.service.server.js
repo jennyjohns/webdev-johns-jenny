@@ -4,6 +4,7 @@ module.exports = function (app) {
   app.get("/api/widget/:wgid", findWidgetById);
   app.post("/api/page/:pid/widget", createWidget);
   app.put("/api/widget/:wgid", updateWidget);
+  app.delete("/api/widget/:wgid", deleteWidget);
   widgets = [
     {_id: '123', widgetType: 'HEADING', pageId: '321', size: 2, text: 'GIZMODO'},
     {_id: '234', widgetType: 'HEADING', pageId: '321', size: 4, text: 'Lorem ipsum'},
@@ -60,5 +61,15 @@ module.exports = function (app) {
 
     widgets[i] = updatedWidget;
     res.json(updatedWidget);
+  }
+
+  function deleteWidget(req, res) {
+    var widgetId = req.params['wgid'];
+    var widget = this.widgets.find(function (widget) {
+      return widget._id === widgetId;
+    });
+    var i = widgets.indexOf(widget);
+    widgets.splice(i, 1);
+    res.json(widgets);
   }
 };
