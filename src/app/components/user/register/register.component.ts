@@ -37,7 +37,6 @@ export class RegisterComponent implements OnInit {
     this.userService.findUserByUsername(username)
       .subscribe((user: any) => {
         if (user !== null) {
-          console.log(user);
           this.errorFlag = true;
           this.errorMsg = 'Username already in use, please choose another username!';
         }else {
