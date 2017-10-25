@@ -14,6 +14,7 @@ module.exports = function (app) {
   function findAllPages(req, res) {
     res.json(pages);
   }
+
   function findAllPagesForWebsite(req, res) {
     var webId = req.params['wid'];
     pageList = [];
@@ -24,6 +25,7 @@ module.exports = function (app) {
     }
     res.json(pageList);
   }
+
   function findPageById(req, res) {
     var pageId = req.params['pid'];
     var page = pages.find(function (page) {
@@ -31,11 +33,13 @@ module.exports = function (app) {
     });
     res.json(page);
   }
+
   function createPage(req, res) {
     var page = req.body;
     pages.push(page);
     res.json(page);
   }
+
   function updatePage(req, res) {
     var pageId = req.params['pid'];
     var updatedPage = req.body;
@@ -46,6 +50,7 @@ module.exports = function (app) {
     pages[i] = updatedPage;
     res.json(updatedPage);
   }
+
   function deletePage(req, res) {
     var pageId = req.params['pid'];
     var page = this.pages.find(function (page) {

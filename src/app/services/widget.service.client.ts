@@ -38,10 +38,12 @@ export class WidgetService {
   };
 
   createWidget(pageId: string, widget: any) {
-    widget._id = Math.random().toString();
-    widget.pageId = pageId;
-    this.widgets.push(widget);
-    return widget;
+    console.log(widget);
+    const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
+    return this.http.post(url, widget)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   findWidgetsByPageId(pageId: string) {
@@ -53,19 +55,19 @@ export class WidgetService {
   }
 
   findWidgetById(widgetId: string) {
-    for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x]._id === widgetId) {
-        return this.widgets[x];
-      }
-    }
+    const url = 'http://localhost:3100/api/widget/' + widgetId;
+    return this.http.get(url)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   updateWidget(widgetId: string, widget: any) {
-    for (let x = 0; x < this.widgets.length; x++) {
-      if (this.widgets[x]._id === widgetId) {
-        this.widgets[x] = widget;
-      }
-    }
+    const url = 'http://localhost:3100/api/widget/' + widgetId;
+    return this.http.put(url, widget)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 
   deleteWidget(widgetId: string) {

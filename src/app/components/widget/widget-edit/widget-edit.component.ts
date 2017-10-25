@@ -25,7 +25,10 @@ export class WidgetEditComponent implements OnInit {
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
-    this.widget = this.widgetService.findWidgetById(this.wgid);
+    this.widgetService.findWidgetById(this.wgid)
+      .subscribe((widget: any) => {
+        this.widget = widget;
+      });
   }
 
   ngOnInit() {

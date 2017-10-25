@@ -16,7 +16,7 @@
     </div>
 
     <p class="navbar-brand pull-right">
-      <button (click)="commit(text.valueOf(), size.valueOf())" class="navbar-link jj-button">
+      <button (click)="commit(text, size, widgetType)" class="navbar-link jj-button">
         <span class="glyphicon glyphicon-ok"></span>
       </button>
     </p>
@@ -60,7 +60,6 @@
                id="size"
                class="form-control"
                type="number"
-               value="3"
                />
       </div>
     </form>

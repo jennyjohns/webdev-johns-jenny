@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {DomSanitizer} from '@angular/platform-browser';
 import {NgModel} from '@angular/forms';
-import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-widget-header',
@@ -23,7 +22,7 @@ export class WidgetHeaderComponent implements OnInit {
   size: number;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
-              private router: Router, private sanitizer: DomSanitizer) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -36,14 +35,17 @@ export class WidgetHeaderComponent implements OnInit {
           this.pageId = params['pid'];
         }
       );
-    this.widget = this.widgetService.findWidgetById(this.wgid);
+    this.widgetService.findWidgetById(this.wgid)
+      .subscribe((widget: any) => {
+        this.widget = widget;
+        this.widgetType = this.widget['widgetType'];
+        this.text = this.widget['text'];
+        this.size = this.widget['size'];
+      });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
-    this.widgetType = this.widget['widgetType'];
-    this.text = this.widget['text'];
-    this.size = this.widget['size'];
   }
 
   goToWidgets() {
@@ -58,17 +60,28 @@ export class WidgetHeaderComponent implements OnInit {
     this.router.navigate(['user/', this.userId]);
   }
 
-  commit(text, size) {
-    this.widget = {
-      _id: this.widget['_id'],
-      widgetType: 'HEADING',
+  commit(text: string, size: number, type: string) {
+    console.log(text);
+    console.log(size);
+    console.log(type);
+    const updatedWidget = {
+      _id: this.wgid,
+      widgetType: type,
       pageId: this.widget['pageId'],
       size: size,
       text: text
     };
-    this.widgetService.updateWidget(this.widget['_id'], this.widget);
-
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    console.log(updatedWidget);
+    this.widgetService.updateWidget(this.wgid, updatedWidget)
+      .subscribe((widget: any) => {
+        this.widget = widget;
+        console.log(widget);
+        this.widgetType = widget['widgetType'];
+        this.text = widget['text'];
+        console.log(this.text);
+        this.size = widget['size'];
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+      });
   }
 
   deleted(wgid) {

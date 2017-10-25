@@ -39,11 +39,13 @@ export class WidgetImageComponent implements OnInit {
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
-    this.widget = this.widgetService.findWidgetById(this.wgid);
-    this.url = this.widget['url'];
-    this.width = this.widget['width'];
-    this.widgetType = this.widget['widgetType'];
-
+    this.widgetService.findWidgetById(this.wgid)
+      .subscribe((widget: any) => {
+        this.widget = widget;
+        this.url = this.widget['url'];
+        this.width = this.widget['width'];
+        this.widgetType = this.widget['widgetType'];
+      });
   }
   commit(width, url) {
     this.widget = {
@@ -53,9 +55,14 @@ export class WidgetImageComponent implements OnInit {
       width: width,
       url: url
     };
-    this.widgetService.updateWidget(this.widget['_id'], this.widget);
-
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.widgetService.updateWidget(this.widget['_id'], this.widget)
+      .subscribe((widget: any) => {
+        this.widget = widget;
+        this.url = width;
+        this.width = url;
+        this.widgetType = 'IMAGE';
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+      });
   }
   goToWidgets() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);

@@ -42,8 +42,13 @@ export class WidgetListComponent implements OnInit {
   newWidget() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', 'new']);
   }
-  editWidget(wgid) {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
+  editWidget(wgid: string, type: string) {
+    this.widgetService.findWidgetById(wgid)
+      .subscribe((widget: any) => {
+        this.widget = widget;
+        this.widgetType = type;
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', wgid]);
+      });
   }
   cleanURL(url: string) {
     let youTubeURL = 'https://www.youtube.com/embed/';

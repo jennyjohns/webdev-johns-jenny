@@ -36,12 +36,17 @@ export class WidgetChooserComponent implements OnInit {
   }
 
   makeWidget(type: string) {
-    this.widgetType = type;
-    this.widget = { widgetType: type};
-    this.widget = this.widgetService.createWidget(this.pageId, this.widget);
-    this.widgetId = this.widget['_id'];
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', this.widgetId]);
-
+    console.log(type);
+    this.widget = { _id: Math.random().toString(), widgetType: type, pageId: this.pageId};
+    console.log(this.widget);
+    this.widgetService.createWidget(this.pageId, this.widget)
+      .subscribe((widget: any) => {
+        console.log(widget);
+        this.widget = widget;
+        this.widgetType = type;
+        this.widgetId = this.widget['_id'];
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', this.widgetId]);
+      });
   }
 
   goToProfile() {

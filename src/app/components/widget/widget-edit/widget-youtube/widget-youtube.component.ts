@@ -35,14 +35,18 @@ export class WidgetYoutubeComponent implements OnInit {
           this.pageId = params['pid'];
         }
       );
-    this.widget = this.widgetService.findWidgetById(this.wgid);
+    this.widgetService.findWidgetById(this.wgid)
+      .subscribe((widget: any) => {
+        this.widget = widget;
+        this.url = this.widget['url'];
+        this.widgetType = this.widget['widgetType'];
+        this.width = this.widget['width'];
+      });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
-    this.url = this.widget['url'];
-    this.widgetType = this.widget['widgetType'];
-    this.width = this.widget['width'];
+
   }
 
   goToWidgets() {
@@ -64,9 +68,15 @@ export class WidgetYoutubeComponent implements OnInit {
       width: width,
       url: url
     };
-    this.widgetService.updateWidget(this.widget['_id'], this.widget);
-
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.widgetService.updateWidget(this.widget['_id'], this.widget)
+      .subscribe((widget: any) => {
+        this.widget = widget;
+        this.url = url;
+        this.widgetType = 'YOUTUBE';
+        this.width = width;
+        this.pageId = this.widget['pageId'];
+        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+      });
   }
   deleted(wgid) {
     this.widgetService.deleteWidget(wgid);
