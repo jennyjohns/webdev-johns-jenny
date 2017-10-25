@@ -62,25 +62,36 @@
                value="100%"/>
       </div>
     </form>
-    <form class="jj-form">
+    <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data" class="jj-form">
       <div class="form-group">
-        <label for="Upload">
-          Upload
-        </label>
         <input
           type="file"
-          placeholder="Upload"
-          name="Upload"
-          id="Upload"
+          name="myFile"
           class="form-control"/>
+        <input
+          name="widgetId"
+          value="{{widgetId}}"
+          style="display: none"/>
+        <input
+          name="websiteId"
+          value="{{websiteId}}"
+          style="display: none"/>
+        <input
+          name="pageId"
+          value="{{pageId}}"
+          style="display: none"/>
+        <input
+          name="userId"
+          value="{{userId}}"
+          style="display: none"/>
+        <a class="btn btn-block btn-primary jj-button-hover jj-center"
+           role="button"
+           type="submit"
+           aria-pressed="true">
+          Upload Image
+        </a>
       </div>
     </form>
-    <a class="btn btn-block btn-primary jj-button-hover jj-center"
-       role="button"
-       aria-pressed="true"
-       [routerLink]="['/user/:uid/website/:wid/page/:pid/widget/:wgid']">
-      Upload Image
-    </a>
     <button (click)="deleted(wgid)"
             class="btn btn-danger btn-block jj-button-hover jj-center"
             aria-pressed="true">
