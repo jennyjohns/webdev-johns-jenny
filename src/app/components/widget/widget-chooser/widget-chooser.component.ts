@@ -36,12 +36,9 @@ export class WidgetChooserComponent implements OnInit {
   }
 
   makeWidget(type: string) {
-    console.log(type);
     this.widget = { _id: Math.random().toString(), widgetType: type, pageId: this.pageId};
-    console.log(this.widget);
     this.widgetService.createWidget(this.pageId, this.widget)
       .subscribe((widget: any) => {
-        console.log(widget);
         this.widget = widget;
         this.widgetType = type;
         this.widgetId = this.widget['_id'];

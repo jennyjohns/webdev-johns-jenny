@@ -45,7 +45,7 @@ module.exports = function (app) {
     var wgId = req.params['wgid'];
     var widget = widgets.find(function (widget) {
       return widget._id === wgId;
-    })
+    });
     res.json(widget);
   }
 

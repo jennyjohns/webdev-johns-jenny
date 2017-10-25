@@ -38,7 +38,6 @@ export class WidgetService {
   };
 
   createWidget(pageId: string, widget: any) {
-    console.log(widget);
     const url = 'http://localhost:3100/api/page/' + pageId + '/widget';
     return this.http.post(url, widget)
       .map((response: Response) => {
