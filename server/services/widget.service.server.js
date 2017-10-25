@@ -7,6 +7,7 @@ module.exports = function (app) {
   app.get("/api/widget/:wgid", findWidgetById);
   app.post("/api/page/:pid/widget", createWidget);
   app.put("/api/widget/:wgid", updateWidget);
+  app.put("/api/page/:pid/widget?initial=index1&final=index2", sortingWidgets);
   app.delete("/api/widget/:wgid", deleteWidget);
   widgets = [
     {_id: '123', widgetType: 'HEADING', pageId: '321', size: 2, text: 'GIZMODO'},
@@ -30,14 +31,21 @@ module.exports = function (app) {
 
   function findAllWidgetsForPage(req, res) {
     var pageId = req.params['pid'];
-    widgetList = [];
-    for (i = 0; i < widgets.length; i++) {
-      if (widgets[i].pageId === pageId) {
-        widgetList.push(widgets[i]);
+    var index1 = req.query['initial'];
+    var index2 = req.query['final'];
+    if (index1 && index2) {
+      sortingWidgets(res, index1, index2);
+    } else {
+      widgetList = [];
+      for (i = 0; i < widgets.length; i++) {
+        if (widgets[i].pageId === pageId) {
+          widgetList.push(widgets[i]);
+        }
       }
+      res.json(widgetList);
     }
-    res.json(widgetList);
   }
+
 
   function findWidgetById(req, res) {
     var wgId = req.params['wgid'];
@@ -73,6 +81,16 @@ module.exports = function (app) {
     });
     var i = widgets.indexOf(widget);
     widgets.splice(i, 1);
+    res.json(widgets);
+  }
+
+  function sortingWidgets(res, index1, index2) {
+    var widget1 = widgets[index1];
+    var widget2 = widgets[index2];
+
+    widgets[index2] = widget1;
+    widgets[index1] = widget2;
+
     res.json(widgets);
   }
 
