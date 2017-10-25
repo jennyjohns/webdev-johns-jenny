@@ -3,6 +3,7 @@ module.exports = function (app) {
   app.get("/api/website/:wid/page", findAllPagesForWebsite);
   app.get("/api/page/:pid", findPageById);
   app.post("/api/website/:wid/page", createPage);
+  app.put("/api/page/:pid", updatePage);
   pages = [
     { _id: '321', name: 'Post 1', websiteId: '456', description: 'Lorem' },
     { _id: '432', name: 'Post 2', websiteId: '456', description: 'Lorem' },
@@ -31,8 +32,17 @@ module.exports = function (app) {
   }
   function createPage(req, res) {
     var page = req.body;
-    console.log(page);
     pages.push(page);
     res.json(page);
+  }
+  function updatePage(req, res) {
+    var pageId = req.params['pid'];
+    var updatedPage = req.body;
+    var page = pages.find(function (page) {
+      return page._id === pageId;
+    });
+    var i = pages.indexOf(page);
+    pages[i] = updatedPage;
+    res.json(updatedPage);
   }
 };

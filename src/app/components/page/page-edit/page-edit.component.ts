@@ -48,10 +48,13 @@ export class PageEditComponent implements OnInit {
     this.router.navigate(['user/', this.userId]);
   }
 
-  commit(pid, name, description) {
+  commit(pid: string, name: string, description: string) {
     this.page = {_id: pid, name: name, websiteId: this.websiteId, description: description};
-    this.pageService.updatePage(pid, this.page);
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+    this.pageService.updatePage(pid, this.page)
+      .subscribe((page: any) => {
+        this.page = page;
+        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+      });
   }
 
   editPage(pgId) {

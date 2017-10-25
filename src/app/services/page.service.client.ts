@@ -49,11 +49,11 @@ export class PageService {
   }
 
   updatePage(pageId: string, page: any) {
-    for (let x = 0; x < this.pages.length; x++) {
-      if (this.pages[x]._id === pageId) {
-        this.pages[x] = page;
-      }
-    }
+    const url = 'http://localhost:3100/api/page/' + pageId;
+    return this.http.put(url, page)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
   deletePage(pageId: string) {
     for (let x = 0; x < this.pages.length; x++) {

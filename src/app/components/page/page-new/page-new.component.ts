@@ -64,7 +64,6 @@ export class PageNewComponent implements OnInit {
     this.page = {_id: Math.random().toString(), name: name, websiteId: this.webId, description: description};
     this.pageService.createPage(this.webId, this.page)
       .subscribe((page: any) => {
-        console.log(page);
         this.page = page;
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page']);
       });
