@@ -107,10 +107,17 @@ module.exports = function (app) {
     var size = myFile.size;
     var mimetype = myFile.mimetype;
 
-    widget = findWidgetById(widgetId);
+    widget = getWidgetById(widgetId);
     widget.url = '/assets/uploads/' + filename;
 
     //var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
     //res.redirect(callbackUrl);
+  }
+
+  function getWidgetById(widgetId) {
+    var widget = widgets.find(function (widget) {
+      return widget._id === widgetId;
+    });
+    return widget;
   }
 };

@@ -18,6 +18,7 @@ export class PageEditComponent implements OnInit {
   description: string;
   pages = [];
 
+
   constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
