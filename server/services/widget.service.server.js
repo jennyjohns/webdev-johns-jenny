@@ -78,12 +78,15 @@ module.exports = function (app) {
     res.json(widgets);
   }
 
-  function sortingWidgets(res, index1, index2) {
-    var widget1 = widgets[index1];
-    var widget2 = widgets[index2];
+  function sortingWidgets(req, res) {
+    var index1 = req.query['initial'];
+    var index2 = req.query['final'];
 
-    widgets[index2] = widget1;
-    widgets[index1] = widget2;
+    var wid1 = widgets[index1];
+    var wid2 = widgets[index2];
+
+    widgets[index2] = wid1;
+    widgets[index1] = wid2;
 
     res.json(widgets);
   }
