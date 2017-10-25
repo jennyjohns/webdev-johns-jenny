@@ -28,8 +28,6 @@ export class PageEditComponent implements OnInit {
           this.pageId = params['pid'];
           this.userId = params['uid'];
           this.websiteId = params['wid'];
-          console.log(this.websiteId);
-
         }
       );
     this.pageService.findPageById(this.pageId)
@@ -75,9 +73,6 @@ export class PageEditComponent implements OnInit {
     this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', 'new']);
   }
 
-  goToWebsites() {
-    this.router.navigate(['user/', this.userId, 'website']);
-  }
   goToWidgets(pgId) {
     this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId, 'widget']);
   }

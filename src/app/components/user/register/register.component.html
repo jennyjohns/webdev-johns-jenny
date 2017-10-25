@@ -89,6 +89,7 @@
   </form>
   <button (click)="registered(username.value, password.value, firstName.value, lastName.value, email.value)"
           class="btn btn-primary btn-block jj-button-hover"
+          type="submit"
           aria-pressed="true"
           [disabled]="!f.valid"
           [routerLink]="['/register']">

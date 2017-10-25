@@ -30,8 +30,5 @@ export class LoginComponent implements OnInit {
         }
       );
   }
-  buttonClicked(event: any) {
-    console.log(event);
-  }
 
 }

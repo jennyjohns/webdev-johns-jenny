@@ -81,14 +81,15 @@
           <label for="Description">
             Description
           </label>
-          <input
+          <textarea
+            rows="5"
             placeholder="Description"
             name="Description"
             id="Description"
             class="form-control"
             required
             ngModel
-            #Description="ngModel"/>
+            #Description="ngModel"></textarea>
           <span class="help-block" *ngIf="Description.touched && !Description.valid">
               Please enter a page description!
           </span>
