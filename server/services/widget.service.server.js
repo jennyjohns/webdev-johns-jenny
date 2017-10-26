@@ -110,6 +110,7 @@ module.exports = function (app) {
     widget = getWidgetById(widgetId);
     console.log(widget);
     widget.url = '/assets/uploads/' + filename;
+    console.log(widget.url);
 
     // var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
     // res.redirect(callbackUrl);
