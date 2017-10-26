@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
+import {environment} from "../../environments/environment";
 
 
 @Injectable()
 
 export class UserService {
   constructor(private http: Http) {}
+  baseURL = environment.baseUrl;
   api = {
     'createUser'   : this.createUser,
     'findUserById' : this.findUserById,
@@ -17,7 +19,7 @@ export class UserService {
   };
 
   createUser(user: any) {
-    const url = 'http://localhost:3100/api/user';
+    const url = this.baseURL + '/api/user';
     return this.http.post(url, user)
       .map((response: Response) => {
         return response.json();
@@ -25,7 +27,7 @@ export class UserService {
   }
 
   findUserById(userId: string) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseURL + '/api/user/' + userId;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -33,7 +35,7 @@ export class UserService {
   }
 
   findUserByUsername(username: string) {
-    const url = 'http://localhost:3100/api/user?username=' + username;
+    const url = this.baseURL + '/api/user?username=' + username;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -41,7 +43,7 @@ export class UserService {
   }
 
   findUserByCredentials(username: string, password: string) {
-    const url = 'http://localhost:3100/api/user?username=' + username + '&password=' + password;
+    const url = this.baseURL + '/api/user?username=' + username + '&password=' + password;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -49,7 +51,7 @@ export class UserService {
   }
 
   updateUser(userId: string, user: any) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseURL + '/api/user/' + userId;
     return this.http.put(url, user)
       .map((response: Response) => {
         return response.json();
@@ -57,7 +59,7 @@ export class UserService {
   }
 
   deleteUser(userId: string) {
-    const url = 'http://localhost:3100/api/user/' + userId;
+    const url = this.baseURL + '/api/user/' + userId;
     return this.http.delete(url);
   }
 }

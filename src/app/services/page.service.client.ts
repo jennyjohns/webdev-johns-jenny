@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
+import {environment} from "../../environments/environment";
 
 
 // injecting service into module
@@ -8,6 +9,7 @@ import 'rxjs/Rx';
 
 export class PageService {
 
+  baseURL = environment.baseUrl;
   constructor(private http: Http) { }
   api = {
     'createPage'   : this.createPage,
@@ -18,7 +20,7 @@ export class PageService {
   };
 
   createPage(websiteId: string, page: any) {
-    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    const url = this.baseURL + '/api/website/' + websiteId + '/page';
     return this.http.post(url, page)
       .map((response: Response) => {
         return response.json();
@@ -26,7 +28,7 @@ export class PageService {
   }
 
   findPageByWebsiteId(websiteId: string) {
-    const url = 'http://localhost:3100/api/website/' + websiteId + '/page';
+    const url = this.baseURL + '/api/website/' + websiteId + '/page';
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -34,7 +36,7 @@ export class PageService {
   }
 
   findPageById(pageId: string) {
-    const url = 'http://localhost:3100/api/page/' + pageId;
+    const url = this.baseURL + '/api/page/' + pageId;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -42,14 +44,14 @@ export class PageService {
   }
 
   updatePage(pageId: string, page: any) {
-    const url = 'http://localhost:3100/api/page/' + pageId;
+    const url = this.baseURL + '/api/page/' + pageId;
     return this.http.put(url, page)
       .map((response: Response) => {
         return response.json();
       });
   }
   deletePage(pageId: string) {
-    const url = 'http://localhost:3100/api/page/' + pageId;
+    const url = this.baseURL + '/api/page/' + pageId;
     return this.http.delete(url);
   }
 }

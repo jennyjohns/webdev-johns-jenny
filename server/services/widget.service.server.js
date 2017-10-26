@@ -52,7 +52,6 @@ module.exports = function (app) {
 
   function createWidget(req, res) {
     var widget = req.body;
-    console.log(widget);
     widgets.push(widget);
     res.json(widget);
   }
@@ -93,11 +92,9 @@ module.exports = function (app) {
   }
 
   function uploadImage(req, res) {
-    console.log('upload image commencing');
     var widgetId = req.body.widgetId;
     var width = req.body.width;
     var myFile = req.file;
-    console.log(myFile);
     var userId = req.body.userId;
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
@@ -110,10 +107,7 @@ module.exports = function (app) {
     var mimetype = myFile.mimetype;
 
     widget = getWidgetById(widgetId);
-    console.log(widget);
     widget.url = '/assets/uploads/' + filename;
-    console.log(filename);
-    console.log(widget.url);
 
     // var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
     // res.redirect(callbackUrl);

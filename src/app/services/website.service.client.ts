@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 export class WebsiteService {
 
   constructor(private http: Http) { }
+
+  baseURL = environment.baseUrl;
+
   api = {
     'createWebsite'   : this.createWebsite,
     'findWebsitesByUser' : this.findWebsitesByUser,
@@ -19,7 +22,7 @@ export class WebsiteService {
   };
 
   createWebsite(developerId: string, website: any) {
-    const url = 'http://localhost:3100/api/user/' + developerId + '/website';
+    const url = this.baseURL + '/api/user/' + developerId + '/website';
     return this.http.post(url, website)
       .map((response: Response) => {
         return response.json();
@@ -27,7 +30,7 @@ export class WebsiteService {
   }
 
   findWebsitesByUser(developerId: string) {
-    const url = 'http://localhost:3100/api/user/' + developerId + '/website';
+    const url = this.baseURL + '/api/user/' + developerId + '/website';
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
@@ -35,21 +38,21 @@ export class WebsiteService {
   }
 
   findWebsiteById(websiteId: string) {
-    const url = 'http://localhost:3100/api/website/' + websiteId;
+    const url = this.baseURL + '/api/website/' + websiteId;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();
       });
   }
   updateWebsite(websiteId: string, website: any) {
-    const url = 'http://localhost:3100/api/website/' + websiteId;
+    const url = this.baseURL + '/api/website/' + websiteId;
     return this.http.put(url, website)
       .map((response: Response) => {
         return response.json();
       });
   }
   deleteWebsite(websiteId: string) {
-    const url = 'http://localhost:3100/api/website/' + websiteId;
+    const url = this.baseURL + '/api/website/' + websiteId;
     return this.http.delete(url);
   }
 }

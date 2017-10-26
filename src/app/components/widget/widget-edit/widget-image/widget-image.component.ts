@@ -48,7 +48,6 @@ export class WidgetImageComponent implements OnInit {
       });
   }
   commit(width, url) {
-    console.log(this.width);
     this.widget = {
       _id: this.widget['_id'],
       widgetType: 'IMAGE',
