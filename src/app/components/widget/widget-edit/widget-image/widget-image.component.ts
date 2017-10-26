@@ -1,8 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
-import {DomSanitizer} from '@angular/platform-browser';
 import {NgModel} from '@angular/forms';
+import {environment} from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-widget-image',
@@ -10,6 +10,7 @@ import {NgModel} from '@angular/forms';
   styleUrls: ['./widget-image.component.css']
 })
 export class WidgetImageComponent implements OnInit {
+
   @ViewChild('f') newWidgetForm: NgModel;
   widget = {};
   wgid: string;
@@ -20,6 +21,8 @@ export class WidgetImageComponent implements OnInit {
   url: string;
   width: string;
   widgetType: string;
+  baseURL = environment.baseUrl;
+
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
               private router: Router) {

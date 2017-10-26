@@ -62,7 +62,7 @@
                value="100%"/>
       </div>
     </form>
-    <form ngNoForm action="http://localhost:3100/api/upload" method="post" enctype="multipart/form-data" class="jj-form container-fluid">
+    <form ngNoForm action="{{baseURL}}/api/upload" method="post" enctype="multipart/form-data" class="jj-form container-fluid">
       <input  name="myFile"   type="file" class="form-control"/>
       <input  name="widgetId" value="{{wgid}}"   style="display: none"/>
       <input  name="websiteId" value="{{webId}}"   style="display: none"/>
