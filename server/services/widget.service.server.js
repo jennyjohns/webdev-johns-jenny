@@ -94,8 +94,7 @@ module.exports = function (app) {
 
   function uploadImage(req, res) {
     console.log('upload image commencing');
-    var widgetId = req.body._id;
-    console.log('id: ' + widgetId);
+    var widgetId = req.body.widgetId;
     var width = req.body.width;
     var myFile = req.file;
     console.log(myFile);
