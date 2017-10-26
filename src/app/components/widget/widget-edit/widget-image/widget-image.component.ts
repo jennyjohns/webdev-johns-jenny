@@ -48,6 +48,7 @@ export class WidgetImageComponent implements OnInit {
       });
   }
   commit(width, url) {
+    console.log(this.width);
     this.widget = {
       _id: this.widget['_id'],
       widgetType: 'IMAGE',
@@ -58,8 +59,8 @@ export class WidgetImageComponent implements OnInit {
     this.widgetService.updateWidget(this.widget['_id'], this.widget)
       .subscribe((widget: any) => {
         this.widget = widget;
-        this.url = width;
-        this.width = url;
+        this.url = url;
+        this.width = width;
         this.widgetType = 'IMAGE';
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });

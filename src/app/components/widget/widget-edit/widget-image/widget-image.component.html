@@ -62,48 +62,16 @@
                value="100%"/>
       </div>
     </form>
-    {{wgid}}
-    <form ngNoForm action="http://localhost:3100/api/upload" method="post" enctype="multipart/form-data">
+    <form ngNoForm action="http://localhost:3100/api/upload" method="post" enctype="multipart/form-data" class="jj-form">
       <input  name="myFile"   type="file" class="form-control"/>
       <input  name="widgetId" value="{{wgid}}"   style="display: none"/>
       <input  name="websiteId" value="{{webId}}"   style="display: none"/>
       <input  name="pageId" value="{{pageId}}"   style="display: none"/>
       <input  name="userId" value="{{userId}}"   style="display: none"/>
-      <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+      <button (click)="commit(width, url)" type="submit" class="btn btn-block btn-primary jj-center jj-button-hover">Upload Image</button>
       <br/>
     </form>
 
-    <!--<form ngNoForm action="http://localhost:3100/api/upload" method="post" enctype="multipart/form-data" class="jj-form">-->
-      <!--<div class="form-group">-->
-        <!--<input-->
-          <!--type="file"-->
-          <!--name="myFile"-->
-          <!--class="form-control"/>-->
-        <!--<input-->
-          <!--name="widgetId"-->
-          <!--value="{{wgid}}"-->
-          <!--style="display: none"/>-->
-        <!--<input-->
-          <!--name="websiteId"-->
-          <!--value="{{webId}}"-->
-          <!--style="display: none"/>-->
-        <!--<input-->
-          <!--name="pageId"-->
-          <!--value="{{pageId}}"-->
-          <!--style="display: none"/>-->
-        <!--<input-->
-          <!--name="userId"-->
-          <!--value="{{userId}}"-->
-          <!--style="display: none"/>-->
-        <!--<a class="btn btn-block btn-primary jj-button-hover jj-center"-->
-           <!--role="button"-->
-           <!--type="submit"-->
-           <!--aria-pressed="true">-->
-          <!--&lt;!&ndash;(click)="commit(width, url)"&ndash;&gt;-->
-          <!--Upload Image-->
-        <!--</a>-->
-      <!--</div>-->
-    <!--</form>-->
     <button (click)="deleted(wgid)"
             class="btn btn-danger btn-block jj-button-hover jj-center"
             aria-pressed="true">
