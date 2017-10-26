@@ -26,7 +26,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   register(username: string, password: string, email: string, firstName: string, lastName: string) {
-    console.log(username, password, email, firstName, lastName);
     this.username = username;
     this.password = password;
     this.email = email;
