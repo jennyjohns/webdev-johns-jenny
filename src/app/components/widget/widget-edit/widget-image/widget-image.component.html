@@ -62,7 +62,7 @@
                value="100%"/>
       </div>
     </form>
-    <form ngNoForm action="http://localhost:3100/api/upload" method="post" enctype="multipart/form-data" class="jj-form">
+    <form ngNoForm action="http://localhost:3100/api/upload" method="post" enctype="multipart/form-data" class="jj-form container-fluid">
       <input  name="myFile"   type="file" class="form-control"/>
       <input  name="widgetId" value="{{wgid}}"   style="display: none"/>
       <input  name="websiteId" value="{{webId}}"   style="display: none"/>
@@ -71,7 +71,7 @@
       <button (click)="commit(width, url)" type="submit" class="btn btn-block btn-primary jj-form jj-button-hover" aria-pressed="true">Upload Image</button>
       <br/>
     </form>
-    <button (click)="deleted(wgid)" class="btn btn-danger btn-block jj-button-hover jj-form" aria-pressed="true">Delete</button>
+    <button (click)="deleted(wgid)" class="btn btn-danger btn-block jj-button-hover jj-form jj-center" aria-pressed="true">Delete</button>
   </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
