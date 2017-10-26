@@ -109,8 +109,8 @@ module.exports = function (app) {
     widget = getWidgetById(widgetId);
     widget.url = '/assets/uploads/' + filename;
 
-    // var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
-    // res.redirect(callbackUrl);
+     var callbackUrl = '/#/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
+     res.redirect(callbackUrl);
   }
 
   function getWidgetById(widgetId) {
