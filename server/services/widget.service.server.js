@@ -1,3 +1,5 @@
+import {environment} from "../../src/environments/environment";
+
 module.exports = function (app) {
   var multer = require('multer');
   var upload = multer({ dest: __dirname + '/../../dist/assets/uploads'});
@@ -109,7 +111,7 @@ module.exports = function (app) {
     widget = getWidgetById(widgetId);
     widget.url = '/assets/uploads/' + filename;
 
-     var callbackUrl = '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
+     var callbackUrl = environment.baseUrl + '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
      res.redirect(callbackUrl);
   }
 
