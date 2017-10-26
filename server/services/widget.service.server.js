@@ -108,10 +108,11 @@ module.exports = function (app) {
     var mimetype = myFile.mimetype;
 
     widget = getWidgetById(widgetId);
+    console.log(widget);
     widget.url = '/assets/uploads/' + filename;
 
-    var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
-    res.redirect(callbackUrl);
+    // var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
+    // res.redirect(callbackUrl);
   }
 
   function getWidgetById(widgetId) {
