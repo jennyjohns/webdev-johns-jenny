@@ -1,4 +1,3 @@
-import {environment} from "../../src/environments/environment";
 
 module.exports = function (app) {
   var multer = require('multer');
@@ -11,6 +10,7 @@ module.exports = function (app) {
   app.put("/api/page/:pid/widget", sortingWidgets);
   app.delete("/api/widget/:wgid", deleteWidget);
   app.post("/api/upload", upload.single('myFile'), uploadImage);
+
 
   widgets = [
     {_id: '123', widgetType: 'HEADING', pageId: '321', size: 2, text: 'GIZMODO'},
@@ -111,8 +111,8 @@ module.exports = function (app) {
     widget = getWidgetById(widgetId);
     widget.url = '/assets/uploads/' + filename;
 
-     var callbackUrl = environment.baseUrl + '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
-     res.redirect(callbackUrl);
+     // var callbackUrl = this.baseUrl + '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
+     // res.redirect(callbackUrl);
   }
 
   function getWidgetById(widgetId) {
