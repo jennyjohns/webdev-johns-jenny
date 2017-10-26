@@ -1,7 +1,6 @@
 module.exports = function (app) {
   var multer = require('multer');
-  var upload = multer({dest: __dirname + '/../../dist/assets/uploads'});
-  app.post("/api/upload", upload.single('myFile'), uploadImage);
+  var upload = multer({ dest: __dirname + '/../../dist/assets/uploads'});
   app.get("/api/widget", findAllWidgets);
   app.get("/api/page/:pid/widget", findAllWidgetsForPage);
   app.get("/api/widget/:wgid", findWidgetById);
@@ -9,6 +8,8 @@ module.exports = function (app) {
   app.put("/api/widget/:wgid", updateWidget);
   app.put("/api/page/:pid/widget", sortingWidgets);
   app.delete("/api/widget/:wgid", deleteWidget);
+  app.post("/api/upload", upload.single('myFile'), uploadImage);
+
   widgets = [
     {_id: '123', widgetType: 'HEADING', pageId: '321', size: 2, text: 'GIZMODO'},
     {_id: '234', widgetType: 'HEADING', pageId: '321', size: 4, text: 'Lorem ipsum'},
@@ -92,10 +93,12 @@ module.exports = function (app) {
   }
 
   function uploadImage(req, res) {
+    console.log('upload image commencing');
     var widgetId = req.body._id;
+    console.log('id: ' + widgetId);
     var width = req.body.width;
     var myFile = req.file;
-
+    console.log(myFile);
     var userId = req.body.userId;
     var websiteId = req.body.websiteId;
     var pageId = req.body.pageId;
@@ -110,6 +113,7 @@ module.exports = function (app) {
     widget = getWidgetById(widgetId);
     console.log(widget);
     widget.url = '/assets/uploads/' + filename;
+    console.log(filename);
     console.log(widget.url);
 
     // var callbackUrl = '/assignment/#/user/' + userId + '/website/' + websiteId; // not finished!!
