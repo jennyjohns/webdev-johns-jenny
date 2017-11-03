@@ -41,8 +41,7 @@ export class RegisterComponent implements OnInit {
           this.errorFlag = true;
           this.errorMsg = 'Username already in use, please choose another username!';
         }else {
-          const user1 = {_id: Math.random().toString(), username: username, password: password, firstName: firstName,
-            lastName: lastName, email: email};
+          const user1 = {username: username, password: password, firstName: firstName, lastName: lastName, email: email};
           this.userService.createUser(user1)
             .subscribe((user2) => {
               this.user = user2;

@@ -73,19 +73,21 @@ module.exports = function (app) {
 
   function createUser(req, res) {
     var user = req.body;
-    users.push(user);
-    res.json(user)
+    userModel
+      .createUser(user)
+      .then(function (user) {
+        res.json(user);
+      });
   }
 
   function updateUser(req, res) {
     var userId = req.params['uid'];
     var updatedUser = req.body;
-    var user = users.find(function (user) {
-      return userId === user._id
-    });
-    var i = users.indexOf(user);
-    users[i] = updatedUser;
-    res.json(updatedUser);
+    userModel
+      .updateUser(userId, updatedUser)
+      .then(function (status) {
+        res.json(status);
+      });
   }
 
   function deleteUser(req, res) {

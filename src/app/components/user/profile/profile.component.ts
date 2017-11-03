@@ -42,16 +42,15 @@ export class ProfileComponent implements OnInit {
   websites() {
     this.router.navigate(['user/', this.userId, 'website']);
   }
-  goToProfile(uid, uname, email, fname, lname) {
-    const user = {_id: uid, username: uname, email: email, firstName: fname, lastName: lname};
-    this.userService.updateUser(uid, user)
+  goToProfile(uname, email, fname, lname) {
+    const user = {username: uname, email: email, firstName: fname, lastName: lname};
+    this.userService.updateUser(this.userId, user)
       .subscribe((user1) => {
         this.username = user1['username'];
         this.firstName = user1['firstName'];
         this.password = user1['password'];
         this.lastName = user1['lastName'];
         this.email = user1['email'];
-        this.userId = user1['_id'];
         this.router.navigate(['user/', this.userId]);
       });
   }

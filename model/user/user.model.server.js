@@ -7,6 +7,7 @@ UserModel.findAllUsers = findAllUsers;
 UserModel.createUser = createUser;
 UserModel.findUserByCredentials = findUserByCredentials;
 UserModel.findUserByUsername = findUserByUsername;
+UserModel.updateUser = updateUser;
 
 module.exports = UserModel;
 
@@ -19,16 +20,18 @@ function findUserByUsername(username) {
 }
 
 function createUser (user) {
-  UserModel.create(user, function (err, doc) {
-    console.log(err);
-    console.log(doc);
-  });
+  return UserModel.create(user);
 }
+
 function findAllUsers() {
-  UserModel.find(function (err, docs) {
-    console.log(docs);
-  });
+  return UserModel.find();
 }
+
 function findUserById(userId) {
   return UserModel.findById(userId);
 }
+
+function updateUser(userId, user) {
+  return UserModel.update({_id: userId}, user);
+}
+
