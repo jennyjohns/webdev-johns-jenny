@@ -5,6 +5,9 @@ var UserSchema = mongoose.Schema ( {
   firstName: String,
   lastName: String,
   email: String,
+  phone: String,
+  websites: String, //@TODO CHANGE THIS!
+  dateCreated: Date,
 }, {collection: 'user'});
 
 module.exports = UserSchema;

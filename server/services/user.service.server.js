@@ -47,7 +47,7 @@ module.exports = function (app) {
     userModel.findUserById(userId)
       .then(function (user) {
         res.json(user);
-    });
+      });
   }
 
   function findUsers(req, res) {
@@ -57,11 +57,16 @@ module.exports = function (app) {
       userModel.findUserByCredentials(username, password)
         .then(function (user) {
           res.json(user);
-      });
+        });
       return;
     }
     else if (username) {
-      findUserByUsername(res, username);
+      userModel
+        .findUserByUsername(username)
+        .then(function (user) {
+          res.json(user);
+        });
+      return;
     }
     res.json(users);
   }
@@ -70,28 +75,6 @@ module.exports = function (app) {
     var user = req.body;
     users.push(user);
     res.json(user)
-  }
-
-  function findUserByCredentials(res, username, password) {
-    var user = users.find(function (user) {
-      return user.username === username && user.password === password;
-    });
-    if (user) {
-      res.json(user);
-    } else {
-      res.json(null);
-    }
-  }
-
-  function findUserByUsername(res, username) {
-    var user = users.find(function (user) {
-      return user.username === username;
-    });
-    if (user) {
-      res.json(user);
-    } else {
-      res.json(null);
-    }
   }
 
   function updateUser(req, res) {
