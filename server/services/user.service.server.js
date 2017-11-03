@@ -1,4 +1,6 @@
 module.exports = function (app) {
+  var userModel = require("../../model/user/user.model.server");
+
   app.get("/api/user/:uid", findUserById);
   app.get("/api/user", findUsers);
   app.post("/api/user", createUser);
@@ -52,7 +54,8 @@ module.exports = function (app) {
     var username = req.query["username"];
     var password = req.query["password"];
     if (username && password) {
-      findUserByCredentials(res, username, password);
+      // findUserByCredentials(res, username, password);
+      userModel.findUserByCredentials(username, password);
     }
     else if (username) {
       findUserByUsername(res, username);
