@@ -17,15 +17,16 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit() {  }
+  ngOnInit() {  this.errorFlag = false; }
   login(username: string, password: string) {
     this.username = username;
     this.password = password;
-    this.errorFlag = true;
     this.userService.findUserByCredentials(this.username, this.password)
       .subscribe((user: any) => {
           if (user) {
             this.router.navigate(['user/', user._id]);
+          } else {
+            this.errorFlag = true;
           }
         }
       );

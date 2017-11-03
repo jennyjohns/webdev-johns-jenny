@@ -44,18 +44,21 @@ module.exports = function (app) {
 
   function findUserById(req, res) {
     var userId = req.params["uid"];
-    var user = users.find(function (user) {
-      return user._id === userId;
+    userModel.findUserById(userId)
+      .then(function (user) {
+        res.json(user);
     });
-    res.json(user);
   }
 
   function findUsers(req, res) {
     var username = req.query["username"];
     var password = req.query["password"];
     if (username && password) {
-      // findUserByCredentials(res, username, password);
-      userModel.findUserByCredentials(username, password);
+      userModel.findUserByCredentials(username, password)
+        .then(function (user) {
+          res.json(user);
+      });
+      return;
     }
     else if (username) {
       findUserByUsername(res, username);

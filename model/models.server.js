@@ -1,4 +1,4 @@
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongod://localhost/cs5610', );
+var db = mongoose.connect('mongodb://localhost/cs5610', {useMongoClient: true});
 
 module.exports = db;
