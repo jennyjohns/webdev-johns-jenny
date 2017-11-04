@@ -5,7 +5,7 @@ module.exports = function (app) {
   app.post("/api/user/:uid/website", createWebsite);
   app.put("/api/website/:wid", updateWebsite);
   app.delete("/api/website/:wid", deleteWebsite);
-
+  var websiteModel = require('../../model/website/website.model.server');
 
   websites = [
     { _id: '123', name: 'Facebook',    developerId: '456', description: 'Lorem' },
@@ -23,13 +23,11 @@ module.exports = function (app) {
   }
   function findAllWebsitesForUser(req, res) {
     var userId = req.params['uid'];
-    var websiteList = [];
-    for (i = 0; i < websites.length; i++) {
-      if (websites[i].developerId === userId) {
-        websiteList.push(websites[i]);
-      }
-    }
-    res.json(websiteList);
+    websiteModel
+      .findWebsitesByUser(userId)
+      .then(function (websites) {
+        res.json(websites);
+      });
   }
 
   function findWebsiteById(req, res) {
@@ -41,9 +39,18 @@ module.exports = function (app) {
   }
 
   function createWebsite(req, res) {
+    var userId = req.params['uid'];
     var website = req.body;
-    websites.push(website);
-    res.json(website);
+    website.developerId = userId;
+    websiteModel
+      .createWebsite(website)
+      .then(function (website) {
+        websiteModel
+          .findWebsitesByUser(userId)
+          .then(function (websites) {
+            res.json(websites);
+          });
+      });
   }
 
   function updateWebsite(req, res) {

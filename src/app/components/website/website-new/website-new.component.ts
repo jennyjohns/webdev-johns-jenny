@@ -42,7 +42,7 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   commit(name: string, description: string) {
-    this.website = {_id: Math.random().toString(), name: name, developerId: this.developerId, description: description};
+    this.website = {name: name, developerId: this.developerId, description: description};
     this.websiteService.createWebsite(this.developerId, this.website)
       .subscribe((website: any) => {
         this.website = website;
