@@ -61,7 +61,7 @@ export class PageNewComponent implements OnInit {
   }
 
   commit(name: string, description: string) {
-    this.page = {_id: Math.random().toString(), name: name, websiteId: this.webId, description: description};
+    this.page = {name: name, websiteId: this.webId, description: description};
     this.pageService.createPage(this.webId, this.page)
       .subscribe((page: any) => {
         this.page = page;

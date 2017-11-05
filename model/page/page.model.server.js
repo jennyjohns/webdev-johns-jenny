@@ -11,16 +11,17 @@ PageModel.deletePage = deletePage;
 
 module.exports = PageModel;
 
-function createPage(websiteId, page) {
+function createPage(webId, page) {
   var newPage = null;
   return PageModel
     .create(page)
     .then(function (page) {
       newPage = page;
       WebsiteModel
-        .findWebsiteById(websiteId)
+        .findWebsiteById(webId)
         .then(function (website) {
-          website.page.push(newPage);
+          website.pages.push(newPage);
+          console.log(website);
           return website.save();
         });
     });
