@@ -8,12 +8,6 @@ module.exports = function (app) {
 
   var pageModel = require('../../model/page/page.model.server');
 
-  pages = [
-    { _id: '321', name: 'Post 1', websiteId: '456', description: 'Lorem' },
-    { _id: '432', name: 'Post 2', websiteId: '456', description: 'Lorem' },
-    { _id: '543', name: 'Post 3', websiteId: '456', description: 'Lorem' }
-  ];
-
   function findAllPages(req, res) {
     res.json(pages);
   }
@@ -25,14 +19,6 @@ module.exports = function (app) {
       .then(function (pages) {
         res.json(pages);
       });
-
-    // pageList = [];
-    // for (i = 0; i < pages.length; i++) {
-    //   if (pages[i].websiteId === webId) {
-    //     pageList.push(pages[i]);
-    //   }
-    // }
-    // res.json(pageList);
   }
 
   function findPageById(req, res) {
@@ -42,10 +28,6 @@ module.exports = function (app) {
       .then(function (page) {
         res.json(page);
       });
-    // var page = pages.find(function (page) {
-    //   return page._id === pageId;
-    // });
-    // res.json(page);
   }
 
   function createPage(req, res) {
@@ -61,8 +43,6 @@ module.exports = function (app) {
             res.json(pages);
           });
       });
-    // pages.push(page);
-    // res.json(page);
   }
 
   function updatePage(req, res) {
@@ -73,12 +53,6 @@ module.exports = function (app) {
       .then(function (status) {
         res.json(status);
       });
-    // var page = pages.find(function (page) {
-    //   return page._id === pageId;
-    // });
-    // var i = pages.indexOf(page);
-    // pages[i] = updatedPage;
-    // res.json(updatedPage);
   }
 
   function deletePage(req, res) {
@@ -88,11 +62,5 @@ module.exports = function (app) {
       .then(function (pages) {
         res.json(pages);
       });
-    // var page = this.pages.find(function (page) {
-    //   return page._id === pageId;
-    // });
-    // var i = pages.indexOf(page);
-    // pages.splice(i, 1);
-    // res.json(pages);
   }
 };
