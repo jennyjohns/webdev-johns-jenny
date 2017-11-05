@@ -32,10 +32,11 @@ module.exports = function (app) {
 
   function findWebsiteById(req, res) {
     var webId = req.params['wid'];
-    var website = this.websites.find(function (website) {
-      return website._id === webId;
-    });
-    res.json(website);
+    websiteModel
+      .findWebsiteById(webId)
+      .then(function (website) {
+        res.json(website);
+      });
   }
 
   function createWebsite(req, res) {
@@ -56,21 +57,19 @@ module.exports = function (app) {
   function updateWebsite(req, res) {
     var webId = req.params['wid'];
     var updatedWebsite = req.body;
-    var website = websites.find(function (website) {
-      return website._id === webId;
-    });
-    var i = websites.indexOf(website);
-    websites[i] = updatedWebsite;
-    res.json(updatedWebsite);
+    websiteModel
+      .updateWebsite(webId, updatedWebsite)
+      .then(function (status) {
+        res.json(status);
+      });
   }
 
   function deleteWebsite(req, res) {
     var webId = req.params['wid'];
-    var website = websites.find(function (website) {
-      return website._id === webId;
-    });
-    var i = websites.indexOf(website);
-    websites.splice(i, 1);
-    res.json(websites);
+    websiteModel
+      .deleteWebsite(webId)
+      .then(function (websites) {
+        res.json(websites);
+      });
   }
 };

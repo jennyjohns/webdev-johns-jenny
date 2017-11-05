@@ -7,41 +7,6 @@ module.exports = function (app) {
   app.put("/api/user/:uid", updateUser);
   app.delete("/api/user/:uid", deleteUser);
 
-  var users = [
-    {
-      _id: '123',
-      username: 'alice',
-      password: 'alice',
-      firstName: 'Alice',
-      lastName: 'Wonder',
-      email: 'alice@email.com'
-    },
-    {
-      _id: '234',
-      username: 'bob',
-      password: 'bob',
-      firstName: 'Bob',
-      lastName: 'Marley',
-      email: 'bob@email.com'
-    },
-    {
-      _id: '345',
-      username: 'charly',
-      password: 'charly',
-      firstName: 'Charly',
-      lastName: 'Garcia',
-      email: 'charly@email.com'
-    },
-    {
-      _id: '456',
-      username: 'jannunzi',
-      password: 'jannunzi',
-      firstName: 'Jose',
-      lastName: 'Annunzi',
-      email: 'jose@email.com'
-    }
-  ];
-
   function findUserById(req, res) {
     var userId = req.params["uid"];
     userModel.findUserById(userId)
@@ -92,11 +57,6 @@ module.exports = function (app) {
 
   function deleteUser(req, res) {
     var userId = req.params['uid'];
-    // var user = users.find(function (user) {
-    //   return userId === user._id
-    // });
-    // var i = users.indexOf(user);
-    // users.splice(i, 1);
     userModel
       .deleteUser(userId)
       .then(function (users) {
