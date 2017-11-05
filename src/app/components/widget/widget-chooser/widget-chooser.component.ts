@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class WidgetChooserComponent implements OnInit {
   widgetId: string;
-  widgetType: string;
+  widgetType: String;
   pageId: string;
   userId: string;
   webId: string;
@@ -35,11 +35,14 @@ export class WidgetChooserComponent implements OnInit {
       });
   }
 
-  makeWidget(type: string) {
+  makeWidget(type: String) {
     this.widget = {widgetType: type, pageId: this.pageId};
     this.widgetService.createWidget(this.pageId, this.widget)
-      .subscribe((widget: any) => {
-        this.widget = widget;
+      .subscribe((widgets: any) => {
+        this.widgets = widgets;
+        const len = widgets.length;
+        this.widget = widgets[len - 1];
+        this.widget['widgetType'] = type;
         this.widgetType = type;
         this.widgetId = this.widget['_id'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', this.widgetId]);

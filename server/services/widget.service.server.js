@@ -42,14 +42,6 @@ module.exports = function (app) {
       .then(function (widgets) {
         res.json(widgets);
       });
-    // widgetList = [];
-    // for (i = 0; i < widgets.length; i++) {
-    //   if (widgets[i].pageId === pageId) {
-    //     widgetList.push(widgets[i]);
-    //   }
-    // }
-    // res.json(widgetList);
-
   }
 
   function findWidgetById(req, res) {
@@ -59,10 +51,6 @@ module.exports = function (app) {
       .then(function (widget) {
         res.json(widget);
       });
-    // var widget = widgets.find(function (widget) {
-    //   return widget._id === wgId;
-    // });
-    // res.json(widget);
   }
 
   function createWidget(req, res) {
@@ -78,8 +66,6 @@ module.exports = function (app) {
             res.json(widgets);
           });
       });
-    // widgets.push(widget);
-    // res.json(widget);
   }
 
   function updateWidget(req, res) {
@@ -90,13 +76,6 @@ module.exports = function (app) {
       .then(function (status) {
         res.json(status);
       });
-    // var widget = widgets.find(function (widget) {
-    //   return widget._id === widgetId;
-    // });
-    // var i = widgets.indexOf(widget);
-    //
-    // widgets[i] = updatedWidget;
-    // res.json(updatedWidget);
   }
 
   function deleteWidget(req, res) {
@@ -106,12 +85,6 @@ module.exports = function (app) {
       .then(function (widgets) {
         res.json(widgets);
       });
-    // var widget = this.widgets.find(function (widget) {
-    //   return widget._id === widgetId;
-    // });
-    // var i = widgets.indexOf(widget);
-    // widgets.splice(i, 1);
-    // res.json(widgets);
   }
 
   function sortingWidgets(req, res) {

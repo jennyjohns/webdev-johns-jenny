@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var WidgetSchema = mongoose.Schema ( {
   _page: {type: mongoose.Schema.Types.ObjectId, ref: 'PageModel'},
-  type: String,
+  widgetType: String,
   name: String,
   text: String,
   placeholder: String,
@@ -17,16 +17,6 @@ var WidgetSchema = mongoose.Schema ( {
   deletable: Boolean,
   formatted: Boolean,
   dateCreated: Date
-}, {collections: 'widget'});
+}, {collection: 'widget'});
 
 module.exports = WidgetSchema;
-// var PageSchema = mongoose.Schema ( {
-//   _website: {type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'},
-//   name: String,
-//   title: String,
-//   description: String,
-//   widgets: [WidgetSchema],
-//   dateCreated: Date
-// }, {collection: 'page'});
-//
-// module.exports = PageSchema;
