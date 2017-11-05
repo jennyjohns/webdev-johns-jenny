@@ -92,11 +92,15 @@ module.exports = function (app) {
 
   function deleteUser(req, res) {
     var userId = req.params['uid'];
-    var user = users.find(function (user) {
-      return userId === user._id
-    });
-    var i = users.indexOf(user);
-    users.splice(i, 1);
-    res.json(users);
+    // var user = users.find(function (user) {
+    //   return userId === user._id
+    // });
+    // var i = users.indexOf(user);
+    // users.splice(i, 1);
+    userModel
+      .deleteUser(userId)
+      .then(function (users) {
+        res.json(users);
+      });
   }
 };
