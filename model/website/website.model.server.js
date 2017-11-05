@@ -22,7 +22,7 @@ function createWebsite(website) {
         .then(function (user) {
           user.websites.push(newWebsite);
           return user.save();
-        })
+        });
     });
 }
 

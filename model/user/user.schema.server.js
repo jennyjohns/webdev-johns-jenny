@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var WebsiteSchema = require('../website/website.schema.server');
 var UserSchema = mongoose.Schema ( {
   username: String,
   password: String,
@@ -7,7 +6,7 @@ var UserSchema = mongoose.Schema ( {
   lastName: String,
   email: String,
   phone: String,
-  websites: [WebsiteSchema], //@TODO CHANGE THIS!
+  websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}], //@TODO CHANGE THIS!
   dateCreated: Date,
 }, {collection: 'user'});
 
