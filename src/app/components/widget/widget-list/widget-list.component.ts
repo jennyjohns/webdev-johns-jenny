@@ -57,7 +57,11 @@ export class WidgetListComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(youTubeURL);
   }
   onIndexChange(event) {
-    this.widgetService.sortingWidgets(this.pageId, event, event);
-    // console.log(event);
+     this.widgetService.sortingWidgets(this.pageId, event.start, event.stop)
+       .subscribe((widgets: any) => {
+          this.widgets = widgets;
+       });
+     console.log('s' +  event.start);
+     console.log('e' + event.stop);
   }
 }

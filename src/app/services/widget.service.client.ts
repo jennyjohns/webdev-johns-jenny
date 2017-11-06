@@ -18,7 +18,8 @@ export class WidgetService {
     'findWidgetByPageId': this.findWidgetsByPageId,
     'findWidgetById': this.findWidgetById,
     'updateWidget': this.updateWidget,
-    'deleteWidget': this.deleteWidget
+    'deleteWidget': this.deleteWidget,
+    'sortingWidgets' : this.sortingWidgets
   };
 
   createWidget(pageId: string, widget: any) {
@@ -60,8 +61,8 @@ export class WidgetService {
 
   sortingWidgets (pageId: string, start: Number, stop: Number) {
     // app.put("/api/page/:pid/widget", sortingWidgets);
-    const url = this.baseURL + '/api/page/' + pageId + '/widget';
-    return this.http.put(url, start, stop)
+    const url = this.baseURL + '/api/page/' + pageId + '/widget?initial=' + start + '&final=' + stop;
+    return this.http.put(url, start)
       .map((response: Response) => {
         return response.json();
       });

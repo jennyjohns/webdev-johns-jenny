@@ -8,7 +8,7 @@ WidgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
 WidgetModel.findWidgetById = findWidgetById;
 WidgetModel.updateWidget = updateWidget;
 WidgetModel.deleteWidget = deleteWidget;
-WidgetModel.reorderWidget = reorderWidget;
+WidgetModel.sortingWidgets = sortingWidgets;
 
 module.exports = WidgetModel;
 
@@ -61,27 +61,23 @@ function deleteWidget(widgetId) {
             });
         });
     });
-  // var page1 = null;
-  // var webId = null;
-  // var i = null;
-  // return PageModel.findOne({_id: pageId})
-  //   .then(function (page) {
-  //     page1 = page;
-  //     webId = page._website;
-  //     PageModel
-  //       .deleteOne({_id: pageId})
-  //       .then(function (pages) {
-  //         WebsiteModel
-  //           .findWebsiteById(webId)
-  //           .then(function (website) {
-  //             i = website.pages.indexOf(page1);
-  //             website.pages.splice(i, 1);
-  //             return website.save();
-  //           });
-  //       });
-  //   });
 }
 
-function reorderWidget(pageId, start, end) {
-  //return WidgetModel.
+function sortingWidgets(pageId, start, end) {
+  var pageWidgets = null;
+  var wdgt = null;
+  WidgetModel
+    .findAllWidgetsForPage(pageId)
+    .then(function (widgets) {
+      pageWidgets = widgets;
+      wdgt = pageWidgets[start];
+      pageWidgets.splice(start, 1);
+      pageWidgets.splice(end, 0, wdgt);
+      PageModel
+        .findPageById(pageId)
+        .then(function (page) {
+          page.widgets = pageWidgets;
+          return page.save();
+        });
+    });
 }
