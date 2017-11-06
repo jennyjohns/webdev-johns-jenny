@@ -43,7 +43,43 @@ function updateWidget(widgetId, widget) {
 }
 
 function deleteWidget(widgetId) {
-  return WidgetModel.deleteOne({_id: widgetId});
+  var wdgt1 = null;
+  var pageId = null;
+  var i = null;
+  return WidgetModel.findOne({_id: widgetId})
+    .then(function (widget) {
+      wdgt1 = widget;
+      pageId = widget._page;
+      WidgetModel.deleteOne({_id: widgetId})
+        .then(function (widgets) {
+          PageModel
+            .findPageById(pageId)
+            .then(function (page) {
+              i = page.widgets.indexOf(wdgt1);
+              page.widgets.splice(i, 1);
+              return page.save();
+            });
+        });
+    });
+  // var page1 = null;
+  // var webId = null;
+  // var i = null;
+  // return PageModel.findOne({_id: pageId})
+  //   .then(function (page) {
+  //     page1 = page;
+  //     webId = page._website;
+  //     PageModel
+  //       .deleteOne({_id: pageId})
+  //       .then(function (pages) {
+  //         WebsiteModel
+  //           .findWebsiteById(webId)
+  //           .then(function (website) {
+  //             i = website.pages.indexOf(page1);
+  //             website.pages.splice(i, 1);
+  //             return website.save();
+  //           });
+  //       });
+  //   });
 }
 
 function reorderWidget(pageId, start, end) {

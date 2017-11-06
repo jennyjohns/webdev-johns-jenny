@@ -97,33 +97,32 @@ module.exports = function (app) {
     var destination = myFile.destination;
     var size = myFile.size;
     var mimetype = myFile.mimetype;
-    var widget1 = widgetModel
-      .findWidgetById(widgetId)
-      .then(function (widget) {
-        widget1 = widget;
-        widget1.url = '/assets/uploads/' + filename;
-        console.log(widget1.url);
-        widget1.width = width;
-        widget1.size = size;
-      });
-
-    // console.log(req.body);
-
-
-     // console.log('mike' + widget1);
-    //widget.url = '/assets/uploads/' + filename;
-
-     var callbackUrl = '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
-     res.redirect(callbackUrl);
-  }
-
-  function getWidgetById(widgetId) {
-    console.log('hello' + widgetId);
+    var widget1 = null;
     widgetModel
       .findWidgetById(widgetId)
       .then(function (widget) {
-        console.log('j' + widget);
-        res.json(widget);
+        widget1 = widget;
+        widget1['url'] = '/assets/uploads/' + filename;
+        widget1['width'] = width;
+        widget1['size'] = size;
+        widgetModel
+          .updateWidget(widgetId, widget1)
+          .then(function (wgdt) {
+            console.log(wdgt);
+            var callbackUrl =  '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
+            res.redirect(callbackUrl);
+          });
       });
+
   }
+
+  // function getWidgetById(widgetId) {
+  //   console.log('hello' + widgetId);
+  //   widgetModel
+  //     .findWidgetById(widgetId)
+  //     .then(function (widget) {
+  //       console.log('j' + widget);
+  //       res.json(widget);
+  //     });
+  // }
 };

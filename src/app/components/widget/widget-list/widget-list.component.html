@@ -22,7 +22,7 @@
   </div>
 </nav>
 
-<div class="container-fluid jj-body">
+<div class="container-fluid jj-body" appWebDevSortable (orderChanged)="onIndexChange($event)">
 
   <div *ngFor="let widget of widgets">
   <div [ngSwitch]="widget.widgetType">

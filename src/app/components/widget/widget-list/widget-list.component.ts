@@ -56,4 +56,7 @@ export class WidgetListComponent implements OnInit {
     youTubeURL += end[end.length - 1];
     return this.sanitizer.bypassSecurityTrustResourceUrl(youTubeURL);
   }
+  onIndexChange(event) {
+    console.log(event);
+  }
 }
