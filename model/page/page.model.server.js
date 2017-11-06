@@ -43,5 +43,23 @@ function updatePage(pageId, page) {
 }
 
 function deletePage(pageId) {
-  return PageModel.deleteOne({_id: pageId});
+  var page1 = null;
+  var webId = null;
+  var i = null;
+  return PageModel.findOne({_id: pageId})
+    .then(function (page) {
+      page1 = page;
+      webId = page._website;
+      PageModel
+        .deleteOne({_id: pageId})
+        .then(function (pages) {
+          WebsiteModel
+            .findWebsiteById(webId)
+            .then(function (website) {
+              i = website.pages.indexOf(page1);
+              website.pages.splice(i, 1);
+              return website.save();
+            });
+        });
+    });
 }
