@@ -14,12 +14,12 @@ export class WebdevSortableDirective implements AfterViewInit {
   onAfterViewInit(element) {
     jQuery(this.el.nativeElement).sortable( {
       start: function (event, ui) {
-        this.start = ui.item.index();
+        console.log( ui.item.index());
       },
       stop: function (event, ui) {
-        this.stop = ui.item.index();
-        const index = {start: this.start, stop: this.stop};
-        element.orderChanged.emit(index);
+        console.log (ui.item.index());
+        // const index = {start: this.start, stop: this.stop};
+        // element.orderChanged.emit(index);
       }
     });
   }
