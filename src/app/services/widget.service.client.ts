@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/Rx';
 import {environment} from '../../environments/environment';
+import {map} from "rxjs/operator/map";
 
 
 // injecting service into module
@@ -55,5 +56,14 @@ export class WidgetService {
   deleteWidget(widgetId: string) {
     const url = this.baseURL + '/api/widget/' + widgetId;
     return this.http.delete(url);
+  }
+
+  sortingWidgets (pageId: string, start: Number, stop: Number) {
+    // app.put("/api/page/:pid/widget", sortingWidgets);
+    const url = this.baseURL + '/api/page/' + pageId + '/widget';
+    return this.http.put(url, start, stop)
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 }

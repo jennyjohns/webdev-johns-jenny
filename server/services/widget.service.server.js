@@ -115,14 +115,4 @@ module.exports = function (app) {
       });
 
   }
-
-  // function getWidgetById(widgetId) {
-  //   console.log('hello' + widgetId);
-  //   widgetModel
-  //     .findWidgetById(widgetId)
-  //     .then(function (widget) {
-  //       console.log('j' + widget);
-  //       res.json(widget);
-  //     });
-  // }
 };
