@@ -28,8 +28,8 @@ import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
 import {Routing} from './app.routing';
 import { SortableDirectiveComponent } from './sortable-directive/sortable-directive.component';
-import {HelloWorldDirective} from "../../directives/hello-world.directive";
-import {WebdevSortableDirective} from "../../directives/webdev-sortable.directive";
+import {HelloWorldDirective} from '../../directives/hello-world.directive';
+import {WebdevSortableDirective} from '../../directives/webdev-sortable.directive';
 
 @NgModule({
   // Declare components here
