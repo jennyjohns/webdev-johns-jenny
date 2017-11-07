@@ -31,7 +31,7 @@ import { SortableDirectiveComponent } from './sortable-directive/sortable-direct
 import {HelloWorldDirective} from '../../directives/hello-world.directive';
 import {WebdevSortableDirective} from '../../directives/webdev-sortable.directive';
 import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
-import {QuillEditorModule} from 'ngx-quill-editor';
+import {QuillEditorModule} from '../../node_modules/ngx-quill-editor';
 import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 
 @NgModule({
