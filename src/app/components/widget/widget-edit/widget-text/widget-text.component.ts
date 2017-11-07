@@ -63,18 +63,26 @@ export class WidgetTextComponent implements OnInit {
     this.router.navigate(['user/', this.userId]);
   }
 
-  commit(text: string, type: string) {
+  commit(text: string, type: string, rows: Number, name: string, placeholder: string, formatted: Boolean) {
     const updatedWidget = {
       _id: this.wgid,
       widgetType: type,
       pageId: this.widget['pageId'],
-      text: text
+      text: text,
+      rows: rows,
+      name: name,
+      placeholder: placeholder,
+      formatted: formatted
     };
     this.widgetService.updateWidget(this.wgid, updatedWidget)
       .subscribe((widget: any) => {
         this.widget = widget;
         this.widgetType = widget['widgetType'];
         this.text = widget['text'];
+        this.rows = widget['rows'];
+        this.name = widget['name'];
+        this.placeholder = widget['placeholder'];
+        this.formatted = widget['formatted'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }

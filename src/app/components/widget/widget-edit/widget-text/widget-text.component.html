@@ -16,50 +16,57 @@
     </div>
 
     <p class="navbar-brand pull-right">
-      <button (click)="commit(text, widgetType)" class="navbar-link jj-button">
+      <button (click)="commit(text, widgetType, rows, name, placeholder, formatted)" class="navbar-link jj-button">
         <span class="glyphicon glyphicon-ok"></span>
       </button>
     </p>
   </div>
 </nav>
 
-<div>
+<div class="container-fluid jj-body">
   <div>
-Text
-<input [(ngModel)]="text" class="form-control"/>
+    <label for="widgetType">Type</label>
+    <input [(ngModel)]="widgetType"
+           name="widgetType"
+           id="widgetType"
+           type="text"
+           class="form-control"/>
+  </div>
+  <div>
+    <label for="text">Text</label>
+    <input [(ngModel)]="text" class="form-control" id="text"/>
 
-Rows
-<input [(ngModel)]="rows" class="form-control" type="number"/>
-<label for="Name">Name</label>
-<div>
-  <input [(ngModel)]="name"
-         type="text"
-         class="form-control"
-         id="Name"
-         name="name"
-         placeholder="Name">
-</div>
+    <label for="rows">Rows</label>
+    <input [(ngModel)]="rows" class="form-control" type="number" id="rows"/>
+    <label for="Name">Name</label>
+    <div>
+      <input [(ngModel)]="name"
+             type="text"
+             class="form-control"
+             id="Name"
+             name="name"
+             placeholder="Name">
+    </div>
 
-Placeholder
-<input [(ngModel)]="placeholder" class="form-control" required/>
-<p></p>
-<div class="input-group">
-  <input type="text"
-         readonly
-         value="Formatted"
-         class="form-control"/>
-  <span class="input-group-addon">
+    <label for="placeholder"> Placeholder</label>
+    <input [(ngModel)]="placeholder" class="form-control" id="placeholder" required/>
+    <p></p>
+    <div class="input-group">
+      <input type="text"
+             readonly
+             value="Formatted"
+             class="form-control"/>
+      <span class="input-group-addon">
      <input [(ngModel)]="formatted"
             type="checkbox"/>
  </span>
-</div>
-
-<button (click)="deleted(wgid)"
-        class="btn btn-danger btn-block jj-button-hover jj-center"
-        aria-pressed="true">
-  Delete
-</button>
-</div>
+    </div>
+  </div>
+  <button (click)="deleted(wgid)"
+          class="btn btn-danger btn-block jj-button-hover"
+          aria-pressed="true">
+    Delete
+  </button>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">

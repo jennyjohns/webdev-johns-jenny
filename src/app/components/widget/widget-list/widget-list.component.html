@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <div *ngSwitchCase="'YOUTUBE'" class="youtube-widget">
+      <div *ngSwitchCase="'YOUTUBE'">
         <div class="jj-widget">
           <div class="jj-toolbar">
             <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
@@ -54,12 +54,14 @@
             </button>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
-          <iframe class="jj-content"
-                  [src]="cleanURL(widget.url)"
-                  [style.width]="widget.width"
-                  height="315"
-                  frameborder="0"
-                  allowfullscreen></iframe>
+          <div class="youtube-widget">
+            <iframe class="jj-content"
+                    [src]="cleanURL(widget.url)"
+                    [style.width]="widget.width"
+                    height="315"
+                    frameborder="0"
+                    allowfullscreen></iframe>
+          </div>
         </div>
       </div>
 
@@ -88,22 +90,21 @@
       <div *ngSwitchCase="'TEXT'">
         <div class="jj-widget">
           <div class="jj-toolbar">
-            <div *ngIf="widget.formatted">
-              <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
-            </div>
-
-            <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
-                   placeholder="{{widget.placeholder}}" class="form-control"/>
-
-            <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
-                      rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
-                      class="form-control">{{widget.text}}</textarea>
             <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
               <span class="glyphicon glyphicon-cog"></span>
             </button>
             <span class="glyphicon glyphicon-menu-hamburger"></span>
           </div>
-          <button class="jj-button-cog">{{widget.text}}</button>
+          <div *ngIf="widget.formatted">
+            <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+          </div>
+
+          <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+                 placeholder="{{widget.placeholder}}" class="form-control"/>
+
+          <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                    rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                    class="form-control">{{widget.text}}</textarea>
         </div>
       </div>
     </div>
