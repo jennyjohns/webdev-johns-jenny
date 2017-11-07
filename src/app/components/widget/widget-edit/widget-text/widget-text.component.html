@@ -22,34 +22,44 @@
     </p>
   </div>
 </nav>
-<div class="container-fluid jj-body">
-  <div class="row">
-    <form class="jj-form">
-      <div class="form-group">
-        <label for="widgetType">
-          Name
-        </label>
-        <input [(ngModel)]="widgetType"
-               name="widgetType"
-               id="widgetType"
-               type="text"
-               class="form-control"/>
-      </div>
-    </form>
-    <form class="jj-form">
-      <div class="form-group">
-        <label>
-          Text
-        </label>
-        <quill-editor [(ngModel)]="text" name="text"> </quill-editor>
-      </div>
-    </form>
-    <button (click)="deleted(wgid)"
-            class="btn btn-danger btn-block jj-button-hover jj-center"
-            aria-pressed="true">
-      Delete
-    </button>
-  </div>
+
+<div>
+  <div>
+Text
+<input [(ngModel)]="widget.text" class="form-control"/>
+
+Rows
+<input [(ngModel)]="rows" class="form-control" type="number"/>
+<label for="Name">Name</label>
+<div>
+  <input [(ngModel)]="name"
+         type="text"
+         class="form-control"
+         id="Name"
+         name="name"
+         placeholder="Name">
+</div>
+
+Placeholder
+<input [(ngModel)]="placeholder" class="form-control" required/>
+<p></p>
+<div class="input-group">
+  <input type="text"
+         readonly
+         value="Formatted"
+         class="form-control"/>
+  <span class="input-group-addon">
+     <input [(ngModel)]="formatted"
+            type="checkbox"/>
+ </span>
+</div>
+
+<button (click)="deleted(wgid)"
+        class="btn btn-danger btn-block jj-button-hover jj-center"
+        aria-pressed="true">
+  Delete
+</button>
+</div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">

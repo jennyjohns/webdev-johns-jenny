@@ -25,71 +25,90 @@
 <div class="container-fluid jj-body" appWebDevSortable (orderChanged)="onIndexChange($event)">
 
   <div *ngFor="let widget of widgets">
-  <div [ngSwitch]="widget.widgetType">
+    <div [ngSwitch]="widget.widgetType">
 
-    <div *ngSwitchCase="'HEADING'">
-      <div class="jj-widget">
-        <div class="jj-toolbar">
-          <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
-            <span class="glyphicon glyphicon-cog"></span>
-          </button>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-        </div>
-        <div [ngSwitch]="widget.size">
-          <div *ngSwitchCase="1"><h1>{{widget.text}}</h1></div>
-          <div *ngSwitchCase="2"><h2>{{widget.text}}</h2></div>
-          <div *ngSwitchCase="3"><h3>{{widget.text}}</h3></div>
-          <div *ngSwitchCase="4"><h4>{{widget.text}}</h4></div>
-          <div *ngSwitchCase="5"><h5>{{widget.text}}</h5></div>
-          <div *ngSwitchCase="6"><h6>{{widget.text}}</h6></div>
+      <div *ngSwitchCase="'HEADING'">
+        <div class="jj-widget">
+          <div class="jj-toolbar">
+            <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
+              <span class="glyphicon glyphicon-cog"></span>
+            </button>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </div>
+          <div [ngSwitch]="widget.size">
+            <div *ngSwitchCase="1"><h1>{{widget.text}}</h1></div>
+            <div *ngSwitchCase="2"><h2>{{widget.text}}</h2></div>
+            <div *ngSwitchCase="3"><h3>{{widget.text}}</h3></div>
+            <div *ngSwitchCase="4"><h4>{{widget.text}}</h4></div>
+            <div *ngSwitchCase="5"><h5>{{widget.text}}</h5></div>
+            <div *ngSwitchCase="6"><h6>{{widget.text}}</h6></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div *ngSwitchCase="'YOUTUBE'" class="youtube-widget">
-      <div class="jj-widget">
-        <div class="jj-toolbar">
-          <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
-            <span class="glyphicon glyphicon-cog"></span>
-          </button>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
+      <div *ngSwitchCase="'YOUTUBE'" class="youtube-widget">
+        <div class="jj-widget">
+          <div class="jj-toolbar">
+            <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
+              <span class="glyphicon glyphicon-cog"></span>
+            </button>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </div>
+          <iframe class="jj-content"
+                  [src]="cleanURL(widget.url)"
+                  [style.width]="widget.width"
+                  height="315"
+                  frameborder="0"
+                  allowfullscreen></iframe>
         </div>
-        <iframe class="jj-content"
-                [src]="cleanURL(widget.url)"
-                [style.width]="widget.width"
-                height="315"
-                frameborder="0"
-                allowfullscreen></iframe>
       </div>
-    </div>
 
-    <ng-container *ngSwitchCase="'IMAGE'">
-      <div class="jj-widget">
-        <div class="jj-toolbar">
-          <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
-            <span class="glyphicon glyphicon-cog"></span>
-          </button>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
+      <ng-container *ngSwitchCase="'IMAGE'">
+        <div class="jj-widget">
+          <div class="jj-toolbar">
+            <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
+              <span class="glyphicon glyphicon-cog"></span>
+            </button>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </div>
+          <img class="jj-content" [style.width]="widget.width" src="{{widget.url}}"/>
         </div>
-        <img class="jj-content" [style.width]="widget.width" src="{{widget.url}}"/>
+      </ng-container>
+      <div *ngSwitchCase="'HTML'">
+        <div class="jj-widget">
+          <div class="jj-toolbar">
+            <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
+              <span class="glyphicon glyphicon-cog"></span>
+            </button>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </div>
+          <button class="jj-button-cog">{{widget.text}}</button>
+        </div>
       </div>
-    </ng-container>
-    <div *ngSwitchCase="'HTML'">
-      <div class="jj-widget">
-        <div class="jj-toolbar">
-          <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
-            <span class="glyphicon glyphicon-cog"></span>
-          </button>
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
+      <div *ngSwitchCase="'TEXT'">
+        <div class="jj-widget">
+          <div class="jj-toolbar">
+            <div *ngIf="widget.formatted">
+              <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+            </div>
+
+            <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+                   placeholder="{{widget.placeholder}}" class="form-control"/>
+
+            <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                      rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                      class="form-control">{{widget.text}}</textarea>
+            <button class="jj-button-cog" (click)="editWidget(widget._id, widget.widgetType)">
+              <span class="glyphicon glyphicon-cog"></span>
+            </button>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </div>
+          <button class="jj-button-cog">{{widget.text}}</button>
         </div>
-        <button class="jj-button-cog">{{widget.text}}</button>
       </div>
     </div>
   </div>
 </div>
-</div>
-
-
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

@@ -16,6 +16,8 @@ export class WidgetListComponent implements OnInit {
   webId: string;
   size: number;
   widgets = [];
+  rows: Number;
+  placeholder: string;
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router,
               private sanitizer: DomSanitizer) { }
 
