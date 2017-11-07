@@ -30,6 +30,7 @@ import {Routing} from './app.routing';
 import { SortableDirectiveComponent } from './sortable-directive/sortable-directive.component';
 import {HelloWorldDirective} from '../../directives/hello-world.directive';
 import {WebdevSortableDirective} from '../../directives/webdev-sortable.directive';
+import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
 
 @NgModule({
   // Declare components here
@@ -55,6 +56,7 @@ import {WebdevSortableDirective} from '../../directives/webdev-sortable.directiv
     SortableDirectiveComponent,
     HelloWorldDirective,
     WebdevSortableDirective,
+    WidgetHtmlComponent,
   ],
   imports: [
     BrowserModule,

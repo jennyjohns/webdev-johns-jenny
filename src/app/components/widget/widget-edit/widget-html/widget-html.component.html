@@ -16,7 +16,7 @@
     </div>
 
     <p class="navbar-brand pull-right">
-      <button (click)="commit(width, url)" class="navbar-link jj-button">
+      <button (click)="commit(text, widgetType)" class="navbar-link jj-button">
         <span class="glyphicon glyphicon-ok"></span>
       </button>
     </p>
@@ -38,28 +38,16 @@
     </form>
     <form class="jj-form">
       <div class="form-group">
-        <label for="url">
-          URL
+        <label for="text">
+          Text
         </label>
-        <input [(ngModel)]="url"
-               type="url"
-               placeholder="url"
-               name="url"
-               id="url"
+        <input [(ngModel)]="text"
+               placeholder="Animals"
+               name="text"
+               id="text"
                class="form-control"
-               />
-      </div>
-    </form>
-    <form class="jj-form">
-      <div class="form-group">
-        <label for="width">
-          Width
-        </label>
-        <input [(ngModel)]="width"
-               name="width"
-               id="width"
-               class="form-control"
-               type="text"/>
+               type="text"
+        />
       </div>
     </form>
     <button (click)="deleted(wgid)"
@@ -78,4 +66,3 @@
     </p>
   </div>
 </nav>
-

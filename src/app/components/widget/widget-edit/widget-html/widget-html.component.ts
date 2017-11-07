@@ -1,29 +1,25 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
-import {WidgetService} from '../../../../services/widget.service.client';
-import {ActivatedRoute, Router} from '@angular/router';
-import {NgModel} from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {NgModel} from "@angular/forms";
+import {WidgetService} from "../../../../services/widget.service.client";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-widget-youtube',
-  templateUrl: './widget-youtube.component.html',
-  styleUrls: ['./widget-youtube.component.css']
+  selector: 'app-widget-html',
+  templateUrl: './widget-html.component.html',
+  styleUrls: ['./widget-html.component.css']
 })
-export class WidgetYoutubeComponent implements OnInit {
+export class WidgetHtmlComponent implements OnInit {
   @ViewChild('f') newWidgetForm: NgModel;
   widget = {};
   wgid: string;
-  url: string;
   userId: string;
   webId: string;
   pageId: string;
   widgets = [];
   widgetType: string;
-  width: string;
+  text: string;
 
-  constructor(private sanitizer: DomSanitizer, private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
-              private router: Router) {
-  }
+  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -38,15 +34,13 @@ export class WidgetYoutubeComponent implements OnInit {
     this.widgetService.findWidgetById(this.wgid)
       .subscribe((widget: any) => {
         this.widget = widget;
-        this.url = this.widget['url'];
         this.widgetType = this.widget['widgetType'];
-        this.width = this.widget['width'];
+        this.text = this.widget['text'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
-
   }
 
   goToWidgets() {
@@ -60,23 +54,28 @@ export class WidgetYoutubeComponent implements OnInit {
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
   }
-  commit(width, url) {
-    this.widget = {
-      _id: this.widget['_id'],
-      widgetType: 'YOUTUBE',
+
+  commit(text: string, type: string) {
+    const updatedWidget = {
+      _id: this.wgid,
+      widgetType: type,
       pageId: this.widget['pageId'],
-      width: width,
-      url: url
+      text: text
     };
-    this.widgetService.updateWidget(this.widget['_id'], this.widget)
+    this.widgetService.updateWidget(this.wgid, updatedWidget)
       .subscribe((widget: any) => {
+        this.widget = widget;
+        this.widgetType = widget['widgetType'];
+        this.text = widget['text'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
+
   deleted(wgid) {
     this.widgetService.deleteWidget(wgid)
       .subscribe((widgets: any) => {
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
+
 }

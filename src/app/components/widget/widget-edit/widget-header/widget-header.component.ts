@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
-import {DomSanitizer} from '@angular/platform-browser';
 import {NgModel} from '@angular/forms';
 
 @Component({
