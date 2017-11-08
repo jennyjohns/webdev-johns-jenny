@@ -28,10 +28,8 @@ function createWidget(pageId, widget) {
 }
 
 function findAllWidgetsForPage(pageId) {
-  return WidgetModel
-    .find({_page: pageId})
-    .populate('_page')
-    .exec();
+  return PageModel
+    .findPageById(pageId);
 }
 
 function findWidgetById(widgetId) {
@@ -66,14 +64,14 @@ function deleteWidget(widgetId) {
 function sortingWidgets(pageId, start, end) {
   var pageWidgets = null;
   var wdgt = null;
-  WidgetModel
+  return WidgetModel
     .findAllWidgetsForPage(pageId)
-    .then(function (widgets) {
-      pageWidgets = widgets;
+    .then(function (page) {
+      pageWidgets = page.widgets;
       wdgt = pageWidgets[start];
       pageWidgets.splice(start, 1);
       pageWidgets.splice(end, 0, wdgt);
-      PageModel
+      return PageModel
         .findPageById(pageId)
         .then(function (page) {
           page.widgets = pageWidgets;

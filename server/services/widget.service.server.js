@@ -23,8 +23,8 @@ module.exports = function (app) {
     var pageId = req.params['pid'];
     widgetModel
       .findAllWidgetsForPage(pageId)
-      .then(function (widgets) {
-        res.json(widgets);
+      .then(function (page) {
+        res.json(page.widgets);
       });
   }
 
@@ -79,6 +79,8 @@ module.exports = function (app) {
       .sortingWidgets(pageId, index1, index2)
       .then(function (widgets) {
         res.json(widgets);
+      }, function(err){
+        console.log(err);
       });
   }
 
