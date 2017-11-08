@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/Rx';
-import {environment} from '../../environments/environment';
 
 @Injectable()
 
@@ -9,13 +8,12 @@ export class FlickrService {
   constructor(private http: Http) {
   }
 
-  baseUrl = environment.baseUrl;
   api = {
     'searchPhotos': this.searchPhotos
   };
 
-  key = 'your-flickr-key';
-  secret = 'your-flickr-secret';
+  key = '93716fb0cbfb4174f4207ce92dcebfe8';
+  secret = '6a3e2889118cafa0';
   urlBase = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT';
 
   searchPhotos(searchTerm: any) {
