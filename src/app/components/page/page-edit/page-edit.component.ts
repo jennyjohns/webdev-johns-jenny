@@ -17,6 +17,7 @@ export class PageEditComponent implements OnInit {
   websiteId: string;
   description: string;
   pages = [];
+  dateCreated: Date;
 
 
   constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) {
@@ -36,6 +37,7 @@ export class PageEditComponent implements OnInit {
         this.page = page;
         this.name = this.page['name'];
         this.description = this.page['description'];
+        this.dateCreated = page['dateCreated'];
       });
     this.pageService.findPageByWebsiteId(this.websiteId)
       .subscribe((pages: any) => {
@@ -48,7 +50,7 @@ export class PageEditComponent implements OnInit {
   }
 
   commit(pid: string, name: string, description: string) {
-    this.page = {_id: pid, name: name, websiteId: this.websiteId, description: description};
+    this.page = {_id: pid, name: name, websiteId: this.websiteId, description: description, dateCreated: this.dateCreated};
     this.pageService.updatePage(pid, this.page)
       .subscribe((page: any) => {
         this.page = page;
@@ -63,6 +65,7 @@ export class PageEditComponent implements OnInit {
         this.page = page;
         this.name = this.page['name'];
         this.description = this.page['description'];
+        this.dateCreated = page['dateCreated'];
       });
   }
 
