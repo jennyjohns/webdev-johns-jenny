@@ -3,6 +3,7 @@ import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgModel} from '@angular/forms';
 import {environment} from '../../../../../environments/environment';
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-widget-image',
@@ -22,7 +23,7 @@ export class WidgetImageComponent implements OnInit {
   width: string;
   widgetType: string;
   baseURL = environment.baseUrl;
-
+  dateCreated: Date;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
               private router: Router) {
@@ -48,6 +49,11 @@ export class WidgetImageComponent implements OnInit {
         this.url = this.widget['url'];
         this.width = this.widget['width'];
         this.widgetType = this.widget['widgetType'];
+        if (isUndefined(widget['dateCreated'])) {
+          this.dateCreated = new Date();
+        } else {
+          this.dateCreated = widget['dateCreated'];
+        }
       });
   }
 
@@ -57,7 +63,8 @@ export class WidgetImageComponent implements OnInit {
       widgetType: 'IMAGE',
       pageId: this.widget['pageId'],
       width: width,
-      url: url
+      url: url,
+      dateCreated: this.dateCreated
     };
     this.widgetService.updateWidget(this.widget['_id'], this.widget)
       .subscribe((widget: any) => {
@@ -65,6 +72,7 @@ export class WidgetImageComponent implements OnInit {
         this.url = url;
         this.width = width;
         this.widgetType = 'IMAGE';
+        this.dateCreated = widget['dateCreated'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }

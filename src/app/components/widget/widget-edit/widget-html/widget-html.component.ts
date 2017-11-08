@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgModel} from "@angular/forms";
 import {WidgetService} from "../../../../services/widget.service.client";
 import {ActivatedRoute, Router} from "@angular/router";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-widget-html',
@@ -18,6 +19,7 @@ export class WidgetHtmlComponent implements OnInit {
   widgets = [];
   widgetType: string;
   text: string;
+  dateCreated: Date;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -36,6 +38,11 @@ export class WidgetHtmlComponent implements OnInit {
         this.widget = widget;
         this.widgetType = this.widget['widgetType'];
         this.text = this.widget['text'];
+        if (isUndefined(widget['dateCreated'])) {
+          this.dateCreated = new Date();
+        } else {
+          this.dateCreated = widget['dateCreated'];
+        }
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {
@@ -60,13 +67,15 @@ export class WidgetHtmlComponent implements OnInit {
       _id: this.wgid,
       widgetType: type,
       pageId: this.widget['pageId'],
-      text: text
+      text: text,
+      dateCreated: this.dateCreated
     };
     this.widgetService.updateWidget(this.wgid, updatedWidget)
       .subscribe((widget: any) => {
         this.widget = widget;
         this.widgetType = widget['widgetType'];
         this.text = widget['text'];
+        this.dateCreated = widget['dateCreated'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
