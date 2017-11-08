@@ -43,8 +43,8 @@ export class WidgetYoutubeComponent implements OnInit {
         this.width = this.widget['width'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
-      .subscribe((widgets: any) => {
-        this.widgets = widgets;
+      .subscribe((page: any) => {
+        this.widgets = page.widgets;
       });
 
   }

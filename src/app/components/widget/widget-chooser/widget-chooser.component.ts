@@ -38,10 +38,11 @@ export class WidgetChooserComponent implements OnInit {
   makeWidget(type: String) {
     this.widget = {widgetType: type, pageId: this.pageId};
     this.widgetService.createWidget(this.pageId, this.widget)
-      .subscribe((widgets: any) => {
-        this.widgets = widgets;
-        const len = widgets.length;
-        this.widget = widgets[len - 1];
+      .subscribe((page: any) => {
+        this.widgets = page.widgets;
+        console.log(this.widgets);
+        const len = page.widgets.length;
+        this.widget = page.widgets[len - 1];
         this.widget['widgetType'] = type;
         this.widgetType = type;
         this.widgetId = this.widget['_id'];
