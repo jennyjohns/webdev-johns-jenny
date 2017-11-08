@@ -50,6 +50,7 @@ export class WidgetImageComponent implements OnInit {
         this.widgetType = this.widget['widgetType'];
       });
   }
+
   commit(width, url) {
     this.widget = {
       _id: this.widget['_id'],
@@ -67,6 +68,7 @@ export class WidgetImageComponent implements OnInit {
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
+
   goToWidgets() {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
   }
@@ -84,5 +86,9 @@ export class WidgetImageComponent implements OnInit {
       .subscribe((widgets: any) => {
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
+  }
+
+  flickrSearch() {
+    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', this.wgid, 'flickr']);
   }
 }

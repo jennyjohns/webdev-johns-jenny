@@ -33,6 +33,8 @@ import {WebdevSortableDirective} from '../../directives/webdev-sortable.directiv
 import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
 import {QuillEditorModule} from '../../node_modules/ngx-quill-editor';
 import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
+import { FlickrImageSearchComponent } from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
+import {FlickrService} from './services/flickr.service.client';
 
 @NgModule({
   // Declare components here
@@ -60,6 +62,7 @@ import { WidgetTextComponent } from './components/widget/widget-edit/widget-text
     WebdevSortableDirective,
     WidgetHtmlComponent,
     WidgetTextComponent,
+    FlickrImageSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ import { WidgetTextComponent } from './components/widget/widget-edit/widget-text
     QuillEditorModule
   ],
   // Client Side services here
-  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService],
+  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService, FlickrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
