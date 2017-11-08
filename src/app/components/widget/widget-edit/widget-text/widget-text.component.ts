@@ -47,11 +47,7 @@ export class WidgetTextComponent implements OnInit {
         this.name = this.widget['name'];
         this.placeholder = this.widget['placeholder'];
         this.formatted = this.widget['formatted'];
-        if (isUndefined(widget['dateCreated'])) {
-          this.dateCreated = new Date();
-        } else {
-          this.dateCreated = widget['dateCreated'];
-        }
+        this.dateCreated = widget['dateCreated'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {

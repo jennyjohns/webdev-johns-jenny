@@ -21,7 +21,8 @@ export class WidgetHtmlComponent implements OnInit {
   text: string;
   dateCreated: Date;
 
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -38,11 +39,7 @@ export class WidgetHtmlComponent implements OnInit {
         this.widget = widget;
         this.widgetType = this.widget['widgetType'];
         this.text = this.widget['text'];
-        if (isUndefined(widget['dateCreated'])) {
-          this.dateCreated = new Date();
-        } else {
-          this.dateCreated = widget['dateCreated'];
-        }
+        this.dateCreated = widget['dateCreated'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {

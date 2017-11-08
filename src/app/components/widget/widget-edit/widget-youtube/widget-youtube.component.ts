@@ -43,11 +43,7 @@ export class WidgetYoutubeComponent implements OnInit {
         this.url = this.widget['url'];
         this.widgetType = this.widget['widgetType'];
         this.width = this.widget['width'];
-        if (isUndefined(widget['dateCreated'])) {
-          this.dateCreated = new Date();
-        } else {
-          this.dateCreated = widget['dateCreated'];
-        }
+        this.dateCreated = widget['dateCreated'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((page: any) => {
@@ -66,6 +62,7 @@ export class WidgetYoutubeComponent implements OnInit {
   goToProfile() {
     this.router.navigate(['user/', this.userId]);
   }
+
   commit(width, url) {
     this.widget = {
       _id: this.widget['_id'],
@@ -80,6 +77,7 @@ export class WidgetYoutubeComponent implements OnInit {
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
+
   deleted(wgid) {
     this.widgetService.deleteWidget(wgid)
       .subscribe((widgets: any) => {

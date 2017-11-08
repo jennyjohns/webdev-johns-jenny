@@ -16,6 +16,7 @@ export class WidgetChooserComponent implements OnInit {
   size: number;
   widgets = [];
   widget = {};
+  dateCreated: Date;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -33,14 +34,14 @@ export class WidgetChooserComponent implements OnInit {
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
+    this.dateCreated = new Date();
   }
 
   makeWidget(type: String) {
-    this.widget = {widgetType: type, pageId: this.pageId};
+    this.widget = {widgetType: type, pageId: this.pageId, dateCreated: this.dateCreated};
     this.widgetService.createWidget(this.pageId, this.widget)
       .subscribe((page: any) => {
         this.widgets = page.widgets;
-        console.log(this.widgets);
         const len = page.widgets.length;
         this.widget = page.widgets[len - 1];
         this.widget['widgetType'] = type;

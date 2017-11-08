@@ -21,6 +21,7 @@ export class WidgetHeaderComponent implements OnInit {
   text: string;
   size: number;
   dateCreated: Date;
+
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
@@ -41,11 +42,7 @@ export class WidgetHeaderComponent implements OnInit {
         this.widgetType = this.widget['widgetType'];
         this.text = this.widget['text'];
         this.size = this.widget['size'];
-        if (isUndefined(widget['dateCreated'])) {
-          this.dateCreated = new Date();
-        } else {
-          this.dateCreated = widget['dateCreated'];
-        }
+        this.dateCreated = widget['dateCreated'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {

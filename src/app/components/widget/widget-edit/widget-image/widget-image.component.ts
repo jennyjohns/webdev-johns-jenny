@@ -49,11 +49,7 @@ export class WidgetImageComponent implements OnInit {
         this.url = this.widget['url'];
         this.width = this.widget['width'];
         this.widgetType = this.widget['widgetType'];
-        if (isUndefined(widget['dateCreated'])) {
-          this.dateCreated = new Date();
-        } else {
-          this.dateCreated = widget['dateCreated'];
-        }
+        this.dateCreated = widget['dateCreated'];
       });
   }
 
