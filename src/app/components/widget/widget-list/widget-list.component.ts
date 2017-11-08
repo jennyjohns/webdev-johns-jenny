@@ -63,7 +63,5 @@ export class WidgetListComponent implements OnInit {
        .subscribe((widgets: any) => {
           this.widgets = widgets;
        });
-     console.log('s' +  event.start);
-     console.log('e' + event.stop);
   }
 }
