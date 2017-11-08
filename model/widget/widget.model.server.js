@@ -13,11 +13,13 @@ WidgetModel.sortingWidgets = sortingWidgets;
 module.exports = WidgetModel;
 
 function createWidget(pageId, widget) {
+  console.log('w', widget);
   var newWidget = null;
   return WidgetModel
     .create(widget)
     .then(function (widget) {
       newWidget = widget;
+      console.log('newWidget', newWidget);
       PageModel
         .findPageById(pageId)
         .then(function (page) {

@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
         }else {
           const user1 = {username: username, password: password, firstName: firstName, lastName: lastName, email: email,
             phone: phone, dateCreated: this.dateCreated};
-            console.log('h' + this.dateCreated);
           this.userService.createUser(user1)
             .subscribe((user2) => {
               this.user = user2;

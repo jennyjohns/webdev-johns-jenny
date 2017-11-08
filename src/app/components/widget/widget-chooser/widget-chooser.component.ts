@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {withIdentifier} from "codelyzer/util/astQuery";
 
 @Component({
   selector: 'app-widget-chooser',
@@ -38,15 +39,18 @@ export class WidgetChooserComponent implements OnInit {
   }
 
   makeWidget(type: String) {
+    console.log(type);
     this.widget = {widgetType: type, pageId: this.pageId, dateCreated: this.dateCreated};
     this.widgetService.createWidget(this.pageId, this.widget)
       .subscribe((page: any) => {
+        console.log(page);
         this.widgets = page.widgets;
         const len = page.widgets.length;
         this.widget = page.widgets[len - 1];
         this.widget['widgetType'] = type;
         this.widgetType = type;
         this.widgetId = this.widget['_id'];
+        this.dateCreated = this.widget['dateCreated'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', this.widgetId]);
       });
   }

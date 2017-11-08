@@ -44,6 +44,7 @@ module.exports = function (app) {
     widgetModel
       .createWidget(pageId, widget)
       .then(function (widget) {
+        console.log('widget service', widget);
         widgetModel
           .findAllWidgetsForPage(pageId)
           .then(function (widgets) {
