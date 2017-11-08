@@ -24,7 +24,7 @@
 </nav>
 
 <div class="container-fluid jj-body">
-  <div>
+  <div class="form-group">
     <label for="widgetType">Type</label>
     <input [(ngModel)]="widgetType"
            name="widgetType"
@@ -50,7 +50,6 @@
 
     <label for="placeholder"> Placeholder</label>
     <input [(ngModel)]="placeholder" class="form-control" id="placeholder" required/>
-    <p></p>
     <div class="input-group">
       <input type="text"
              readonly
@@ -59,11 +58,11 @@
       <span class="input-group-addon">
      <input [(ngModel)]="formatted"
             type="checkbox"/>
- </span>
+      </span>
     </div>
   </div>
   <button (click)="deleted(wgid)"
-          class="btn btn-danger btn-block jj-button-hover"
+          class="btn btn-danger btn-block jj-button-hover container-fluid jj-padding"
           aria-pressed="true">
     Delete
   </button>

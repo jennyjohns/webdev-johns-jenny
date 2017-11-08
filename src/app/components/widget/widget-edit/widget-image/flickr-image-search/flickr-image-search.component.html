@@ -1,5 +1,20 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-brand pull-left">
+      <button (click)="chooseWidget()" class="navbar-link jj-button">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </button>
+    </div>
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand thick">
+        <b>
+          Widget Edit
+        </b>
+      </a>
+    </div>
+  </div>
+</nav>
 <div class="container-fluid jj-top-padding">
-
   <div class="input-group">
     <input [(ngModel)]="searchText" name="searchText" id="searchText" type="text" class="form-control"
            placeholder="Search Images"/>
@@ -22,3 +37,12 @@
     <p></p>
   </div>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <p class="navbar-text pull-right">
+      <button class="jj-button-cog" (click)="goToProfile()">
+        <span class="glyphicon glyphicon-user"></span>
+      </button>
+    </p>
+  </div>
+</nav>

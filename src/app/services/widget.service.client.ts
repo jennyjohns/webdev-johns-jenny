@@ -60,8 +60,6 @@ export class WidgetService {
   }
 
   sortingWidgets (pageId: string, start: Number, stop: Number) {
-    // /page/:pageId/widget?initial=index1&final=index2
-    // app.put("/api/page/:pid/widget", sortingWidgets);
     const url = this.baseURL + '/api/page/' + pageId + '/widget?initial=' + start + '&final=' + stop;
     return this.http.put(url, start)
       .map((response: Response) => {

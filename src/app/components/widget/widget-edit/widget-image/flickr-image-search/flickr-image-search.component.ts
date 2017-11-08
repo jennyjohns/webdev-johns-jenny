@@ -40,16 +40,13 @@ export class FlickrImageSearchComponent implements OnInit {
   }
 
   searchPhotos() {
-    console.log('outside' + this.searchText);
     this.flickrService
       .searchPhotos(this.searchText)
       .subscribe((data: any) => {
-        console.log(data);
         let val = data._body;
         val = val.replace('jsonFlickrApi(', '');
         val = val.substring(0, val.length - 1);
         val = JSON.parse(val);
-        console.log(val);
         this.photos = val.photos;
       });
   }
@@ -62,10 +59,12 @@ export class FlickrImageSearchComponent implements OnInit {
       .subscribe((widget: any) => {
         this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
       });
-    const widget = {
-      websiteId: this.websiteId,
-      pageId: this.pageId,
-      url: url
-    };
+  }
+
+  chooseWidget() {
+    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+  }
+  goToProfile() {
+    this.router.navigate(['user/', this.userId]);
   }
 }
