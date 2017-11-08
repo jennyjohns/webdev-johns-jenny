@@ -17,6 +17,7 @@ export class WebsiteNewComponent implements OnInit {
   website: any;
   developerId: string;
   websites = [];
+  dateCreated: Date;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private websiteService: WebsiteService,
               private router: Router) {
@@ -34,6 +35,7 @@ export class WebsiteNewComponent implements OnInit {
         this.websites = websites;
       });
     this.developerId = this.userId;
+    this.dateCreated = new Date();
   }
 
   newWebsite() {
@@ -42,7 +44,7 @@ export class WebsiteNewComponent implements OnInit {
   }
 
   commit(name: string, description: string) {
-    this.website = {name: name, developerId: this.developerId, description: description};
+    this.website = {name: name, developerId: this.developerId, description: description, dateCreated: this.dateCreated};
     this.websiteService.createWebsite(this.developerId, this.website)
       .subscribe((website: any) => {
         this.website = website;

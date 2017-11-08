@@ -14,6 +14,7 @@ export class WebsiteEditComponent implements OnInit {
   developerId: string;
   description: string;
   websites = [];
+  dateCreated: Date;
   constructor(private websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
@@ -31,6 +32,7 @@ export class WebsiteEditComponent implements OnInit {
         this.name = this.website['name'];
         this.developerId = this.website['developerId'];
         this.description = this.website['description'];
+        this.dateCreated = website['dateCreated'];
       });
     this.websiteService.findWebsitesByUser(this.developerId)
       .subscribe((websites: any) => {
