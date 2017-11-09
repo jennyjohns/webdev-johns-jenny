@@ -18,7 +18,7 @@ function createWidget(pageId, widget) {
     .create(widget)
     .then(function (widget) {
       newWidget = widget;
-      PageModel
+      return PageModel
         .findPageById(pageId)
         .then(function (page) {
           page.widgets.push(newWidget);
@@ -37,7 +37,35 @@ function findWidgetById(widgetId) {
 }
 
 function updateWidget(widgetId, widget) {
-  return WidgetModel.update({_id: widgetId}, widget);
+  console.log('WIDGET WE ARE SENDING TO UPDATE IN MODEL ', widget);
+  console.log(widget.pageId);
+  var pageWidgets = null;
+  var wdgt = null;
+  var i = null;
+  return PageModel
+    .findPageById(widget.pageId)
+    .then(function (page) {
+      pageWidgets = page.widgets;
+      return WidgetModel
+        .findWidgetById(widgetId)
+        .then(function (wid) {
+          wdgt = wid;
+          i = pageWidgets.indexOf(wid);
+          pageWidgets.splice(i, 1, widget);
+          // pageWidgets.splice(i, 0, widget);
+          return WidgetModel
+            .deleteOne({_id: widgetId})
+            .then(function (widgets) {
+              return WidgetModel
+                .create(widget)
+                .then(function (w) {
+                  return page.save();
+                });
+            });
+        });
+    });
+
+  // WidgetModel.update({_id: widgetId}, widget);
 }
 
 function deleteWidget(widgetId) {
@@ -47,7 +75,7 @@ function deleteWidget(widgetId) {
   return WidgetModel.findOne({_id: widgetId})
     .then(function (widget) {
       wdgt1 = widget;
-      pageId = widget._page;
+      pageId = widget.pageId;
       WidgetModel.deleteOne({_id: widgetId})
         .then(function (widgets) {
           PageModel

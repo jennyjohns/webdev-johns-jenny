@@ -11,7 +11,7 @@
     </p>
 
     <p class="navbar-text pull-right">
-      <button (click)="goToProfile(username, email, firstName, lastName, phone)"  class="navbar-link jj-button">
+      <button (click)="goToProfile(username, email, firstName, lastName)"  class="navbar-link jj-button">
         <span class="jj-button-text glyphicon glyphicon-ok"></span>
       </button>
     </p>
@@ -61,15 +61,6 @@
              id="Last Name"
              type="text"
              placeholder="Last Name"
-             class="form-control"/>
-      <label for="Last Name">
-        Phone Number
-      </label>
-      <input [(ngModel)]="phone"
-             name="phone"
-             id="phone"
-             type="tel"
-             placeholder="xxx-xxx-xxxx"
              class="form-control"/>
     </div>
   </form>

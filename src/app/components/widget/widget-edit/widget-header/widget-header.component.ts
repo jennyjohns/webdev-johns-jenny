@@ -67,8 +67,10 @@ export class WidgetHeaderComponent implements OnInit {
       size: size,
       text: text
     };
+    console.log('THE WIDGET WE ARE SENDING ', updatedWidget);
     this.widgetService.updateWidget(this.wgid, updatedWidget)
       .subscribe((widget: any) => {
+        console.log('THE WIDGET WE GET BACK ', widget);
         this.widget = widget;
         this.widgetType = widget['widgetType'];
         this.text = widget['text'];

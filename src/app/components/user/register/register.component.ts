@@ -15,8 +15,6 @@ export class RegisterComponent implements OnInit {
   email: string;
   firstName: string;
   lastName: string;
-  phone: string;
-  dateCreated: Date;
   errorFlag: boolean;
   errorMsg: string;
   user: any;
@@ -26,7 +24,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dateCreated = new Date();
   }
   register(username: string, password: string, email: string, firstName: string, lastName: string, phone: string) {
     this.username = username;
@@ -34,7 +31,6 @@ export class RegisterComponent implements OnInit {
     this.email = email;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.phone = phone;
     this.errorMsg = 'Invalid username or password!';
     this.errorFlag = false;
   }
@@ -46,8 +42,7 @@ export class RegisterComponent implements OnInit {
           this.errorMsg = 'Username already in use, please choose another username!';
         }else {
           const user1 = {username: username, password: password, firstName: firstName, lastName: lastName, email: email,
-            phone: phone, dateCreated: this.dateCreated};
-            console.log('h' + this.dateCreated);
+            phone: phone};
           this.userService.createUser(user1)
             .subscribe((user2) => {
               this.user = user2;

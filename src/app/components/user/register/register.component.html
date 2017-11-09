@@ -7,7 +7,7 @@
   </div>
 
   <h1>Register</h1>
-  <form (ngSubmit)="register(username.value, password.value, email.value, firstName.value, lastName.value, phone.value)" #f="ngForm">
+  <form (ngSubmit)="register(username.value, password.value, email.value, firstName.value, lastName.value)" #f="ngForm">
     <input name="username"
            id="username"
            type="text"
@@ -85,22 +85,8 @@
     <span class="help-block" *ngIf="!lastName.valid && lastName.touched">
       Please enter last name!
     </span>
-
-    <input name="phone"
-           id="phone"
-           type="tel"
-           placeholder="xxx-xxx-xxxx"
-           class="form-control"
-           ngModel
-           required
-           #phone="ngModel"/>
-
-    <span class="help-block" *ngIf="!phone.valid && phone.touched">
-      Please enter phone number!
-    </span>
-
   </form>
-  <button (click)="registered(username.value, password.value, firstName.value, lastName.value, email.value, phone.value)"
+  <button (click)="registered(username.value, password.value, firstName.value, lastName.value, email.value)"
           class="btn btn-primary btn-block jj-button-hover"
           type="submit"
           aria-pressed="true"

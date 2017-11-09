@@ -17,8 +17,6 @@ export class ProfileComponent implements OnInit {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
-  dateCreated: Date;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -38,8 +36,6 @@ export class ProfileComponent implements OnInit {
         this.password = this.user['password'];
         this.lastName = this.user['lastName'];
         this.email = this.user['email'];
-        this.phone = this.user['phone'];
-        this.dateCreated = user['dateCreated'];
       });
   }
 
@@ -47,8 +43,8 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['user/', this.userId, 'website']);
   }
 
-  goToProfile(uname, email, fname, lname, phone) {
-    const user = {username: uname, email: email, firstName: fname, lastName: lname, phone: phone, dateCreated: this.dateCreated};
+  goToProfile(uname, email, fname, lname) {
+    const user = {username: uname, email: email, firstName: fname, lastName: lname};
     this.userService.updateUser(this.userId, user)
       .subscribe((user1) => {
       });

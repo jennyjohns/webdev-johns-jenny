@@ -32,6 +32,7 @@ export class WidgetListComponent implements OnInit {
       );
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {
+        console.log('FIND ALL THE WIDGETS ', widgets);
         this.widgets = widgets;
       });
   }
@@ -45,6 +46,7 @@ export class WidgetListComponent implements OnInit {
     this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', 'new']);
   }
   editWidget(wgid: string, type: string) {
+    console.log('WIDGET LIST WIDGET ID ', wgid);
     this.widgetService.findWidgetById(wgid)
       .subscribe((widget: any) => {
         this.widget = widget;
