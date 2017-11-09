@@ -37,8 +37,6 @@ function findWidgetById(widgetId) {
 }
 
 function updateWidget(widgetId, widget) {
-  console.log('WIDGET WE ARE SENDING TO UPDATE IN MODEL ', widget);
-  console.log(widget.pageId);
   var pageWidgets = null;
   var wdgt = null;
   var i = null;
@@ -52,7 +50,6 @@ function updateWidget(widgetId, widget) {
           wdgt = wid;
           i = pageWidgets.indexOf(wid);
           pageWidgets.splice(i, 1, widget);
-          // pageWidgets.splice(i, 0, widget);
           return WidgetModel
             .deleteOne({_id: widgetId})
             .then(function (widgets) {
@@ -64,8 +61,6 @@ function updateWidget(widgetId, widget) {
             });
         });
     });
-
-  // WidgetModel.update({_id: widgetId}, widget);
 }
 
 function deleteWidget(widgetId) {

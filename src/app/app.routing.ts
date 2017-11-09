@@ -12,7 +12,7 @@ import {PageEditComponent} from './components/page/page-edit/page-edit.component
 import {WidgetListComponent} from './components/widget/widget-list/widget-list.component';
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
-import {FlickrImageSearchComponent} from "./components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component";
+import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 // Import all other components here
 
 const APP_ROUTES: Routes = [

@@ -27,8 +27,6 @@ import { WebsiteService } from './services/website.service.client';
 import { PageService } from './services/page.service.client';
 import { WidgetService } from './services/widget.service.client';
 import {Routing} from './app.routing';
-import { SortableDirectiveComponent } from './sortable-directive/sortable-directive.component';
-import {HelloWorldDirective} from '../../directives/hello-world.directive';
 import {WebdevSortableDirective} from '../../directives/webdev-sortable.directive';
 import { WidgetHtmlComponent } from './components/widget/widget-edit/widget-html/widget-html.component';
 import {QuillEditorModule} from '../../node_modules/ngx-quill-editor';
@@ -57,8 +55,6 @@ import {FlickrService} from './services/flickr.service.client';
     WidgetChooserComponent,
     WidgetEditComponent,
     WidgetListComponent,
-    SortableDirectiveComponent,
-    HelloWorldDirective,
     WebdevSortableDirective,
     WidgetHtmlComponent,
     WidgetTextComponent,

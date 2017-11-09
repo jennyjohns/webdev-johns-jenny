@@ -21,7 +21,7 @@ function createPage(webId, page) {
         .findWebsiteById(webId)
         .then(function (website) {
           website.pages.push(newPage);
-          console.log(website);
+
           return website.save();
         });
     });

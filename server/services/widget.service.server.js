@@ -39,14 +39,12 @@ module.exports = function (app) {
 
   function createWidget(req, res) {
     var widget = req.body;
-    console.log('SERVICE WIDGET BODY ', widget);
 
     var pageId = req.params['pid'];
     widget.pageId = pageId;
     widgetModel
       .createWidget(pageId, widget)
       .then(function (widget) {
-        console.log('SERVICE WIDGET AFTER CREATE ', widget);
         widgetModel
           .findAllWidgetsForPage(pageId)
           .then(function (widgets) {
