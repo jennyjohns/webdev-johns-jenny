@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-  register(username: string, password: string, email: string, firstName: string, lastName: string, phone: string) {
+  register(username: string, password: string, email: string, firstName: string, lastName: string) {
     this.username = username;
     this.password = password;
     this.email = email;
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
           this.errorFlag = true;
           this.errorMsg = 'Username already in use, please choose another username!';
         }else {
-          const user1 = {username: username, password: password, firstName: firstName, lastName: lastName, email: email}
+          const user1 = {username: username, password: password, firstName: firstName, lastName: lastName, email: email};
           this.userService.createUser(user1)
             .subscribe((user2) => {
               this.user = user2;
