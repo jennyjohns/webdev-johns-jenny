@@ -18,6 +18,7 @@ export class PageNewComponent implements OnInit {
   pages = [];
   page: any;
   description: string;
+  dateCreated: Date;
 
   constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -35,6 +36,7 @@ export class PageNewComponent implements OnInit {
       .subscribe((pages: any) => {
         this.pages = pages;
       });
+    this.dateCreated = new Date();
   }
 
   newPage() {
@@ -53,6 +55,7 @@ export class PageNewComponent implements OnInit {
         this.page = page;
         this.name = this.page['name'];
         this.description = this.page['description'];
+        this.dateCreated = page['dateCreated'];
       });
   }
 
@@ -61,7 +64,7 @@ export class PageNewComponent implements OnInit {
   }
 
   commit(name: string, description: string) {
-    this.page = {name: name, websiteId: this.webId, description: description};
+    this.page = {name: name, websiteId: this.webId, description: description, dateCreated: this.dateCreated};
     this.pageService.createPage(this.webId, this.page)
       .subscribe((page: any) => {
         this.page = page;

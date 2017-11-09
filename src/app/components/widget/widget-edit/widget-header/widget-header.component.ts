@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {NgModel} from '@angular/forms';
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-widget-header',
@@ -19,6 +20,7 @@ export class WidgetHeaderComponent implements OnInit {
   widgetType: string;
   text: string;
   size: number;
+  dateCreated: Date;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
               private router: Router) {
@@ -40,6 +42,7 @@ export class WidgetHeaderComponent implements OnInit {
         this.widgetType = this.widget['widgetType'];
         this.text = this.widget['text'];
         this.size = this.widget['size'];
+        this.dateCreated = widget['dateCreated'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {
@@ -65,7 +68,8 @@ export class WidgetHeaderComponent implements OnInit {
       widgetType: type,
       pageId: this.widget['pageId'],
       size: size,
-      text: text
+      text: text,
+      dateCreated: this.dateCreated
     };
     console.log('THE WIDGET WE ARE SENDING ', updatedWidget);
     this.widgetService.updateWidget(this.wgid, updatedWidget)
@@ -75,6 +79,7 @@ export class WidgetHeaderComponent implements OnInit {
         this.widgetType = widget['widgetType'];
         this.text = widget['text'];
         this.size = widget['size'];
+        this.dateCreated = widget['dateCreated'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }

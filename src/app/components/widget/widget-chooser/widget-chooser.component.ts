@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {withIdentifier} from "codelyzer/util/astQuery";
 
 @Component({
   selector: 'app-widget-chooser',
@@ -16,6 +17,7 @@ export class WidgetChooserComponent implements OnInit {
   size: number;
   widgets = [];
   widget = {};
+  dateCreated: Date;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -33,6 +35,7 @@ export class WidgetChooserComponent implements OnInit {
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
+    this.dateCreated = new Date();
   }
 
   makeWidget(type: String) {

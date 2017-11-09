@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgModel} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-widget-text',
@@ -22,8 +23,10 @@ export class WidgetTextComponent implements OnInit {
   name: string;
   placeholder: string;
   formatted: Boolean;
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router
-  ) { }
+  dateCreated: Date;
+
+  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
+  }
 
   ngOnInit() {
     this.activatedRoute.params
@@ -44,6 +47,7 @@ export class WidgetTextComponent implements OnInit {
         this.name = this.widget['name'];
         this.placeholder = this.widget['placeholder'];
         this.formatted = this.widget['formatted'];
+        this.dateCreated = widget['dateCreated'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {
@@ -72,7 +76,8 @@ export class WidgetTextComponent implements OnInit {
       rows: rows,
       name: name,
       placeholder: placeholder,
-      formatted: formatted
+      formatted: formatted,
+      dateCreated: this.dateCreated
     };
     this.widgetService.updateWidget(this.wgid, updatedWidget)
       .subscribe((widget: any) => {
@@ -83,6 +88,7 @@ export class WidgetTextComponent implements OnInit {
         this.name = widget['name'];
         this.placeholder = widget['placeholder'];
         this.formatted = widget['formatted'];
+        this.dateCreated = widget['dateCreated'];
         this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
