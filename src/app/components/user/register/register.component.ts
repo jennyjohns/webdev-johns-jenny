@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     this.errorMsg = 'Invalid username or password!';
     this.errorFlag = false;
   }
-  registered(username, password, firstName, lastName, email, phone) {
+  registered(username, password, firstName, lastName, email) {
     this.userService.findUserByUsername(username)
       .subscribe((user: any) => {
         if (user !== null) {
