@@ -29,7 +29,19 @@ module.exports = function (app) {
   }
 
   function findWidgetById(req, res) {
+    // var pageId = req.params['pid'];
     var wgId = req.params['wgid'];
+    // var pageWidgets = null;
+    // pageModel
+    //   .findPageById(pageId)
+    //   .then(function (page) {
+    //     pageWidgets = page.widgets;
+    //     for (i = 0; i < pageWidgets.length; i++) {
+    //       if (pageWidgets[i]._id === wgId) {
+    //         res.json(pageWidgets[i]);
+    //       }
+    //     }
+    //   });
     widgetModel
       .findWidgetById(wgId)
       .then(function (widget) {
