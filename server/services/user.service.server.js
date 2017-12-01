@@ -1,13 +1,22 @@
+import {require} from "../../src/test";
+
 module.exports = function (app) {
   var userModel = require("../../model/user/user.model.server");
   var passport = require('passport');
   var LocalStrategy = require('passport-local').Strategy;
   var bcrypt = require('bcrypt-nodejs');
+  var FaceBookStrategy = require('passport-facebook').Strategy;
+  var facebookConfig = {
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL
+  };
 
 
   passport.serializeUser(serializeUser);
   passport.deserializeUser(deserializeUser);
   passport.use(new LocalStrategy(localStrategy));
+  passport.use(new FaceBookStrategy(facebookConfig, facebookStrategy));
 
   app.get("/api/user/:uid", findUserById);
   app.get("/api/user", findUsers);
@@ -18,6 +27,26 @@ module.exports = function (app) {
   app.post("/api/login", passport.authenticate('local'), login);
   app.post('/api/logout', logout);
   app.post('/api/loggedIn', loggedIn);
+  app.get('/facebook/login', passport.authenticate('facebook', {scope: email}));
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {successRedirect: '/#/profile', failureRedirect: '/#/login'}));
+
+  function facebookStrategy(token, refreshToken, profile, done) {
+    userModel
+      .findUserByFacebookId(profile.id)
+      .then(function (user) {
+        if (user) {
+          return done(null, user);
+        } else {
+          var names = profile.displayName.split(" ");
+          var newFaceBookUser = {lastName: names[1], firstName: names[0], email: profile.emails ? profile.emails[0].value: "",
+          facebook: {id: profile.id, token: token}};
+          return userModel.createUser(newFaceBookUser);
+        }
+      })
+    .then(function (user) {
+      return done(null, user);
+    });
+  }
 
   function loggedIn(req, res) {
     if (req.isAuthenticated()) {
@@ -30,7 +59,7 @@ module.exports = function (app) {
 
   function localStrategy(username, password, done) {
     userModel
-      .findUserByCredentials(username, password)
+      .findUserByUsername(username)
       .then(
         function(user) {
           if(user && user.username === username && bcrypt.compareSync(password, user.password)) {
