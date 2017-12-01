@@ -1,11 +1,53 @@
 module.exports = function (app) {
   var userModel = require("../../model/user/user.model.server");
+  var passport = require('passport');
+  var LocalStrategy = require('passport-local').Strategy;
+
+
+  passport.serializeUser(serializeUser);
+  passport.deserializeUser(deserializeUser);
+  passport.use(new LocalStrategy(localStrategy));
 
   app.get("/api/user/:uid", findUserById);
   app.get("/api/user", findUsers);
   app.post("/api/user", createUser);
   app.put("/api/user/:uid", updateUser);
   app.delete("/api/user/:uid", deleteUser);
+
+  function localStrategy(username, password, done) {
+    userModel
+      .findUserByCredentials(username, password)
+      .then(
+        function(user) {
+          if(user.username === username && user.password === password) {
+            return done(null, user);
+          } else {
+            return done(null, false);
+          }
+        },
+        function(err) {
+          if (err) { return done(err); }
+        }
+      );
+  }
+
+
+  function serializeUser(user, done) {
+    done(null, user);
+  }
+
+  function deserializeUser(user, done) {
+    userModel
+      .findUserById(user._id)
+      .then(
+        function(user){
+          done(null, user);
+        },
+        function(err){
+          done(err, null);
+        }
+      );
+  }
 
   function findUserById(req, res) {
     var userId = req.params["uid"];

@@ -33,6 +33,7 @@ import {QuillEditorModule} from '../../node_modules/ngx-quill-editor';
 import { WidgetTextComponent } from './components/widget/widget-edit/widget-text/widget-text.component';
 import { FlickrImageSearchComponent } from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 import {FlickrService} from './services/flickr.service.client';
+import {SharedService} from './services/shared.service.client';
 
 @NgModule({
   // Declare components here
@@ -68,7 +69,7 @@ import {FlickrService} from './services/flickr.service.client';
     QuillEditorModule
   ],
   // Client Side services here
-  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService, FlickrService],
+  providers: [ TestService, UserService, WebsiteService, PageService, WidgetService, FlickrService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
