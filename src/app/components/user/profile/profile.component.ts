@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../../services/user.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-profile',
@@ -18,25 +19,32 @@ export class ProfileComponent implements OnInit {
   lastName: string;
   email: string;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private userService: UserService,
+              private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.userId = params['uid'];
+          this.user = this.sharedService.user || {};
         }
       );
-    this.userService.findUserById(this.userId)
-      .subscribe((user: any) => {
-        this.user = user;
-        this.username = this.user['username'];
-        this.firstName = this.user['firstName'];
-        this.password = this.user['password'];
-        this.lastName = this.user['lastName'];
-        this.email = this.user['email'];
-      });
+    this.userId = this.user['_id'];
+    this.username = this.user['username'];
+    this.firstName = this.user['firstName'];
+    this.password = this.user['password'];
+    this.lastName = this.user['lastName'];
+    this.email = this.user['email'];
+    // this.userService.findUserById(this.userId)
+    //   .subscribe((user: any) => {
+    //     this.user = user;
+    //     this.username = this.user['username'];
+    //     this.firstName = this.user['firstName'];
+    //     this.password = this.user['password'];
+    //     this.lastName = this.user['lastName'];
+    //     this.email = this.user['email'];
+    //   });
   }
 
   websites() {
@@ -57,6 +65,13 @@ export class ProfileComponent implements OnInit {
   deleteAccount(userId: string) {
     this.userService.deleteUser(userId)
       .subscribe((users) => {
+        this.router.navigate(['/login']);
+      });
+  }
+
+  logout() {
+    this.userService.logout()
+      .subscribe((status) => {
         this.router.navigate(['/login']);
       });
   }

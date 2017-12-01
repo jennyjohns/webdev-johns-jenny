@@ -13,6 +13,7 @@ import {WidgetListComponent} from './components/widget/widget-list/widget-list.c
 import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-chooser.component';
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
 import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
+import {AuthenticationService} from './services/authentication.service.client';
 // Import all other components here
 
 const APP_ROUTES: Routes = [
@@ -20,7 +21,7 @@ const APP_ROUTES: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'default', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'user/:uid', component: ProfileComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthenticationService]},
   {path: 'user/:uid/website', component: WebsiteListComponent},
   {path: 'user/:uid/website/new', component: WebsiteNewComponent},
   {path: 'user/:uid/website/:wid', component: WebsiteEditComponent},

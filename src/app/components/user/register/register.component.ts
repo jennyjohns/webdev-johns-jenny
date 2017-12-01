@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../../services/user.service.client';
 import {Router} from '@angular/router';
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   errorMsg: string;
   user: any;
   user_id: string;
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private sharedService: SharedService, private userService: UserService, private router: Router) {
 
   }
 
@@ -42,12 +43,19 @@ export class RegisterComponent implements OnInit {
           this.errorMsg = 'Username already in use, please choose another username!';
         }else {
           const user1 = {username: username, password: password, firstName: firstName, lastName: lastName, email: email};
-          this.userService.createUser(user1)
+          this.userService.register(username, password, firstName, lastName, email)
             .subscribe((user2) => {
-              this.user = user2;
-              this.user_id = user2['_id'];
-              this.router.navigate(['user/', this.user_id]);
+              this.sharedService.user = user;
+              // this.user = user2;
+              // this.user_id = user2['_id'];
+              this.router.navigate(['/profile']);
             });
+          // this.userService.createUser(user1)
+          //   .subscribe((user2) => {
+          //     this.user = user2;
+          //     this.user_id = user2['_id'];
+          //     this.router.navigate(['user/', this.user_id]);
+          //   });
         }
       });
   }

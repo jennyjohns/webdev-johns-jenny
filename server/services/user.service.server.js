@@ -13,13 +13,26 @@ module.exports = function (app) {
   app.post("/api/user", createUser);
   app.put("/api/user/:uid", updateUser);
   app.delete("/api/user/:uid", deleteUser);
+  app.post("/api/register", register);
+  app.post("/api/login", passport.authenticate('local'), login);
+  app.post('/api/logout', logout);
+  app.post('/api/loggedIn', loggedIn);
+
+  function loggedIn(req, res) {
+    if (req.isAuthenticated()) {
+      res.json(req.user);
+    } else {
+      res.send('0');
+    }
+  }
+
 
   function localStrategy(username, password, done) {
     userModel
       .findUserByCredentials(username, password)
       .then(
         function(user) {
-          if(user.username === username && user.password === password) {
+          if(user && user.username === username && user.password === password) {
             return done(null, user);
           } else {
             return done(null, false);
@@ -30,7 +43,6 @@ module.exports = function (app) {
         }
       );
   }
-
 
   function serializeUser(user, done) {
     done(null, user);
@@ -47,6 +59,26 @@ module.exports = function (app) {
           done(err, null);
         }
       );
+  }
+
+  function register(req, res) {
+    var user = req.body;
+    userModel
+      .createUser(user)
+      .then(function (user) {
+        req.login(user, function (err) {
+          res.json(user);
+        });
+      });
+  }
+
+  function login(req, res) {
+    res.json(req.user);
+  }
+
+  function logout(req, res) {
+    req.logOut();
+    res.send(200);
   }
 
   function findUserById(req, res) {
