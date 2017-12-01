@@ -119,7 +119,8 @@ module.exports = function (app) {
         widget1['size'] = size;
         widgetModel
           .updateWidget(widgetId, widget1)
-          .then(function (wgdt) {
+          .then(function (wdgt) {
+            wdgt.save();
             var callbackUrl =  '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
             res.redirect(callbackUrl);
           });
