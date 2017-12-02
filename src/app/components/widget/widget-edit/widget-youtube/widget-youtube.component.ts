@@ -1,9 +1,8 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgModel} from '@angular/forms';
-import {isUndefined} from "util";
+import {SharedService} from "../../../../services/shared.service.client";
 
 @Component({
   selector: 'app-widget-youtube',
@@ -23,7 +22,7 @@ export class WidgetYoutubeComponent implements OnInit {
   width: string;
   dateCreated: Date;
 
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
+  constructor(private sharedService: SharedService, private widgetService: WidgetService, private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
 
@@ -32,7 +31,7 @@ export class WidgetYoutubeComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.wgid = params['wgid'];
-          this.userId = params['uid'];
+          this.userId = this.sharedService.user['_id'];
           this.webId = params['wid'];
           this.pageId = params['pid'];
         }
@@ -52,15 +51,15 @@ export class WidgetYoutubeComponent implements OnInit {
   }
 
   goToWidgets() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
   }
 
   chooseWidget() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
   }
 
   goToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['/profile']);
   }
 
   commit(width, url) {
@@ -74,14 +73,14 @@ export class WidgetYoutubeComponent implements OnInit {
     };
     this.widgetService.updateWidget(this.widget['_id'], this.widget)
       .subscribe((widget: any) => {
-        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+        this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
 
   deleted(wgid) {
     this.widgetService.deleteWidget(wgid)
       .subscribe((widgets: any) => {
-        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+        this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
 }

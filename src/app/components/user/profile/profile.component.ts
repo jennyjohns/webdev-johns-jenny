@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
   }
 
   websites() {
-    this.router.navigate(['user/', this.userId, 'website']);
+    this.router.navigate(['user/website']);
   }
 
   goToProfile(uname, email, fname, lname) {

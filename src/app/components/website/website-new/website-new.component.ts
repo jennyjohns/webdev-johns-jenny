@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WebsiteService} from '../../../services/website.service.client';
 import {UserService} from '../../../services/user.service.client';
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-website-new',
@@ -18,8 +19,9 @@ export class WebsiteNewComponent implements OnInit {
   developerId: string;
   websites = [];
   dateCreated: Date;
+  user: {};
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private websiteService: WebsiteService,
+  constructor(private sharedService: SharedService, private activatedRoute: ActivatedRoute, private websiteService: WebsiteService,
               private router: Router) {
   }
 
@@ -27,7 +29,8 @@ export class WebsiteNewComponent implements OnInit {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.userId = params['uid'];
+          this.user = this.sharedService.user;
+          this.userId = this.user['_id'];
         }
       );
     this.websiteService.findWebsitesByUser(this.userId)
@@ -48,26 +51,26 @@ export class WebsiteNewComponent implements OnInit {
     this.websiteService.createWebsite(this.developerId, this.website)
       .subscribe((website: any) => {
         this.website = website;
-        this.router.navigate(['user/', this.developerId, 'website']);
+        this.router.navigate(['user/website']);
       });
   }
 
   editWebsite(webId) {
-    this.router.navigate(['user/', this.developerId, 'website', webId]);
+    this.router.navigate(['user/website', webId]);
   }
 
   goToProfile() {
-    this.router.navigate(['user/', this.developerId]);
+    this.router.navigate(['/profile']);
   }
 
   goToNewWebsite() {
-    this.router.navigate(['user/', this.userId, 'website', 'new']);
+    this.router.navigate(['user/website/new']);
   }
 
   cancel() {
-    this.router.navigate(['user/', this.developerId, 'website']);
+    this.router.navigate(['user/website']);
   }
   goToPages(webId) {
-    this.router.navigate(['user/', this.userId, 'website', webId, 'page']);
+    this.router.navigate(['user/website', webId, 'page']);
   }
 }

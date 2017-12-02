@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgModel} from '@angular/forms';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-page-new',
@@ -19,8 +20,9 @@ export class PageNewComponent implements OnInit {
   page: any;
   description: string;
   dateCreated: Date;
+  user: {};
 
-  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class PageNewComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.pageId = params['pid'];
-          this.userId = params['uid'];
+          this.userId = this.sharedService.user['_id'];
           this.webId = params['wid'];
         }
       );
@@ -45,11 +47,11 @@ export class PageNewComponent implements OnInit {
   }
 
   goToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['/profile']);
   }
 
   editPage(pgId) {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', pgId]);
+    this.router.navigate(['user/website', this.webId, 'page', pgId]);
     this.pageService.findPageById(pgId)
       .subscribe((page: any) => {
         this.page = page;
@@ -60,19 +62,19 @@ export class PageNewComponent implements OnInit {
   }
 
   goToPages() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page']);
-  }
+    this.router.navigate(['user/website', this.webId, 'page']);
+}
 
   commit(name: string, description: string) {
     this.page = {name: name, websiteId: this.webId, description: description, dateCreated: this.dateCreated};
     this.pageService.createPage(this.webId, this.page)
       .subscribe((page: any) => {
         this.page = page;
-        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page']);
+        this.router.navigate(['user/website', this.webId, 'page']);
       });
   }
 
   goToWidgets(pgId) {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', pgId, 'widget']);
+    this.router.navigate(['user/website', this.webId, 'page', pgId, 'widget']);
   }
 }

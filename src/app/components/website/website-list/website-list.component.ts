@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WebsiteService} from '../../../services/website.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SharedService} from "../../../services/shared.service.client";
 
 
 @Component({
@@ -11,8 +12,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class WebsiteListComponent implements OnInit {
   userId: string;
   websites = [];
+  user: {};
 
-  constructor(private _websiteService: WebsiteService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private _websiteService: WebsiteService,
+              private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
 
@@ -20,7 +23,8 @@ export class WebsiteListComponent implements OnInit {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.userId = params['uid'];
+          this.user = this.sharedService.user;
+          this.userId = this.user['_id'];
         }
       );
     this._websiteService.findWebsitesByUser(this.userId)
@@ -30,13 +34,13 @@ export class WebsiteListComponent implements OnInit {
   }
 
   newWebsite() {
-    this.router.navigate(['user/', this.userId, 'website', 'new']);
+    this.router.navigate(['user/website/new']);
   }
   goToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['/profile']);
   }
 
   goToPages(webId) {
-    this.router.navigate(['user/', this.userId, 'website', webId, 'page']);
+    this.router.navigate(['user/website', webId, 'page']);
   }
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-page-list',
@@ -14,8 +15,10 @@ export class PageListComponent implements OnInit {
   userId: string;
   description: string;
   pages = [];
+  user: {};
 
-  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private pageService: PageService,
+              private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -23,7 +26,8 @@ export class PageListComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.websiteId = params['wid'];
-          this.userId = params['uid'];
+          this.user = this.sharedService.user;
+          this.userId = this.user['_id'];
         }
       );
     this.pageService.findPageByWebsiteId(this.websiteId)
@@ -33,22 +37,22 @@ export class PageListComponent implements OnInit {
   }
 
   editPage(pgId) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId]);
+    this.router.navigate(['user/website', this.websiteId, 'page', pgId]);
   }
 
   goToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['/profile']);
   }
 
   newPage() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', 'new']);
+    this.router.navigate(['user/website', this.websiteId, 'page', 'new']);
   }
 
   goToWebsites() {
-    this.router.navigate(['user/', this.userId, 'website']);
+    this.router.navigate(['user/website']);
   }
 
   goToWidgets(pgId) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId, 'widget']);
+    this.router.navigate(['user/website', this.websiteId, 'page', pgId, 'widget']);
   }
 }

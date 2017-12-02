@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {WidgetService} from '../../../services/widget.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {withIdentifier} from "codelyzer/util/astQuery";
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-widget-chooser',
@@ -19,7 +20,7 @@ export class WidgetChooserComponent implements OnInit {
   widget = {};
   dateCreated: Date;
 
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -27,7 +28,7 @@ export class WidgetChooserComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.pageId = params['pid'];
-          this.userId = params['uid'];
+          this.userId = this.sharedService.user['_id'];
           this.webId = params['wid'];
         }
       );
@@ -48,20 +49,20 @@ export class WidgetChooserComponent implements OnInit {
         this.widget['widgetType'] = type;
         this.widgetType = type;
         this.widgetId = this.widget['_id'];
-        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', this.widgetId]);
+        this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget', this.widgetId]);
       });
   }
 
   goToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['/profile']);
   }
 
   goToWidgets() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
   }
 
   chooseWidget() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget', 'new']);
+    this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget', 'new']);
 
   }
 

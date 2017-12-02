@@ -9,6 +9,7 @@ module.exports = function (app) {
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK_URL
   };
+  console.log(process.env.FACEBOOK_CALLBACK_URL);
 
   passport.serializeUser(serializeUser);
   passport.deserializeUser(deserializeUser);

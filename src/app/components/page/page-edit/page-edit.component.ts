@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {PageService} from '../../../services/page.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgModel} from "@angular/forms";
+import {SharedService} from "../../../services/shared.service.client";
 
 @Component({
   selector: 'app-page-edit',
@@ -20,7 +21,8 @@ export class PageEditComponent implements OnInit {
   dateCreated: Date;
 
 
-  constructor(private pageService: PageService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private pageService: PageService,
+              private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class PageEditComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.pageId = params['pid'];
-          this.userId = params['uid'];
+          this.userId = this.sharedService.user['_id'];
           this.websiteId = params['wid'];
         }
       );
@@ -46,7 +48,7 @@ export class PageEditComponent implements OnInit {
   }
 
   goToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['/profile']);
   }
 
   commit(pid: string, name: string, description: string) {
@@ -54,12 +56,12 @@ export class PageEditComponent implements OnInit {
     this.pageService.updatePage(pid, this.page)
       .subscribe((page: any) => {
         this.page = page;
-        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+        this.router.navigate(['user/website', this.websiteId, 'page']);
       });
   }
 
   editPage(pgId) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId]);
+    this.router.navigate(['user/website', this.websiteId, 'page', pgId]);
     this.pageService.findPageById(pgId)
       .subscribe((page: any) => {
         this.page = page;
@@ -70,20 +72,20 @@ export class PageEditComponent implements OnInit {
   }
 
   goToPages() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+    this.router.navigate(['user/website', this.websiteId, 'page']);
   }
 
   newPage() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', 'new']);
+    this.router.navigate(['user/website', this.websiteId, 'page', 'new']);
   }
 
   goToWidgets(pgId) {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', pgId, 'widget']);
+    this.router.navigate(['user/website', this.websiteId, 'page', pgId, 'widget']);
   }
   deleted(pid) {
     this.pageService.deletePage(pid)
       .subscribe((pages: any) => {
-        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page']);
+        this.router.navigate(['user/website', this.websiteId, 'page']);
       });
   }
 }

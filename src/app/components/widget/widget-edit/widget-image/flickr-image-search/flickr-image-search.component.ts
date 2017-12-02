@@ -3,6 +3,7 @@ import {FlickrService} from '../../../../../services/flickr.service.client';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../../services/widget.service.client';
 import {NgForm} from '@angular/forms';
+import {SharedService} from "../../../../../services/shared.service.client";
 
 @Component({
   selector: 'app-flickr-image-search',
@@ -20,7 +21,7 @@ export class FlickrImageSearchComponent implements OnInit {
   widget: {};
   userId: string;
 
-  constructor(private flickrService: FlickrService, private activatedRoute: ActivatedRoute,
+  constructor(private sharedService: SharedService, private flickrService: FlickrService, private activatedRoute: ActivatedRoute,
               private widgetService: WidgetService, private router: Router) {
   }
 
@@ -28,7 +29,7 @@ export class FlickrImageSearchComponent implements OnInit {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
-          this.userId = params['uid'];
+          this.userId = this.sharedService.user['_id'];
           this.websiteId = params['wid'];
           this.pageId = params['pid'];
           this.wgid = params['wgid'];
@@ -57,14 +58,14 @@ export class FlickrImageSearchComponent implements OnInit {
     this.widget['url'] = url;
     this.widgetService.updateWidget(this.wgid, this.widget)
       .subscribe((widget: any) => {
-        this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+        this.router.navigate(['user/website', this.websiteId, 'page', this.pageId, 'widget']);
       });
   }
 
   chooseWidget() {
-    this.router.navigate(['user/', this.userId, 'website', this.websiteId, 'page', this.pageId, 'widget']);
+    this.router.navigate(['user/website', this.websiteId, 'page', this.pageId, 'widget']);
   }
   goToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['/profile']);
   }
 }

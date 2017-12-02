@@ -28,7 +28,7 @@
       <button class="jj-button-cog" (click)="goToPages(website._id)">
         {{website.name}}
       </button>
-      <button class="pull-right jj-button-cog" [routerLink]="['/user', website.developerId._id, 'website', website._id]">
+      <button class="pull-right jj-button-cog" [routerLink]="['/user/website', website._id]">
         <span class="glyphicon glyphicon-cog"></span>
       </button>
     </li>

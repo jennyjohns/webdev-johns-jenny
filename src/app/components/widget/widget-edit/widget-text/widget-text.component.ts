@@ -3,6 +3,7 @@ import {NgModel} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WidgetService} from '../../../../services/widget.service.client';
 import {isUndefined} from "util";
+import {SharedService} from "../../../../services/shared.service.client";
 
 @Component({
   selector: 'app-widget-text',
@@ -25,7 +26,8 @@ export class WidgetTextComponent implements OnInit {
   formatted: Boolean;
   dateCreated: Date;
 
-  constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private widgetService: WidgetService,
+              private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class WidgetTextComponent implements OnInit {
       .subscribe(
         (params: any) => {
           this.wgid = params['wgid'];
-          this.userId = params['uid'];
+          this.userId = this.sharedService.user['_id'];
           this.webId = params['wid'];
           this.pageId = params['pid'];
         }
@@ -56,15 +58,15 @@ export class WidgetTextComponent implements OnInit {
   }
 
   goToWidgets() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
   }
 
   chooseWidget() {
-    this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+    this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
   }
 
   goToProfile() {
-    this.router.navigate(['user/', this.userId]);
+    this.router.navigate(['/profile']);
   }
 
   commit(text: string, type: string, rows: Number, name: string, placeholder: string, formatted: Boolean) {
@@ -89,14 +91,14 @@ export class WidgetTextComponent implements OnInit {
         this.placeholder = widget['placeholder'];
         this.formatted = widget['formatted'];
         this.dateCreated = widget['dateCreated'];
-        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+        this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
 
   deleted(wgid) {
     this.widgetService.deleteWidget(wgid)
       .subscribe((widgets: any) => {
-        this.router.navigate(['user/', this.userId, 'website', this.webId, 'page', this.pageId, 'widget']);
+        this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget']);
       });
   }
 
