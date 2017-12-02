@@ -117,10 +117,10 @@ module.exports = function (app) {
         widget1['url'] = '/assets/uploads/' + filename;
         widget1['width'] = width;
         widget1['size'] = size;
+        widget1.save();
         widgetModel
           .updateWidget(widgetId, widget1)
           .then(function (wdgt) {
-            wdgt.save();
             var callbackUrl =  '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
             res.redirect(callbackUrl);
           });
