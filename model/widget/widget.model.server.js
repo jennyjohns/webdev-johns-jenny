@@ -36,7 +36,6 @@ function findAllWidgetsForPage(pageId) {
 }
 
 function findWidgetById(pageId, widgetId) {
-  console.log('PAGEID IN MODEL', pageId);
   return PageModel
     .findPageById(pageId);
     // .widgets

@@ -68,7 +68,8 @@
       <input  name="websiteId" value="{{webId}}"   style="display: none"/>
       <input  name="pageId" value="{{pageId}}"   style="display: none"/>
       <input  name="userId" value="{{userId}}"   style="display: none"/>
-      <button type="submit" class="btn btn-block btn-primary jj-button-hover" aria-pressed="true">Upload Image</button>
+      <input  name="width" value="{{width}}"   style="display: none"/>
+      <button (click)="commit(width, url)" type="submit" class="btn btn-block btn-primary jj-button-hover" aria-pressed="true">Upload Image</button>
       <br/>
     </form>
     <button  (click)="flickrSearch()" class="btn btn-info btn-block jj-button-hover jj-padding jj-center" aria-pressed="true">Search</button>

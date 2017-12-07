@@ -74,14 +74,14 @@ module.exports = function (app) {
   }
   function createWidget(req, res) {
     var widget = req.body;
-    console.log('WIDGET IN SERVER', widget);
+    //console.log('WIDGET IN SERVER', widget);
 
     var pageId = req.params['pid'];
     widget.pageId = pageId;
     widgetModel
       .createWidget(pageId, widget)
       .then(function (widget) {
-        console.log('SECOND', widget);
+        //console.log('SECOND', widget);
         widgetModel
           .findAllWidgetsForPage(pageId)
           .then(function (widgets) {
@@ -123,6 +123,7 @@ module.exports = function (app) {
   function uploadImage(req, res) {
     var widgetId = req.body.widgetId;
     var width = req.body.width;
+    console.log('WIDTH', req.body.width);
     var myFile = req.file;
     var userId = req.body.userId;
     var websiteId = req.body.websiteId;
@@ -136,14 +137,14 @@ module.exports = function (app) {
     var mimetype = myFile.mimetype;
     var widget1 = null;
     widgetModel
-      .findWidgetById(widgetId)
-      .then(function (widget) {
-        widget1 = widget;
+      .findWidgetById(pageId, widgetId)
+      .then(function (page) {
+        widget1 = findSameId(widgetId, page.widgets);
         widget1['url'] = '/assets/uploads/' + filename;
         widget1['width'] = width;
         widget1['size'] = size;
         widget1.save();
-        console.log(widget1);
+        console.log('CREATED WIDGET', widget1);
         widgetModel
           .updateWidget(widgetId, widget1)
           .then(function (wdgt) {
