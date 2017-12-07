@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var WidgetSchema = require('./widget.schema.server');
 var WidgetModel = mongoose.model('WidgetModel', WidgetSchema);
-var PageModel =  require('../page/page.model.server');
+var PageModel = require('../page/page.model.server');
 
 WidgetModel.createWidget = createWidget;
 WidgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
@@ -9,15 +9,18 @@ WidgetModel.findWidgetById = findWidgetById;
 WidgetModel.updateWidget = updateWidget;
 WidgetModel.deleteWidget = deleteWidget;
 WidgetModel.sortingWidgets = sortingWidgets;
+WidgetModel.updateOneWidget = updateOneWidget;
 
 module.exports = WidgetModel;
 
 function createWidget(pageId, widget) {
+  console.log('IN MODEL', widget);
   var newWidget = null;
   return WidgetModel
     .create(widget)
     .then(function (widget) {
       newWidget = widget;
+      console.log('NEW IN MODEL', newWidget);
       return PageModel
         .findPageById(pageId)
         .then(function (page) {
@@ -32,8 +35,28 @@ function findAllWidgetsForPage(pageId) {
     .findPageById(pageId);
 }
 
-function findWidgetById(widgetId) {
-  return WidgetModel.findOne({_id: widgetId});
+function findWidgetById(pageId, widgetId) {
+  console.log('PAGEID IN MODEL', pageId);
+  return PageModel
+    .findPageById(pageId);
+    // .widgets
+    // .find(widget => widget._id === widgetId);
+
+
+// console.log('PAGEID IN MODEL',pageId);
+// var pageWidgets = null;
+// return PageModel.findPageById(pageId)
+//   .then(function (page) {
+//     console.log('HELLO FROM MODEL', page.widgets);
+//     pageWidgets = page.widgets;
+//     for(var i = 0; i < pageWidgets.length; i++) {
+//       if(pageWidgets[i]._id === widgetId) {
+//         return pageWidgets[i];
+//       }
+//     }
+//   });
+
+// return WidgetModel.findOne({_id: widgetId});
 }
 
 function updateWidget(widgetId, widget) {
@@ -61,6 +84,10 @@ function updateWidget(widgetId, widget) {
             });
         });
     });
+}
+
+function updateOneWidget(widget) {
+  return WidgetModel.insert(widget);
 }
 
 function deleteWidget(widgetId) {

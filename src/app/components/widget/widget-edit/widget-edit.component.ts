@@ -14,6 +14,9 @@ export class WidgetEditComponent implements OnInit {
   pageId: string;
 
   constructor(private widgetService: WidgetService, private activatedRoute: ActivatedRoute) {
+  }
+
+  ngOnInit() {
     this.activatedRoute.params
       .subscribe(
         (params: any) => {
@@ -25,13 +28,17 @@ export class WidgetEditComponent implements OnInit {
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
-    this.widgetService.findWidgetById(this.wgid)
+    this.widgetService.findWidgetById(this.pageId, this.wgid)
       .subscribe((widget: any) => {
+        // console.log('PAGEWIDGETS IN EDIT', pageWidgets);
+        // for (let i = 0; i < pageWidgets.length; i++) {
+        //   if (pageWidgets[i]._id === this.wgid) {
+        //     this.widget = pageWidgets[i];
+        //   }
+        // }
         this.widget = widget;
       });
-  }
-
-  ngOnInit() {
+    console.log('IN WIDGET EDIT', this.widget);
   }
 
 }

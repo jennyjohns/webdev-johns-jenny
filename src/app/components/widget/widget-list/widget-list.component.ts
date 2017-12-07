@@ -47,8 +47,13 @@ export class WidgetListComponent implements OnInit {
     this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget', 'new']);
   }
   editWidget(wgid: string, type: string) {
-    this.widgetService.findWidgetById(wgid)
+    this.widgetService.findWidgetById(this.pageId, wgid)
       .subscribe((widget: any) => {
+        // for (let i = 0; i < pageWidgets.length; i++) {
+        //   if (pageWidgets[i]._id === wgid) {
+        //     this.widget = pageWidgets[i];
+        //   }
+        // }
         this.widget = widget;
         this.widgetType = type;
         this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget', wgid]);

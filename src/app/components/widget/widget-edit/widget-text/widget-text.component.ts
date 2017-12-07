@@ -40,8 +40,13 @@ export class WidgetTextComponent implements OnInit {
           this.pageId = params['pid'];
         }
       );
-    this.widgetService.findWidgetById(this.wgid)
+    this.widgetService.findWidgetById(this.pageId, this.wgid)
       .subscribe((widget: any) => {
+        // for (let i = 0; i < pageWidgets.length; i++) {
+        //   if (pageWidgets[i]._id === this.wgid) {
+        //     this.widget = pageWidgets[i];
+        //   }
+        // }
         this.widget = widget;
         this.widgetType = this.widget['widgetType'];
         this.text = this.widget['text'];
@@ -49,7 +54,7 @@ export class WidgetTextComponent implements OnInit {
         this.name = this.widget['name'];
         this.placeholder = this.widget['placeholder'];
         this.formatted = this.widget['formatted'];
-        this.dateCreated = widget['dateCreated'];
+        this.dateCreated = this.widget['dateCreated'];
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {

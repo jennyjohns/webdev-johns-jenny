@@ -1,14 +1,13 @@
-
 module.exports = function (app) {
 
   var multer = require('multer');
-  var upload = multer({ dest: __dirname + '/../../dist/assets/uploads'});
+  var upload = multer({dest: __dirname + '/../../dist/assets/uploads'});
   var widgetModel = require('../../model/widget/widget.model.server');
   var pageModel = require('../../model/page/page.model.server');
 
   app.get("/api/widget", findAllWidgets);
   app.get("/api/page/:pid/widget", findAllWidgetsForPage);
-  app.get("/api/widget/:wgid", findWidgetById);
+  app.get("/api/page/:pid/widget/:wgid", findWidgetById);
   app.post("/api/page/:pid/widget", createWidget);
   app.put("/api/widget/:wgid", updateWidget);
   app.put("/api/page/:pid/widget", sortingWidgets);
@@ -29,8 +28,9 @@ module.exports = function (app) {
   }
 
   function findWidgetById(req, res) {
-    // var pageId = req.params['pid'];
+    var pageId = req.params['pid'];
     var wgId = req.params['wgid'];
+    var pageWidgets = null;
     // var pageWidgets = null;
     // pageModel
     //   .findPageById(pageId)
@@ -43,20 +43,45 @@ module.exports = function (app) {
     //     }
     //   });
     widgetModel
-      .findWidgetById(wgId)
-      .then(function (widget) {
-        res.json(widget);
+      .findWidgetById(pageId, wgId)
+      .then(function (page) {
+        // console.log(wgId);
+        // console.log(page.widgets);
+        res.json(findSameId(wgId, page.widgets));
+        // pageWidgets = page.widgets;
+        // console.log('IN SERVER', pageWidgets);
+        // for(let i = 0; i < pageWidgets.length; i++) {
+        //   console.log('PAGEWIDGET ID', pageWidgets._id[i]);
+        //   console.log('WIDGETID', wgId);
+        //   if(pageWidgets[i]._id === wgId) {
+        //     console.log('FOUND THE WIDGET', pageWidgets[i]);
+        //     res.json(pageWidgets[i]);
+        //     return;
+        //   }
+        // }
+       // res.json(widget);
       });
   }
-
+  function findSameId(id, arr) {
+    for (var i = 0; i < arr.length; i++) {
+      // console.log(arr.length);
+      // console.log('ARR', typeof (arr[i]._id.toString()), 'ID', typeof (id));
+      // console.log(arr[i]._id.toString() === id);
+      if(arr[i]._id.toString() === id) {
+        return arr[i];
+      }
+    }
+  }
   function createWidget(req, res) {
     var widget = req.body;
+    console.log('WIDGET IN SERVER', widget);
 
     var pageId = req.params['pid'];
     widget.pageId = pageId;
     widgetModel
       .createWidget(pageId, widget)
       .then(function (widget) {
+        console.log('SECOND', widget);
         widgetModel
           .findAllWidgetsForPage(pageId)
           .then(function (widgets) {
@@ -118,10 +143,11 @@ module.exports = function (app) {
         widget1['width'] = width;
         widget1['size'] = size;
         widget1.save();
+        console.log(widget1);
         widgetModel
           .updateWidget(widgetId, widget1)
           .then(function (wdgt) {
-            var callbackUrl =  '/user/website/' + websiteId + '/page/' + pageId + '/widget';
+            var callbackUrl = '/user/website/' + websiteId + '/page/' + pageId + '/widget';
             res.redirect(callbackUrl);
           });
       });

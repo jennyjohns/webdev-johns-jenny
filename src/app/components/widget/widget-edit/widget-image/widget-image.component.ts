@@ -44,13 +44,18 @@ export class WidgetImageComponent implements OnInit {
       .subscribe((widgets: any) => {
         this.widgets = widgets;
       });
-    this.widgetService.findWidgetById(this.wgid)
+    this.widgetService.findWidgetById(this.pageId, this.wgid)
       .subscribe((widget: any) => {
+        // for (let i = 0; i < pageWidgets.length; i++) {
+        //   if (pageWidgets[i]._id === this.wgid) {
+        //     this.widget = pageWidgets[i];
+        //   }
+        // }
         this.widget = widget;
         this.url = this.widget['url'];
         this.width = this.widget['width'];
         this.widgetType = this.widget['widgetType'];
-        this.dateCreated = widget['dateCreated'];
+        this.dateCreated = this.widget['dateCreated'];
       });
   }
 

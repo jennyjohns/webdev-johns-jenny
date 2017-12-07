@@ -16,7 +16,7 @@ var WidgetSchema = mongoose.Schema ( {
   deletable: Boolean,
   formatted: Boolean,
   dateCreated: Date,
-  widgetType: {type: String, enum: ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT']}
+  widgetType: {type: String, enum: ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'TEXT']}
 }, {collection: 'widget'});
 
 module.exports = WidgetSchema;

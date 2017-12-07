@@ -38,8 +38,8 @@ export class WidgetService {
       } );
   }
 
-  findWidgetById(widgetId: string) {
-    const url = this.baseURL + '/api/widget/' + widgetId;
+  findWidgetById(pageId: string, widgetId: string) {
+    const url = this.baseURL + '/api/page/' + pageId + '/widget/' + widgetId;
     return this.http.get(url)
       .map((response: Response) => {
         return response.json();

@@ -50,8 +50,10 @@ export class WidgetChooserComponent implements OnInit {
         this.widget['widgetType'] = type;
         this.widgetType = type;
         this.widgetId = this.widget['_id'];
+        console.log('IN CHOOSER', this.widget);
         this.router.navigate(['user/website', this.webId, 'page', this.pageId, 'widget', this.widgetId]);
       });
+    // console.log('IN CHOOSER', this.widget);
   }
 
   goToProfile() {
