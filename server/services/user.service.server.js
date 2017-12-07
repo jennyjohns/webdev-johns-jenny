@@ -9,7 +9,6 @@ module.exports = function (app) {
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK_URL
   };
-  console.log(process.env.FACEBOOK_CALLBACK_URL);
 
   passport.serializeUser(serializeUser);
   passport.deserializeUser(deserializeUser);
@@ -25,12 +24,14 @@ module.exports = function (app) {
   app.post("/api/login", passport.authenticate('local'), login);
   app.post("/api/logout", logout);
   app.post("/api/loggedIn", loggedIn);
-  app.get("/facebook/login", passport.authenticate('facebook', {scope: 'email'}));
-  app.get ("/facebook/oauth2callback",
+  app.get ('/api/facebook/login',
+    passport.authenticate('facebook', { scope : 'email' }));
+  app.get ('/api/facebook/oauth2callback',
     passport.authenticate('facebook', {
       successRedirect: 'http://localhost:4200/profile',
       failureRedirect: 'http://localhost:4200/login'
     }));
+
 
 
   function facebookStrategy(token, refreshToken, profile, done) {

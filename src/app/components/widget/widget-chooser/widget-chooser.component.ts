@@ -20,7 +20,8 @@ export class WidgetChooserComponent implements OnInit {
   widget = {};
   dateCreated: Date;
 
-  constructor(private sharedService: SharedService, private widgetService: WidgetService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private widgetService: WidgetService,
+              private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {

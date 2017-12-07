@@ -121,7 +121,7 @@ module.exports = function (app) {
         widgetModel
           .updateWidget(widgetId, widget1)
           .then(function (wdgt) {
-            var callbackUrl =  '/user/' + userId + '/website/' + websiteId + '/page/' + pageId + '/widget';
+            var callbackUrl =  '/user/website/' + websiteId + '/page/' + pageId + '/widget';
             res.redirect(callbackUrl);
           });
       });

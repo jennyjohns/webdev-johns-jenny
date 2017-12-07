@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {UserService} from '../../../services/user.service.client';
 import {Router} from '@angular/router';
-import {SharedService} from "../../../services/shared.service.client";
-import {environment} from "../../../../environments/environment";
+import {SharedService} from '../../../services/shared.service.client';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
