@@ -28,8 +28,8 @@ module.exports = function (app) {
     passport.authenticate('facebook', { scope : 'email' }));
   app.get ('/api/facebook/oauth2callback',
     passport.authenticate('facebook', {
-      successRedirect: 'http://localhost:4200/profile',
-      failureRedirect: 'http://localhost:4200/login'
+      successRedirect: 'https://webdev-johns-jenny.herokuapp.com/profile',
+      failureRedirect: 'https://webdev-johns-jenny.herokuapp.com/login'
     }));
 
 
