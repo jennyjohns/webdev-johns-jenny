@@ -30,43 +30,15 @@ module.exports = function (app) {
   function findWidgetById(req, res) {
     var pageId = req.params['pid'];
     var wgId = req.params['wgid'];
-    var pageWidgets = null;
-    // var pageWidgets = null;
-    // pageModel
-    //   .findPageById(pageId)
-    //   .then(function (page) {
-    //     pageWidgets = page.widgets;
-    //     for (i = 0; i < pageWidgets.length; i++) {
-    //       if (pageWidgets[i]._id === wgId) {
-    //         res.json(pageWidgets[i]);
-    //       }
-    //     }
-    //   });
+
     widgetModel
       .findWidgetById(pageId, wgId)
       .then(function (page) {
-        // console.log(wgId);
-        // console.log(page.widgets);
         res.json(findSameId(wgId, page.widgets));
-        // pageWidgets = page.widgets;
-        // console.log('IN SERVER', pageWidgets);
-        // for(let i = 0; i < pageWidgets.length; i++) {
-        //   console.log('PAGEWIDGET ID', pageWidgets._id[i]);
-        //   console.log('WIDGETID', wgId);
-        //   if(pageWidgets[i]._id === wgId) {
-        //     console.log('FOUND THE WIDGET', pageWidgets[i]);
-        //     res.json(pageWidgets[i]);
-        //     return;
-        //   }
-        // }
-       // res.json(widget);
       });
   }
   function findSameId(id, arr) {
     for (var i = 0; i < arr.length; i++) {
-      // console.log(arr.length);
-      // console.log('ARR', typeof (arr[i]._id.toString()), 'ID', typeof (id));
-      // console.log(arr[i]._id.toString() === id);
       if(arr[i]._id.toString() === id) {
         return arr[i];
       }
@@ -74,14 +46,12 @@ module.exports = function (app) {
   }
   function createWidget(req, res) {
     var widget = req.body;
-    //console.log('WIDGET IN SERVER', widget);
 
     var pageId = req.params['pid'];
     widget.pageId = pageId;
     widgetModel
       .createWidget(pageId, widget)
       .then(function (widget) {
-        //console.log('SECOND', widget);
         widgetModel
           .findAllWidgetsForPage(pageId)
           .then(function (widgets) {
@@ -123,7 +93,6 @@ module.exports = function (app) {
   function uploadImage(req, res) {
     var widgetId = req.body.widgetId;
     var width = req.body.width;
-    console.log('WIDTH', req.body.width);
     var myFile = req.file;
     var userId = req.body.userId;
     var websiteId = req.body.websiteId;
@@ -144,7 +113,6 @@ module.exports = function (app) {
         widget1['width'] = width;
         widget1['size'] = size;
         widget1.save();
-        console.log('CREATED WIDGET', widget1);
         widgetModel
           .updateWidget(widgetId, widget1)
           .then(function (wdgt) {

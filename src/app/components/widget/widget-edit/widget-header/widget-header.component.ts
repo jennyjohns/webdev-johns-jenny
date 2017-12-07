@@ -38,17 +38,11 @@ export class WidgetHeaderComponent implements OnInit {
       );
     this.widgetService.findWidgetById(this.pageId, this.wgid)
       .subscribe((widget: any) => {
-        // for (let i = 0; i < pageWidgets.length; i++) {
-        //   if (pageWidgets[i]._id === this.wgid) {
-        //     this.widget = pageWidgets[i];
-        //   }
-        // }
         this.widget = widget;
         this.widgetType = this.widget['widgetType'];
         this.text = this.widget['text'];
         this.size = this.widget['size'];
         this.dateCreated = this.widget['dateCreated'];
-        //  this.widget = widget;
       });
     this.widgetService.findWidgetsByPageId(this.pageId)
       .subscribe((widgets: any) => {

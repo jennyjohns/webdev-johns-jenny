@@ -36,15 +36,6 @@ export class ProfileComponent implements OnInit {
     this.password = this.user['password'];
     this.lastName = this.user['lastName'];
     this.email = this.user['email'];
-    // this.userService.findUserById(this.userId)
-    //   .subscribe((user: any) => {
-    //     this.user = user;
-    //     this.username = this.user['username'];
-    //     this.firstName = this.user['firstName'];
-    //     this.password = this.user['password'];
-    //     this.lastName = this.user['lastName'];
-    //     this.email = this.user['email'];
-    //   });
   }
 
   websites() {

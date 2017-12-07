@@ -29,18 +29,6 @@ export class LoginComponent implements OnInit {
         this.sharedService.user = user;
         this.router.navigate(['/profile']);
       });
-    // this.userService.findUserByCredentials(this.username, this.password)
-    //   .subscribe((user: any) => {
-    //       if (user) {
-    //         this.router.navigate(['user/', user._id]);
-    //       } else {
-    //         this.errorFlag = true;
-    //       }
-    //     }
-    //   );
-  }
-  facebook() {
-
   }
 
 }

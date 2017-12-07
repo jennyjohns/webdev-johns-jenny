@@ -36,11 +36,6 @@ export class FlickrImageSearchComponent implements OnInit {
         });
     this.widgetService.findWidgetById(this.pageId, this.wgid)
       .subscribe((widget: any) => {
-        // for (let i = 0; i < pageWidgets.length; i++) {
-        //   if (pageWidgets[i]._id === this.wgid) {
-        //     this.widget = pageWidgets[i];
-        //   }
-        // }
         this.widget = widget;
       });
   }

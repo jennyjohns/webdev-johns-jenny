@@ -14,13 +14,11 @@ WidgetModel.updateOneWidget = updateOneWidget;
 module.exports = WidgetModel;
 
 function createWidget(pageId, widget) {
-  console.log('IN MODEL', widget);
   var newWidget = null;
   return WidgetModel
     .create(widget)
     .then(function (widget) {
       newWidget = widget;
-      console.log('NEW IN MODEL', newWidget);
       return PageModel
         .findPageById(pageId)
         .then(function (page) {
@@ -38,24 +36,6 @@ function findAllWidgetsForPage(pageId) {
 function findWidgetById(pageId, widgetId) {
   return PageModel
     .findPageById(pageId);
-    // .widgets
-    // .find(widget => widget._id === widgetId);
-
-
-// console.log('PAGEID IN MODEL',pageId);
-// var pageWidgets = null;
-// return PageModel.findPageById(pageId)
-//   .then(function (page) {
-//     console.log('HELLO FROM MODEL', page.widgets);
-//     pageWidgets = page.widgets;
-//     for(var i = 0; i < pageWidgets.length; i++) {
-//       if(pageWidgets[i]._id === widgetId) {
-//         return pageWidgets[i];
-//       }
-//     }
-//   });
-
-// return WidgetModel.findOne({_id: widgetId});
 }
 
 function updateWidget(widgetId, widget) {
