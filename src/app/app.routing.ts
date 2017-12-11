@@ -14,10 +14,11 @@ import {WidgetChooserComponent} from './components/widget/widget-chooser/widget-
 import {WidgetEditComponent} from './components/widget/widget-edit/widget-edit.component';
 import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget-image/flickr-image-search/flickr-image-search.component';
 import {AuthenticationService} from './services/authentication.service.client';
+import {HomeComponent} from "./components/home/home.component";
 // Import all other components here
 
 const APP_ROUTES: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'default', component: LoginComponent},
   {path: 'register', component: RegisterComponent},

@@ -1,23 +1,135 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<body class="w3-light-grey">
 
-<div class="container">
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
 
-  <h1>
-    Angular 4 MEAN stack app
-  </h1>
+  <!-- The Grid -->
+  <div class="w3-row-padding">
 
+    <!-- Left Column -->
+    <div class="w3-third">
 
-  <h3>
-    App works
-  </h3>
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/22046043_360378664418287_7329280522739606058_n.jpg?oh=6224ba78e043bd016cbfc160e9619ac8&oe=5A91F9AF" style="width:100%" alt="Avatar">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>Jenny Johns</h2>
+          </div>
+        </div>
+        <div class="w3-container" style="padding-top: 10px">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Programmer</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Boston, MA</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>johns.j@husky.neu.edu</p>
+          <hr>
 
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+          <p>HTML</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">80%</div>
+          </div>
+          <p>Javascript</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">
+              <div class="w3-center w3-text-white">90%</div>
+            </div>
+          </div>
+          <p>Java</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
+          </div>
+          <p>MongoDB</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+          </div>
+          <br>
 
-  <h4>
-    <a href="test">Test MongoDB</a>
-  </h4>
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+          <p>English</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-center w3-teal" style="height:24px;width:100%">100%</div>
+          </div>
+          <p>Malayalam</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-center w3-teal" style="height:24px;width:55%">55%</div>
+          </div>
+          <br>
+        </div>
+      </div><br>
 
-  <h4>
-    <a href="../../../assets/index.html">Assignment 2</a>
-  </h4>
+      <!-- End Left Column -->
+    </div>
 
+    <!-- Right Column -->
+    <div class="w3-twothird">
+
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Links</h2>
+        <div class="w3-container">
+          <button class="jj-button" (click)="goToAssignment()"><h5 class="w3-opacity"><b>Assignment</b></h5></button>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sept 2017 - Dec 2017</h6>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <button class="jj-button"><a href="https://spacebook-benjamin-hanna-johns.herokuapp.com/"><h5 class="w3-opacity"><b>Project</b></h5></a></button>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep 2017 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <button class="jj-button"><a href="https://github.com/jennyjohns"><h5 class="w3-opacity"><b>GitHub</b></h5></a></button>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep 2017 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+          <hr>
+        </div>
+      </div>
+
+      <div class="w3-container w3-card w3-white">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Northeastern University</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2016 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+          <p>M.S. in Computer Science</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>New Jersey Institute of Technology</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2011 - 2015</h6>
+          <p>B.A. in Biology</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Academy For Allied Health Sciences</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2007 - 2011</h6>
+          <p>High School Diploma</p><br>
+        </div>
+      </div>
+
+      <!-- End Right Column -->
+    </div>
+
+    <!-- End Grid -->
+  </div>
+
+  <!-- End Page Container -->
 </div>
+
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+  <p>Find me on social media.</p>
+  <a href="https://www.facebook.com/jenny.johns.58173"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+  <a href="https://www.snapchat.com/add/jennyjohns93"><i class="fa fa-snapchat w3-hover-opacity"></i></a>
+  <a href="https://www.linkedin.com/in/jenny-johns-62493b151"> <i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+</body>
+</html>
 
